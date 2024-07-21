@@ -1,9 +1,29 @@
+import { notFound } from "next/navigation";
+
+// If this value is set to 'false', it will render a 404 page for pages that haven't been pre-rendered
+// Leaving this as 'True' is the default and it will try to fetch the data and create the page at runtime
+export const dynamicParams = true;
+
+export async function generateStaticParams() {
+  // Get all the ids so NextJS can make a page for each ticket
+  // This will speedup the application because NextJS will be able to generate all the pages at build time
+  const res = await fetch("http://localhost:4000/tickets");
+  const tickets = await res.json();
+  const ids = tickets.map((ticket) => ({ id: ticket.id }));
+  return ids;
+}
+
 async function getTicket(id) {
   const res = await fetch("http://localhost:4000/tickets/" + id, {
     next: {
       revalidate: 60,
     },
   });
+
+  if (!res.ok) {
+    notFound();
+  }
+
   return res.json();
 }
 
