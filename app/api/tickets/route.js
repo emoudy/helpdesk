@@ -14,3 +14,20 @@ export async function GET() {
     status: 200,
   });
 }
+
+export async function POST( request ) {
+  const ticketData = await request.json();
+
+  const res = await fetch("http://localhost:4000/tickets", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(ticketData),
+  });
+
+  const newTicket = await res.json();
+
+  return NextResponse.json(newTicket, {
+    status: 200,
+  });
+
+};
