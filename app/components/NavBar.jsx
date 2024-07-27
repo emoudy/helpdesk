@@ -2,8 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import picture from "../../public/sun.png";
 
-import React from "react";
-
 export default function NavBar() {
   return (
     <nav>
@@ -17,6 +15,7 @@ export default function NavBar() {
       <h1>HelpDesk</h1>
       <Link href="/">Dashboard</Link>
       <Link href="/tickets">Tickets</Link>
+      <Link href="/tickets/create">Create Ticket</Link>
     </nav>
   );
 }
