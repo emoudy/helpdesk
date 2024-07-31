@@ -1,8 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 import picture from "../../public/sun.png";
+import LogoutButton from "./logoutButton";
 
-export default function NavBar() {
+export default function NavBar({ user_email }) {
   return (
     <nav>
       <Image
@@ -15,7 +16,12 @@ export default function NavBar() {
       <h1>HelpDesk</h1>
       <Link href="/">Dashboard</Link>
       <Link href="/tickets">Tickets</Link>
-      <Link href="/tickets/create">Create Ticket</Link>
+      <Link href="/tickets/create" className="mr-auto">
+        Create Ticket
+      </Link>
+
+      {user_email ? <span>{user_email}</span> : null}
+      <LogoutButton />
     </nav>
   );
 }
