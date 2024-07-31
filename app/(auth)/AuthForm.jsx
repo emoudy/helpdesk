@@ -1,32 +1,18 @@
-"use client";
+import { login, signup } from "./actions";
 
-import { useState } from "react";
-
-export default function AuthForm({ handleSubmit }) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
+export default function AuthForm() {
   return (
-    <form onSubmit={(e) => handleSubmit(e, email, password)}>
-      <label>
-        <span>Email:</span>
-        <input
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-          value={email}
-          required
-        />
-      </label>
-      <label>
-        <span>Password:</span>
-        <input
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-          value={password}
-          required
-        />
-      </label>
-      <button className="btn-primary">Submit</button>
+    <form id="formElem">
+      <label htmlFor="email">Email:</label>
+      <input id="email" type="email" name="email" required />
+      <label htmlFor="password">Password:</label>
+      <input id="password" type="password" name="password" required />
+      <button className="btn-primary" formAction={login}>
+        Log in
+      </button>
+      <button className="btn-secondary" formAction={signup}>
+        If you do not have an account, sign up!
+      </button>
     </form>
   );
 }
