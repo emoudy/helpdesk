@@ -3,11 +3,13 @@ import NavBar from "../components/NavBar";
 
 export default async function DashboardLayout({ children }) {
   const supabase = createClient();
-  const { data } = await supabase.auth.api.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   return (
     <>
-      <NavBar user_email={data ? data.user.email : null} />
+      <NavBar user={user} />
       {children}
     </>
   );

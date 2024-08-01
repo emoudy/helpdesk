@@ -3,7 +3,7 @@ import Link from "next/link";
 import picture from "../../public/sun.png";
 import LogoutButton from "./logoutButton";
 
-export default function NavBar({ user_email }) {
+export default function NavBar({ user }) {
   return (
     <nav>
       <Image
@@ -20,7 +20,7 @@ export default function NavBar({ user_email }) {
         Create Ticket
       </Link>
 
-      {user_email ? <span>{user_email}</span> : null}
+      {user ? <span>{user.email}</span> : null}
       <LogoutButton />
     </nav>
   );
