@@ -32,9 +32,14 @@ export async function updateSession(request: NextRequest) {
   // issues with users being randomly logged out.
 
   const {
-    data: { user },
+    data: { user }, error: userError
   } = await supabase.auth.getUser()
 
+  if (userError) {
+    console.error('Error fetching user:', userError.message);
+    return NextResponse.redirect('/error');
+  }
+ 
   if (
     !user &&
     !request.nextUrl.pathname.startsWith('/login') &&
@@ -42,6 +47,7 @@ export async function updateSession(request: NextRequest) {
     !request.nextUrl.pathname.startsWith('/confirm') &&
     !request.nextUrl.pathname.startsWith('/verify')
   ) {
+    console.log('No user found, redirecting to login page', user.email)
     // no user, potentially respond by redirecting the user to the login page
     const url = request.nextUrl.clone()
     url.pathname = '/login'
