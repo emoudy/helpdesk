@@ -4,16 +4,30 @@ async function getTickets() {
   // imitate the delay of a real API call
   // await new Promise((resolve) => setTimeout(resolve, 3000));
 
-  const res = await fetch("http://localhost:4000/tickets", {
+  const res = await fetch("http://localhost:3000/api/tickets", {
+    method: "GET",
+    headers: { "Content-Type": "application/json" },
     next: {
-      revalidate: 30,
+      revalidate: 0, // use "0" to opt out of using cache
     },
   });
-  return res.json();
+
+  if (!res.ok) {
+    throw new Error(`HTTP error! status: ${res.status}`);
+  }
+
+  const tickets = await res.json();
+  return tickets;
 }
 
 export default async function TicketList() {
   const tickets = await getTickets();
+  console.log("tickets", tickets);
+
+  if (!tickets || tickets.length === 0) {
+    return <h3 className="text-center">There are no opened tickets</h3>;
+  }
+
   return (
     <>
       {tickets.map((ticket) => (
@@ -27,9 +41,6 @@ export default async function TicketList() {
           </Link>
         </div>
       ))}
-      {tickets.length === 0 && (
-        <p className="text-center">There are no opened tickets</p>
-      )}
     </>
   );
 }
