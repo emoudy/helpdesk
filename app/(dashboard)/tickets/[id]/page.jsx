@@ -6,12 +6,9 @@ import { notFound } from "next/navigation";
  */
 export const dynamicParams = true;
 
-/**
- * Change dynamic metadata for this page
- */
 export async function generateMetadata({}) {
   const id = params.id;
-  const res = await fetch(`http://localhost:4000/tickets/${id}`);
+  const res = await fetch(`http://localhost:3000/api/tickets/${id}`);
   const ticket = await res.json();
 
   return {
@@ -25,17 +22,14 @@ export async function generateMetadata({}) {
  * This will speedup the application because NextJS will be able to generate all the pages at build time
  */
 export async function generateStaticParams() {
-  const res = await fetch("http://localhost:4000/tickets");
+  const res = await fetch("http://localhost:3000/api/tickets");
   const tickets = await res.json();
   const ids = tickets.map((ticket) => ({ id: ticket.id }));
   return ids;
 }
 
 async function getTicket(id) {
-  // imitate the delay of a real API call
-  // await new Promise((resolve) => setTimeout(resolve, 3000));
-
-  const res = await fetch("http://localhost:4000/tickets/" + id, {
+  const res = await fetch(`http://localhost:3000/api/tickets/${id}`, {
     next: {
       revalidate: 60,
     },

@@ -19,17 +19,23 @@ export default function CreateForm() {
       title,
       description,
       priority,
-      user_email: "mario@someemail.dev",
     };
 
-    const res = await fetch("http://localhost:4000/tickets", {
+    const res = await fetch("http://localhost:3000/api/tickets", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newTicket),
     });
 
-    if (res.status === 201) {
-      router.refresh();
+    const response = await res.json();
+
+    if (response.error) {
+      console.error("Error adding ticket:", response.error);
+    }
+
+    if (response.data) {
+      console.log("Ticket added:", response.data);
+      // router.refresh();
       router.push("/tickets");
     }
   };
@@ -62,8 +68,7 @@ export default function CreateForm() {
         </select>
       </label>
       <button className="btn-primary" disabled={isLoading}>
-        {isLoading && <span>Adding...</span>}
-        {!isLoading && <span>Add Ticket</span>}
+        <span>{isLoading ? "Adding..." : "Add Ticket"}</span>
       </button>
     </form>
   );
