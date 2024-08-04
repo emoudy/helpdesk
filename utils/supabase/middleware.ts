@@ -37,7 +37,8 @@ export async function updateSession(request: NextRequest) {
 
   if (userError) {
     console.error('Error fetching user:', userError.message);
-    return NextResponse.redirect('/error');
+    const errorUrl = new URL('/error', request.url);
+    return NextResponse.redirect(errorUrl.toString());
   }
  
   if (
