@@ -22,7 +22,6 @@ async function getTickets() {
 
 export default async function TicketList() {
   const tickets = await getTickets();
-  console.log("tickets", tickets);
 
   if (!tickets || tickets.length === 0) {
     return <h3 className="text-center">There are no opened tickets</h3>;
