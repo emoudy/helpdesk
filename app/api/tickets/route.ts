@@ -13,7 +13,6 @@ export async function GET() {
     .select()
 
   if (error) {
-    console.log(error.message)
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 
@@ -21,17 +20,17 @@ export async function GET() {
 }
 
 export async function POST(request: NextRequest) {
-  const ticket = await request.json();
+  const newTicketInfo = await request.json();
   const supabase = createClient();
   const { data: { user }, error: userError } = await supabase.auth.getUser();
 
-  if (userError || !user) {
+  if (userError) {
     console.error("Error fetching user:", userError?.message || "User not found");
     return NextResponse.json({ error: userError?.message || "User not found" }, { status: 401 });
   }
 
   const { data, error } = await supabase.from('Tickets').insert({
-    ...ticket,
+    ...newTicketInfo,
     user_email: user.email,
   }).select().single();
 
