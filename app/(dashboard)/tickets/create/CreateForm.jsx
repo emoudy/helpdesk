@@ -34,8 +34,7 @@ export default function CreateForm() {
     }
 
     if (response.data) {
-      console.log("Ticket added:", response.data);
-      // router.refresh();
+      router.refresh();
       router.push("/tickets");
     }
   };
