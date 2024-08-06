@@ -1,23 +1,30 @@
 import Link from "next/link";
+import { createClient } from "utils/supabase/server";
+import { NextResponse } from "next/server";
 
 async function getTickets() {
-  // imitate the delay of a real API call
-  // await new Promise((resolve) => setTimeout(resolve, 3000));
+  const supabase = createClient();
+  const { data, error } = await supabase.from("Tickets").select();
 
-  const res = await fetch("http://localhost:3000/api/tickets", {
-    method: "GET",
+  if (error) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
+  }
+
+  return data;
+}
+
+async function deleteTicket(id) {
+  console.log("deleteTicket", id);
+  const res = await fetch(`http://localhost:3000/api/tickets/${id}`, {
+    method: "DELETE",
     headers: { "Content-Type": "application/json" },
-    next: {
-      revalidate: 0, // use "0" to opt out of using cache
-    },
   });
 
   if (!res.ok) {
-    throw new Error(`HTTP error! status: ${res.status}`);
+    console.log(`Error status: ${res.status}`);
   }
 
-  const tickets = await res.json();
-  return tickets;
+  return await res.json();
 }
 
 export default async function TicketList() {
