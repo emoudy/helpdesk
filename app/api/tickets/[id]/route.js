@@ -1,21 +1,17 @@
 import { NextResponse } from "next/server";
+import { createClient } from "utils/supabase/server";
 
 /**
  * This forces all the route handlers to be dynamic.  They are static by default.
  * By setting this to "force-dynamic", they will be dynamic and fetch anytime a request is made.
  */
-export const dynamic = "force-dynamic";
+// export const dynamic = "force-dynamic";
 
-export async function GET(_, { params }) {
+
+export async function DELETE(_, { params }) {
   const id = params.id;
-  const res = await fetch(`http://localhost:3000/api/tickets/${id}`);
-  const ticket = await res.json();
+  const supabase = createClient();
+  const { error } = await supabase.from('Tickets').delete().eq('id', id);
 
-  if (!res.ok) {
-    return NextResponse.json({error: "Ticket not found"}, { status: 404 });
-  }
-
-  return NextResponse.json(ticket, {
-    status: 200,
-  });
-}
+  return NextResponse.json({ error });
+} 

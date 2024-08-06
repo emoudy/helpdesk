@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { createClient } from "utils/supabase/server";
 import { NextResponse } from "next/server";
+import DeleteTicketButton from "./[id]/DeleteTicketButton";
 
 async function getTickets() {
   const supabase = createClient();
@@ -13,22 +14,10 @@ async function getTickets() {
   return data;
 }
 
-async function deleteTicket(id) {
-  console.log("deleteTicket", id);
-  const res = await fetch(`http://localhost:3000/api/tickets/${id}`, {
-    method: "DELETE",
-    headers: { "Content-Type": "application/json" },
-  });
-
-  if (!res.ok) {
-    console.log(`Error status: ${res.status}`);
-  }
-
-  return await res.json();
-}
-
 export default async function TicketList() {
   const tickets = await getTickets();
+  const supabase = createClient();
+  const { data } = await supabase.auth.getSession();
 
   if (!tickets || tickets.length === 0) {
     return <h3 className="text-center">There are no opened tickets</h3>;
@@ -41,10 +30,15 @@ export default async function TicketList() {
           <Link href={`/tickets/${ticket.id}`}>
             <h3>{ticket.title}</h3>
             <p>{ticket.description.slice(0, 200)}...</p>
-            <div className={`pill ${ticket.priority}`}>
-              {ticket.priority} priority
-            </div>
           </Link>
+          <div className={`pill ${ticket.priority}`}>
+            {ticket.priority} priority
+          </div>
+          <div className="ml-auto">
+            {data.session.user.email === ticket.user_email ? (
+              <DeleteTicketButton id={ticket.id} />
+            ) : null}
+          </div>
         </div>
       ))}
     </>

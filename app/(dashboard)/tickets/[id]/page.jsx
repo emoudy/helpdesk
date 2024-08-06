@@ -1,5 +1,6 @@
 import { notFound } from "next/navigation";
 import { createClient } from "utils/supabase/server";
+import DeleteTicketButton from "./DeleteTicketButton";
 
 /**
  * If this value is set to 'false', it will render a 404 page for pages that haven't been pre-rendered
@@ -39,10 +40,18 @@ export async function getTicket(id) {
 export default async function TicketDetails({ params }) {
   const ticket = await getTicket(params.id);
 
+  const supabase = createClient();
+  const { data } = await supabase.auth.getSession();
+
   return (
     <main>
       <nav>
         <h2>Ticket Details</h2>
+        <div className="ml-auto">
+          {data.session.user.email === ticket.user_email ? (
+            <DeleteTicketButton id={ticket.id} />
+          ) : null}
+        </div>
       </nav>
       <div className="card">
         <h3>{ticket.title}</h3>
