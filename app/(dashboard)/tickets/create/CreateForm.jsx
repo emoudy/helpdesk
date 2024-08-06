@@ -34,8 +34,8 @@ export default function CreateForm() {
     }
 
     if (response.data) {
-      router.refresh();
       router.push("/tickets");
+      router.refresh();
     }
   };
 
