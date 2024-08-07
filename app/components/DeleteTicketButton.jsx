@@ -2,21 +2,15 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import { TiDelete } from "react-icons/ti";
+import { handleDeleteTicket } from "./helpers/helpers";
 
 export default function DeleteTicketButton({ id }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleClick = async () => {
+  const handleDelete = async () => {
     setIsLoading(true);
-
-    const res = await fetch(`http://localhost:3000/api/tickets/${id}`, {
-      method: "DELETE",
-      headers: { "Content-Type": "application/json" },
-    });
-
-    const { error } = await res.json();
+    const { error } = await handleDeleteTicket({ id });
 
     if (error) {
       console.error("Error deleting ticket:", error);
@@ -28,9 +22,8 @@ export default function DeleteTicketButton({ id }) {
   };
 
   return (
-    <button className="btn-primary" onClick={handleClick} disabled={isLoading}>
-      <TiDelete />
-      {isLoading ? "Deleting" : "Delete Ticket"}
+    <button className="btn-primary" onClick={handleDelete} disabled={isLoading}>
+      {isLoading ? "Deleting..." : "Delete Ticket"}
     </button>
   );
 }
