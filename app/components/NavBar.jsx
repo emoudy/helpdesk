@@ -17,6 +17,10 @@ export default function NavBar({ user }) {
           />
           <h1>HelpDesk</h1>
         </div>
+        <div className="flex flex-col items-end">
+          <LogoutButton />
+          <small className="mt-1">{user ? user.email : "null"}</small>
+        </div>
       </div>
       <div className="mt-5 flex justify-between">
         <div>
@@ -24,10 +28,6 @@ export default function NavBar({ user }) {
             Dashboard
           </Link>
           <Link href="/tickets">Tickets</Link>
-        </div>
-        <div className="flex">
-          <span className="mr-5">{user ? user.email : "null"}</span>
-          <LogoutButton />
         </div>
       </div>
     </nav>
