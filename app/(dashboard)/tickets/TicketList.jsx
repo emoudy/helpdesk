@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { createClient } from "utils/supabase/server";
 import { NextResponse } from "next/server";
-import DeleteTicketIcon from "../../components/DeleteTicketIcon";
 
 async function getTickets() {
   const supabase = createClient();
@@ -25,20 +24,15 @@ export default async function TicketList() {
     <div>
       {tickets.map((ticket) => (
         <div key={ticket.id} className="card">
-          <div className="flex justify-between">
-            <Link href={`/tickets/${ticket.id}`}>
-              <h3>{ticket.title}</h3>
-              <small>By: {ticket.user_email}</small>
-            </Link>
-            <div>
-              {data.session.user.email === ticket.user_email ? (
-                <DeleteTicketIcon id={ticket.id} />
-              ) : null}
+          <div className="card_status">
+            <div className={`pill mb-3 ${ticket.priority}`}>
+              {ticket.priority}
             </div>
           </div>
-          <div className={`pill ${ticket.priority}`}>
-            {`${ticket.priority} priority`}
-          </div>
+          <Link href={`/tickets/${ticket.id}`} className="card_summary">
+            <h3>{ticket.title}</h3>
+            <small>By: {ticket.user_email}</small>
+          </Link>
         </div>
       ))}
     </div>

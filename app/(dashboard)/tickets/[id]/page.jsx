@@ -1,5 +1,5 @@
 import { createClient } from "utils/supabase/server";
-import DeleteTicketButton from "../../../components/DeleteTicketButton";
+import DeleteTicketIcon from "../../../components/DeleteTicketIcon";
 import { getTicket } from "./helper/helper";
 
 export const dynamicParams = true;
@@ -28,19 +28,18 @@ const TicketDetails = async ({ params }) => {
     <main>
       <nav>
         <h2>Ticket Details</h2>
-        <div className="ml-auto">
+      </nav>
+      <div className="card">
+        <div className="card_status">
+          <div className={`pill ${ticket.priority}`}>{ticket.priority}</div>
           {data.session.user.email === ticket.user_email ? (
-            <DeleteTicketButton id={ticket.id} />
+            <DeleteTicketIcon id={ticket.id} />
           ) : null}
         </div>
-      </nav>
-      <div className="card card_detail">
-        <div>
+        <div href={`/tickets/${ticket.id}`} className="card_summary">
           <h3>{ticket.title}</h3>
           <p>{ticket.description}</p>
-        </div>
-        <div className={`pill ${ticket.priority}`}>
-          {`${ticket.priority} priority`}
+          <small>By: {ticket.user_email}</small>
         </div>
       </div>
     </main>

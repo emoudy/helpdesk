@@ -17,13 +17,14 @@ export default function DeleteTicketButton({ id }) {
       console.error("Error deleting ticket:", error);
       setIsLoading(false);
     } else {
+      router.push("/tickets");
       router.refresh();
     }
   };
 
   return (
     <TbTrashFilled
-      className="ml-5 icon"
+      className="icon_trash"
       onClick={handleDelete}
       disabled={isLoading}
     />
