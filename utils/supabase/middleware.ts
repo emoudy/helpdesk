@@ -25,7 +25,7 @@ export async function updateSession(request: NextRequest) {
         },
       },
     }
-  )
+  ) 
 
   // IMPORTANT: Avoid writing any logic between createServerClient and
   // supabase.auth.getUser(). A simple mistake could make it very hard to debug
@@ -37,13 +37,8 @@ export async function updateSession(request: NextRequest) {
     data: { user }, error: userError
   } = await supabase.auth.getUser()
 
-  // console.log('user', user)
-
-  // if (userError) {
-  //   console.error("Error fetching user:", userError.message);
-  //   const errorURL = new URL("/error", request.nextUrl);
-  //   return NextResponse.redirect(errorURL.toString());
-  // }
+  // const { { session, user }, error } = await supabase.auth.refreshSession()
+  // const { data, error } = await supabase.auth.getSession()
 
   if (
     !user &&
