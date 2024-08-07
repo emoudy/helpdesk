@@ -1,11 +1,7 @@
-import { notFound } from "next/navigation";
 import { createClient } from "utils/supabase/server";
-import DeleteTicketButton from "./DeleteTicketButton";
+import DeleteTicketButton from "../../../components/DeleteTicketButton";
+import { getTicket } from "./helper/helper";
 
-/**
- * If this value is set to 'false', it will render a 404 page for pages that haven't been pre-rendered
- * Leaving this as 'True' is the default and it will try to fetch the data and create the page at runtime
- */
 export const dynamicParams = true;
 
 export async function generateMetadata({ params }) {
@@ -22,22 +18,7 @@ export async function generateMetadata({ params }) {
   };
 }
 
-export async function getTicket(id) {
-  const supabase = createClient();
-  const { data: ticket } = await supabase
-    .from("Tickets")
-    .select()
-    .eq("id", id)
-    .single();
-
-  if (!ticket) {
-    notFound();
-  }
-
-  return ticket;
-}
-
-export default async function TicketDetails({ params }) {
+const TicketDetails = async ({ params }) => {
   const ticket = await getTicket(params.id);
 
   const supabase = createClient();
@@ -53,15 +34,17 @@ export default async function TicketDetails({ params }) {
           ) : null}
         </div>
       </nav>
-      <div className="card">
-        <h3>{ticket.title}</h3>
-        <p>{ticket.body}</p>
-        <small>Created by {ticket.user_email}</small>
-        <p>{ticket.body}</p>
+      <div className="card card_detail">
+        <div>
+          <h3>{ticket.title}</h3>
+          <p>{ticket.description}</p>
+        </div>
         <div className={`pill ${ticket.priority}`}>
-          {ticket.priority} priority
+          {`${ticket.priority} priority`}
         </div>
       </div>
     </main>
   );
-}
+};
+
+export default TicketDetails;
