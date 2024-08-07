@@ -7,12 +7,15 @@ export default function AuthForm() {
       <input id="email" type="email" name="email" required />
       <label htmlFor="password">Password:</label>
       <input id="password" type="password" name="password" required />
-      <button className="btn-primary" formAction={login}>
-        Log in
-      </button>
-      <button className="btn-secondary" formAction={signup}>
-        If you do not have an account, sign up!
-      </button>
+      <div className="text-center">
+        <button className="btn-primary mb-2" formAction={login}>
+          Log in
+        </button>
+        or
+        <button className="btn-secondary mt-2" formAction={signup}>
+          Sign Up
+        </button>
+      </div>
     </form>
   );
 }
