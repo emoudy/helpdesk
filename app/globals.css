@@ -5,13 +5,16 @@
 /* base styles */
 body {
   background: #ebf0fa;
-  @apply text-gray-500 m-8;
+  @apply 
+  text-gray-500 m-8
+    mx-auto
+    max-w-3xl;
 }
 h1, h2 {
   @apply font-bold text-primary text-lg;
 }
 main {
-  @apply max-w-5xl my-12 mx-auto px-8;
+  @apply my-12;
 }
 main > h2 {
   @apply mb-4 pb-2 text-base ;
@@ -24,10 +27,11 @@ p > a {
 nav {
   @apply
     pb-4
-    border-b-2 border-gray-200
-    flex items-center gap-5 
-    my-10 mx-auto 
-    max-w-5xl;
+    border-b-2 
+    border-gray-200
+    flex items-center 
+    gap-5 
+    my-10;
 }
 nav a, nav span {
   @apply text-gray-500;
@@ -37,6 +41,14 @@ nav a:hover {
 }
 main nav {
   @apply border-0;
+}
+
+/* icons styles */
+.icon {
+  @apply cursor-pointer text-xl;
+}
+.icon:hover {
+  @apply text-2xl;
 }
 
 /* button styles */
@@ -100,28 +112,34 @@ form button {
 /* card styles */
 .card {
   @apply 
-    bg-white 
-    shadow-sm 
-    rounded-md 
-    py-3 px-4 my-4 
-    relative 
-    overflow-hidden;
+  bg-white 
+  shadow-sm 
+  rounded-md 
+  py-3 px-4 my-4 
+  overflow-hidden;
 }
-.card h3 {
+.card_detail {
+  @apply 
+    flex
+    justify-between
+}
+.card_detail h3 {
   @apply 
     font-bold text-gray-700 text-sm 
     mb-0;
 }
-.card p {
+.card_detail p {
   @apply my-4 text-sm leading-6;
 }
 
 /* pill styles */
 .pill {
   @apply 
-    py-1 px-2 mt-3
-    inline-block 
-    text-xs font-semibold;
+    py-1 px-2
+    text-xs font-semibold
+    mt-5
+    flex 
+    items-center;
 }
 .pill.high {
   @apply bg-red-300 text-red-600;
@@ -132,8 +150,7 @@ form button {
 .pill.low {
   @apply bg-emerald-300 text-emerald-600;
 }
-.card .pill {
+.card_detail .pill {
   @apply 
-    absolute bottom-0 right-0 
-    rounded-tl-md;
+    rounded-md;
 }
