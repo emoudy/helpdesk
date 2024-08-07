@@ -1,6 +1,10 @@
 import "./globals.css";
 import { Rubik } from "next/font/google";
 
+/**
+ * We need to add this line so NextJs doesn't try to build static pages.
+ * We can't use static pages because we use cookies
+ */
 export const dynamic = "force-dynamic";
 
 const rubik = Rubik({ subsets: ["latin"] });
