@@ -21,16 +21,20 @@ export default function Home() {
 
       <h2>Company Updates</h2>
 
-      <div className="card">
-        <h3>New member of the web dev team...</h3>
+      <div className="mb-5">
+        <h3>
+          <strong>New member of the web dev team...</strong>
+        </h3>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, at
           quam. Dolores omnis possimus quam soluta rerum illo laborum ullam
           pariatur molestiae, modi beatae corrupti.
         </p>
       </div>
-      <div className="card">
-        <h3>New website live!</h3>
+      <div className="mb-5">
+        <h3>
+          <strong>New website live!</strong>
+        </h3>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, at
           quam. Dolores omnis possimus quam soluta rerum illo laborum ullam
