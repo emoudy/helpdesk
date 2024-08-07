@@ -4,7 +4,6 @@
 
 /* base styles */
 body {
-  background: #ebf0fa;
   @apply 
   text-gray-500 m-8
     mx-auto
@@ -55,12 +54,12 @@ main nav {
 button {
   @apply 
     px-3 py-2 
-    rounded-sm 
+    rounded-full 
     flex justify-between items-center gap-2
     text-sm;
 }
 button:hover {
-  @apply bg-opacity-90;
+  @apply bg-opacity-70;
 }
 .btn-primary {
   @apply bg-primary text-white;
@@ -75,7 +74,7 @@ form {
     py-4 px-7 
     bg-primary 
     bg-opacity-5 
-    rounded-md 
+    rounded-full 
     block 
     mx-auto 
     min-w-fit w-1/4;
@@ -111,22 +110,24 @@ form button {
 
 /* card styles */
 .card {
-  @apply 
-  bg-white 
-  shadow-sm 
-  rounded-md 
+  @apply
+  bg-white transition-colors duration-300 ease-in-out 
+  shadow-sm
+  rounded-2xl
   py-3 px-4 my-4 
-  overflow-hidden;
+  overflow-hidden
+}
+/* bg-indigo-100  */
+.card:hover {
+  @apply
+  cursor-pointer shadow-indigo-500/60 shadow-lg;
 }
 .card_detail {
-  @apply 
-    flex
-    justify-between
+  @apply flex justify-between;
 }
 .card_detail h3 {
   @apply 
-    font-bold text-gray-700 text-sm 
-    mb-0;
+    font-bold text-gray-700 text-sm mb-0;
 }
 .card_detail p {
   @apply my-4 text-sm leading-6;
@@ -139,7 +140,8 @@ form button {
     text-xs font-semibold
     mt-5
     flex 
-    items-center;
+    items-center
+    rounded-full;
 }
 .pill.high {
   @apply bg-red-300 text-red-600;
@@ -149,8 +151,4 @@ form button {
 }
 .pill.low {
   @apply bg-emerald-300 text-emerald-600;
-}
-.card_detail .pill {
-  @apply 
-    rounded-md;
 }
