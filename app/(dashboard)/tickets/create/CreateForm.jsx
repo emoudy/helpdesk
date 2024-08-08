@@ -2,6 +2,9 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import ReactQuill from "react-quill";
+import DOMPurify from "dompurify";
+import "react-quill/dist/quill.snow.css";
 
 export default function CreateForm() {
   const router = useRouter();
@@ -10,6 +13,11 @@ export default function CreateForm() {
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("low");
   const [isLoading, setIsLoading] = useState(false);
+
+  const handleDescription = (value) => {
+    const sanitizedHTML = DOMPurify.sanitize(value);
+    setDescription(sanitizedHTML);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -39,36 +47,70 @@ export default function CreateForm() {
     }
   };
 
+  // Quill modules configuration
+  const modules = {
+    toolbar: [
+      [{ size: ["small", false, "large", "huge"] }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link", "image"],
+      ["clean"],
+    ],
+    clipboard: {
+      // toggle to add extra line breaks when pasting HTML:
+      matchVisual: false,
+    },
+  };
+
   return (
-    <form onSubmit={handleSubmit} className="w-1/2">
-      <label>
-        <span>Title:</span>
+    <form onSubmit={handleSubmit}>
+      <button className="btn-primary" disabled={isLoading}>
+        {isLoading ? "Adding..." : "Add Ticket"}
+      </button>
+      <div>
+        <h3>Title</h3>
         <input
           required
           type="text"
           onChange={(e) => setTitle(e.target.value)}
           value={title}
         />
-      </label>
-      <label>
-        <span>Description:</span>
-        <textarea
-          required
-          onChange={(e) => setDescription(e.target.value)}
-          value={description}
-        />
-      </label>
-      <label>
-        <span>Priority:</span>
+      </div>
+      <div>
+        <h3>Priority</h3>
         <select onChange={(e) => setPriority(e.target.value)} value={priority}>
           <option value="low">Low Priority</option>
           <option value="medium">Medium Priority</option>
           <option value="high">High Priority</option>
         </select>
-      </label>
-      <button className="btn-primary" disabled={isLoading}>
-        <span>{isLoading ? "Adding..." : "Add Ticket"}</span>
-      </button>
+      </div>
+      <div>
+        <h3>Description</h3>
+        <ReactQuill
+          className="h-[10rem]"
+          theme="snow"
+          formats={[
+            "header",
+            "font",
+            "size",
+            "bold",
+            "italic",
+            "underline",
+            "strike",
+            "blockquote",
+            "list",
+            "bullet",
+            "indent",
+            "link",
+            "image",
+            "video",
+          ]}
+          placeholder="Write the best requirements possible..."
+          modules={modules}
+          onChange={(e) => handleDescription(e)}
+          value={description}
+        />
+      </div>
     </form>
   );
 }
