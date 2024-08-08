@@ -38,8 +38,10 @@ const TicketDetails = async ({ params }) => {
         </div>
         <div href={`/tickets/${ticket.id}`} className="card_summary">
           <h3>{ticket.title}</h3>
-          <p>{ticket.description}</p>
           <small>By: {ticket.user_email}</small>
+          <div className="mt-5">
+            <div dangerouslySetInnerHTML={{ __html: ticket.description }}></div>
+          </div>
         </div>
       </div>
     </main>
