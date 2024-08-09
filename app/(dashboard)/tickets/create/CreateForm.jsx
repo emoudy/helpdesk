@@ -2,9 +2,8 @@
 
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import ReactQuill from "react-quill";
-import DOMPurify from "dompurify";
-import "react-quill/dist/quill.snow.css";
+
+import ReactQuillEditor from "../../../components/ReactQuillEditor";
 
 export default function CreateForm() {
   const router = useRouter();
@@ -13,11 +12,6 @@ export default function CreateForm() {
   const [description, setDescription] = useState("");
   const [priority, setPriority] = useState("low");
   const [isLoading, setIsLoading] = useState(false);
-
-  const handleDescription = (value) => {
-    const sanitizedHTML = DOMPurify.sanitize(value);
-    setDescription(sanitizedHTML);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -47,21 +41,6 @@ export default function CreateForm() {
     }
   };
 
-  // Quill modules configuration
-  const modules = {
-    toolbar: [
-      [{ size: ["small", false, "large", "huge"] }],
-      ["bold", "italic", "underline", "strike", "blockquote"],
-      [{ list: "ordered" }, { list: "bullet" }],
-      ["link", "image"],
-      ["clean"],
-    ],
-    clipboard: {
-      // toggle to add extra line breaks when pasting HTML:
-      matchVisual: false,
-    },
-  };
-
   return (
     <form onSubmit={handleSubmit}>
       <button className="btn-primary" disabled={isLoading}>
@@ -86,29 +65,9 @@ export default function CreateForm() {
       </div>
       <div>
         <h3>Description</h3>
-        <ReactQuill
-          className="h-[10rem]"
-          theme="snow"
-          formats={[
-            "header",
-            "font",
-            "size",
-            "bold",
-            "italic",
-            "underline",
-            "strike",
-            "blockquote",
-            "list",
-            "bullet",
-            "indent",
-            "link",
-            "image",
-            "video",
-          ]}
-          placeholder="Write the best requirements possible..."
-          modules={modules}
-          onChange={(e) => handleDescription(e)}
-          value={description}
+        <ReactQuillEditor
+          description={description}
+          setDescription={setDescription}
         />
       </div>
     </form>
