@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { handleDeleteTicket } from "./helpers/helpers";
-import { TbTrashX, TbTrashFilled } from "react-icons/tb";
+import { TbTrashFilled } from "react-icons/tb";
 
 export default function DeleteTicketButton({ id }) {
   const router = useRouter();
@@ -24,7 +24,7 @@ export default function DeleteTicketButton({ id }) {
 
   return (
     <TbTrashFilled
-      className="icon_trash"
+      className="icon"
       onClick={handleDelete}
       disabled={isLoading}
     />
