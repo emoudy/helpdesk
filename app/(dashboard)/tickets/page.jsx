@@ -16,7 +16,7 @@ export default function Tickets() {
     <main>
       <nav>
         <div>
-          <h2>Tickets</h2>
+          <h2 className="mb-0 pb-0">Tickets</h2>
           <p>
             <small>Currently open tickets.</small>
           </p>
