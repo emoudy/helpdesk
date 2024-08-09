@@ -13,8 +13,6 @@ async function getTickets() {
 
 export default async function TicketList() {
   const tickets = await getTickets();
-  const supabase = createClient();
-  const { data } = await supabase.auth.getSession();
 
   if (!tickets || tickets.length === 0) {
     return <h3 className="text-center">There are no opened tickets</h3>;
