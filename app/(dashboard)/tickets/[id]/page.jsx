@@ -1,5 +1,6 @@
 import { createClient } from "utils/supabase/server";
 import DeleteTicketIcon from "../../../components/DeleteTicketIcon";
+import EditTicketIcon from "../../../components/EditTicketIcon";
 import { getTicket } from "./helper/helper";
 
 export const dynamicParams = true;
@@ -33,7 +34,10 @@ const TicketDetails = async ({ params }) => {
         <div className="card_status">
           <div className={`pill ${ticket.priority}`}>{ticket.priority}</div>
           {data.session.user.email === ticket.user_email ? (
-            <DeleteTicketIcon id={ticket.id} />
+            <div>
+              <DeleteTicketIcon id={ticket.id} />
+              <EditTicketIcon id={ticket.id} />
+            </div>
           ) : null}
         </div>
         <div href={`/tickets/${ticket.id}`} className="card_summary">
