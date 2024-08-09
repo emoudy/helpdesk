@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import picture from "../../public/sun.png";
-import LogoutButton from "./logoutButton";
+import LogoutButton from "./LogoutButton";
 
 export default function NavBar({ user }) {
   return (
