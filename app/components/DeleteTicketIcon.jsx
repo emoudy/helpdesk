@@ -5,7 +5,7 @@ import { useState } from "react";
 import { handleDeleteTicket } from "./helpers/helpers";
 import { TbTrashFilled } from "react-icons/tb";
 
-export default function DeleteTicketButton({ id }) {
+export default function DeleteTicketIcon({ id }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
