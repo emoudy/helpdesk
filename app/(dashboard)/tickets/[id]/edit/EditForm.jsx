@@ -52,7 +52,7 @@ export default function EditForm({ ticket }) {
         {isLoading ? "Saving..." : "Save"}
       </button>
       <div>
-        <h3>Title</h3>
+        <label>Title</label>
         <input
           required
           type="text"
@@ -61,15 +61,15 @@ export default function EditForm({ ticket }) {
         />
       </div>
       <div>
-        <h3>Priority</h3>
+        <label>Priority</label>
         <select onChange={(e) => setPriority(e.target.value)} value={priority}>
           <option value="low">Low Priority</option>
           <option value="medium">Medium Priority</option>
           <option value="high">High Priority</option>
         </select>
       </div>
-      <div>
-        <h3>Description</h3>
+      <div className="form-description">
+        <label>Description</label>
         <ReactQuillEditor
           description={description}
           setDescription={setDescription}
