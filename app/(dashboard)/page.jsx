@@ -3,7 +3,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <main>
-      <h2>Dashboard</h2>
+      <h1>Dashboard</h1>
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero
         repellendus tempore, exercitationem odit, quasi doloremque possimus
@@ -19,12 +19,10 @@ export default function Home() {
         </Link>
       </div>
 
-      <h2>Company Updates</h2>
+      <h1>Company Updates</h1>
 
       <div className="mb-5">
-        <h3>
-          <strong>New member of the web dev team...</strong>
-        </h3>
+        <h2>New member of the web dev team...</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, at
           quam. Dolores omnis possimus quam soluta rerum illo laborum ullam
@@ -32,9 +30,7 @@ export default function Home() {
         </p>
       </div>
       <div className="mb-5">
-        <h3>
-          <strong>New website live!</strong>
-        </h3>
+        <h2>New website live!</h2>
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Incidunt, at
           quam. Dolores omnis possimus quam soluta rerum illo laborum ullam

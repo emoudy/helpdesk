@@ -151,7 +151,7 @@ form {
     @apply block mx-auto;
   }
 }
-form .form-description .text-editor {
+.text-editor {
   .ql-toolbar {
     @apply bg-white p-5 rounded-t-lg;
   }
