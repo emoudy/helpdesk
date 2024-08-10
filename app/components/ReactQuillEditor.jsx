@@ -25,7 +25,7 @@ export default function ReactQuillEditor({ description, setDescription }) {
 
   return (
     <ReactQuill
-      className="h-[10rem]"
+      className="text-editor"
       theme="snow"
       formats={[
         "header",

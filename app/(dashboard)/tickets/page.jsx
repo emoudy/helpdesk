@@ -14,15 +14,10 @@ export const metadata = {
 export default function Tickets() {
   return (
     <main>
-      <nav>
-        <div>
-          <h2 className="mb-0 pb-0">Tickets</h2>
-          <p>
-            <small>Currently open tickets.</small>
-          </p>
-        </div>
-        <Link href="/tickets/create" className="ml-auto">
-          <button className="btn-primary">New Ticket</button>
+      <nav className="ticket-list-header">
+        <h1>Ticket List</h1>
+        <Link href="/tickets/create">
+          <button className="btn-primary">Create New Ticket</button>
         </Link>
       </nav>
       <Suspense fallback={<Loading />}>

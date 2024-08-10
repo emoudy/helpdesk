@@ -5,31 +5,27 @@ import LogoutButton from "./LogoutButton";
 
 export default function NavBar({ user }) {
   return (
-    <nav className="block">
-      <div className="flex justify-between">
-        <div>
-          <Image
-            src={picture}
-            alt="splash logo"
-            width={70}
-            quality={100}
-            placeholder="blur"
-          />
-          <h1>HelpDesk</h1>
-        </div>
-        <div className="flex flex-col items-end">
-          <LogoutButton />
-          <small className="mt-1">{user ? user.email : "null"}</small>
-        </div>
+    <nav className="navbar">
+      <div className="navbar-top">
+        <Image
+          src={picture}
+          alt="splash logo"
+          width={70}
+          quality={100}
+          placeholder="blur"
+        />
+        <h1 className="navbar-title">HelpDesk</h1>
+        <small>{user ? user.email : "null"}</small>
       </div>
-      <div className="mt-5 flex justify-between">
-        <div>
-          <Link className="mr-5" href="/">
-            Dashboard
-          </Link>
-          <Link href="/tickets">Tickets</Link>
-        </div>
+      <div className="navbar-middle">
+        <Link className="nav-link" href="/">
+          Dashboard
+        </Link>
+        <Link className="nav-link" href="/tickets">
+          Tickets
+        </Link>
       </div>
+      <LogoutButton />
     </nav>
   );
 }

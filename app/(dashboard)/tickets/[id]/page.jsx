@@ -31,21 +31,23 @@ const TicketDetails = async ({ params }) => {
         <h2>Ticket Details</h2>
       </nav>
       <div className="card">
-        <div className="card_status">
+        <div href={`/tickets/${ticket.id}`} className="card_header_item">
           <div className={`pill ${ticket.priority}`}>{ticket.priority}</div>
-          {data.session.user.email === ticket.user_email ? (
-            <div>
-              <DeleteTicketIcon id={ticket.id} />
-              <EditTicketIcon id={ticket.id} />
-            </div>
-          ) : null}
-        </div>
-        <div href={`/tickets/${ticket.id}`} className="card_summary">
-          <h3>{ticket.title}</h3>
-          <small>By: {ticket.user_email}</small>
-          <div className="mt-5">
-            <div dangerouslySetInnerHTML={{ __html: ticket.description }}></div>
+          <div className="card_title">
+            <h3>{ticket.title}</h3>
+            <small>By: {ticket.user_email}</small>
           </div>
+          <div className="card_menu">
+            {data.session.user.email === ticket.user_email ? (
+              <div>
+                <DeleteTicketIcon id={ticket.id} />
+                <EditTicketIcon id={ticket.id} />
+              </div>
+            ) : null}
+          </div>
+        </div>
+        <div className="card_body">
+          <div dangerouslySetInnerHTML={{ __html: ticket.description }}></div>
         </div>
       </div>
     </main>

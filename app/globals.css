@@ -2,41 +2,114 @@
 @tailwind components;
 @tailwind utilities;
 
-/* base styles */
-body {
-  @apply text-gray-500 m-8 mx-auto max-w-3xl;
-}
-h1, h2, h3 {
-  @apply font-bold ;
-}
-main {
-  @apply my-12;
-}
-h1 {
-  @apply text-lg text-primary;
-}
-h2 {
-  @apply mb-4 pb-2 text-base text-primary;
-}
-h3 {
-  @apply text-sm text-gray-500;
-}
-p > a {
-  @apply text-primary underline;
+.help_desk_app {
+  @apply 
+    bg-white
+    h-screen
+    grid grid-rows-1 grid-cols-5 gap-4;
+
+  > .navbar {
+    @apply 
+      relative
+      p-4
+    bg-primary text-white 
+      row-span-2 col-span-1;
+    
+    & h1, h2, h3 {
+      @apply text-white;
+    }
+
+    & .navbar-top {
+      @apply 
+        flex flex-col items-center
+        border-white border-b-2;
+
+      & .navbar-title {
+        @apply
+          mt-2 mb-4 
+          text-xl font-semibold;
+      }
+      & small {
+        @apply mb-4;
+      }
+    }
+
+    & .navbar-middle {
+      @apply 
+        flex flex-col 
+        mt-10 
+        space-y-4;
+  
+      & .nav-link {
+        @apply 
+          py-2 px-4   
+          block rounded;
+  
+        &:hover {
+          @apply bg-primaryDark;
+        }
+      }
+    }
+
+    & .navbar-logout {
+      @apply
+        absolute 
+        bottom-10 inset-x-0 mx-10;
+    }
+  }
+
+  > .content {
+    @apply 
+      col-span-4
+      p-6 overflow-y-auto;
+
+      & h1, h2, h3 {
+        @apply text-primary;
+      }
+
+      .ticket-list-header {
+        @apply flex justify-between mb-10;
+      }
+  }
+
+  > .footer {
+    @apply 
+      col-span-4
+      text-center text-sm py-2 text-gray-300;
+  }
 }
 
-/* nav styles */
-nav {
-  @apply pb-4 border-b-2 border-gray-200 flex items-center gap-5 my-10;
+main {
+  @apply mt-10;
 }
-nav a, nav span {
-  @apply text-gray-500;
+
+/* button styles */
+h1 {
+  @apply font-bold text-lg;
 }
-nav a:hover {
-  @apply text-black;
+h2 {
+  @apply font-bold text-base;
 }
-main nav {
-  @apply border-0;
+h3 {
+  @apply font-bold text-sm;
+}
+
+/* button styles */
+button {
+  @apply 
+    px-3 py-2 
+    rounded-full 
+    text-sm font-bold;
+
+    &:hover {
+      @apply bg-opacity-70;
+    }
+}
+button.btn-primary {
+  @apply bg-primary text-white;
+}
+button.btn-secondary {
+  @apply bg-white text-primary;
 }
 
 /* List styles */
@@ -55,38 +128,38 @@ li {
 
 /* icons styles */
 .icon {
-  @apply cursor-pointer text-xl m-auto ml-0 mb-3;
+  @apply cursor-pointer text-xl min-h-10 mr-5;
 }
 .icon:hover {
   @apply text-2xl;
 }
 
-/* button styles */
-button {
-  @apply px-3 py-2 rounded-full flex justify-between items-center gap-2 text-sm;
-}
-button:hover {
-  @apply bg-opacity-70;
-}
-.btn-primary {
-  @apply bg-primary text-white;
-}
-.btn-secondary {
-  @apply bg-gray-200 text-gray-900;
-}
-
 /* form styles */
 form {
-  @apply p-6 pb-12 bg-primary bg-opacity-5 rounded-lg block mx-auto min-w-fit w-1/4;
+  @apply p-6 bg-primary bg-opacity-5 rounded-lg h-screen flex flex-col;
+  
+  label {
+    @apply font-bold text-base text-primary;
+  }
+  input, textarea, select {
+    @apply mt-2 mb-5 p-2 rounded-lg w-full;
+  }
+  .form-description {
+    @apply text-lg flex-grow overflow-hidden flex flex-col;
+  }
+  button {
+    @apply block mx-auto;
+  }
 }
-form label {
-  @apply block;
-}
-form input, form textarea, form select {
-  @apply block mt-2 my-4 px-2 py-1 rounded-sm w-full;
-}
-form button {
-  @apply block mx-auto;
+form .form-description .text-editor {
+  @apply 
+    flex-grow;
+    .ql-toolbar {
+      @apply bg-white p-5 rounded-t-lg;
+    }
+    .ql-container {
+      @apply bg-white p-5 rounded-b-lg resize-y overflow-auto min-h-[100px] flex-grow;
+    }
 }
 
 /* feedback styles */
@@ -96,33 +169,42 @@ form button {
 
 /* card styles */
 .card {
-  @apply transition-colors duration-300 ease-in-out rounded-2xl py-3 px-4 my-4 overflow-hidden flex justify-between;
+  @apply bg-white bg-opacity-5 transition-colors duration-300 ease-in-out rounded-md overflow-hidden my-5;
 }
-.card:hover {
-  @apply cursor-pointer bg-primary bg-opacity-5 shadow-indigo-500/30 shadow-lg;
+.card_header_list {
+  @apply flex;
 }
-.card_summary {
-  @apply m-auto ml-0;
+.card_header_list:hover {
+  @apply cursor-pointer bg-primary bg-opacity-10;
 }
-.card_detail {
-  @apply flex justify-between;
+.card_header_item {
+  @apply flex;
 }
-.card_detail h3 {
-  @apply font-bold text-gray-700 text-sm mb-0;
+.card_title {
+  @apply flex-1 pl-5 py-3 bg-primary bg-opacity-5;
 }
-.card_detail p {
-  @apply my-4 text-sm leading-6;
+.card_menu {
+  @apply bg-primary bg-opacity-5 rounded-r-md;
+
+  & div {
+    @apply flex min-w-1.5;
+  }
 }
+
+.card_body {
+  @apply px-20 py-10;
+}
+
 
 /* pill styles */
 .pill {
-  @apply mr-5 mb-5 w-16 py-1 px-2 text-xs text-center font-semibold rounded-full;
+  @apply w-16 text-xs text-center font-semibold rounded-l-md flex items-center justify-center;
 }
 .pill.high {
   @apply bg-red-300 text-red-600;
 }
 .pill.medium {
-  @apply bg-blue-300 text-blue-600;
+  @apply bg-yellow-300 text-yellow-600;
 }
 .pill.low {
   @apply bg-emerald-300 text-emerald-600;

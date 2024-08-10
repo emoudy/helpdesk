@@ -19,20 +19,18 @@ export default async function TicketList() {
   }
 
   return (
-    <div>
+    <>
       {tickets.map((ticket) => (
         <div key={ticket.id} className="card">
-          <div className="card_status">
-            <div className={`pill mb-3 ${ticket.priority}`}>
-              {ticket.priority}
-            </div>
+          <div href={`/tickets/${ticket.id}`} className="card_header_list">
+            <div className={`pill ${ticket.priority}`}>{ticket.priority}</div>
+            <Link href={`/tickets/${ticket.id}`} className="card_title">
+              <h3>{ticket.title}</h3>
+              <small>By: {ticket.user_email}</small>
+            </Link>
           </div>
-          <Link href={`/tickets/${ticket.id}`} className="card_summary">
-            <h3>{ticket.title}</h3>
-            <small>By: {ticket.user_email}</small>
-          </Link>
         </div>
       ))}
-    </div>
+    </>
   );
 }

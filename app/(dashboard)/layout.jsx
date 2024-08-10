@@ -8,9 +8,10 @@ export default async function DashboardLayout({ children }) {
   } = await supabase.auth.getUser();
 
   return (
-    <>
+    <div className="help_desk_app">
       <NavBar user={user} />
-      {children}
-    </>
+      <div className="content">{children}</div>
+      <footer className="footer">@moudy2024</footer>
+    </div>
   );
 }
