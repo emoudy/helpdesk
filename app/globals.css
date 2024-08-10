@@ -13,11 +13,11 @@
     grid grid-rows-1 grid-cols-5;
 
   > .navbar {
-    @apply 
-      relative
+    @apply
       p-4
     bg-primary text-white 
-      row-span-2 col-span-1;
+      row-span-2 col-span-1
+      flex flex-col;
     
     & h1, h2, h3 {
       @apply text-white;
@@ -30,7 +30,7 @@
 
       & .navbar-title {
         @apply
-          mt-2 mb-4 
+          mt-2 mb-4
           text-xl font-semibold;
       }
       & small {
@@ -39,10 +39,7 @@
     }
 
     & .navbar-middle {
-      @apply 
-        flex flex-col 
-        mt-10 
-        space-y-4;
+      @apply grow mt-10;
   
       & .nav-link {
         @apply 
@@ -56,9 +53,7 @@
     }
 
     & .navbar-logout {
-      @apply
-        absolute 
-        bottom-10 inset-x-0 mx-10;
+      @apply mb-5;
     }
   }
 
@@ -141,7 +136,7 @@ li {
 
 /* form styles */
 form {
-  @apply p-6 bg-primary bg-opacity-5 rounded-lg h-screen flex flex-col;
+  @apply p-6 bg-primary bg-opacity-5 rounded-lg;
   
   label {
     @apply font-bold text-base text-primary;
@@ -150,21 +145,23 @@ form {
     @apply mt-2 mb-5 p-2 rounded-lg w-full;
   }
   .form-description {
-    @apply text-lg flex-grow overflow-hidden flex flex-col;
+    @apply text-lg flex-grow overflow-hidden;
   }
   button {
     @apply block mx-auto;
   }
 }
 form .form-description .text-editor {
-  @apply 
-    flex-grow;
-    .ql-toolbar {
-      @apply bg-white p-5 rounded-t-lg;
-    }
-    .ql-container {
-      @apply bg-white p-5 rounded-b-lg resize-y overflow-auto min-h-[100px] flex-grow;
-    }
+  .ql-toolbar {
+    @apply bg-white p-5 rounded-t-lg;
+  }
+  .ql-container {
+    @apply 
+      bg-white 
+      p-5 min-h-40
+      rounded-b-lg 
+      resize-y overflow-auto;
+  }
 }
 
 /* feedback styles */
@@ -195,7 +192,6 @@ form .form-description .text-editor {
     @apply flex min-w-1.5;
   }
 }
-
 .card_body {
   @apply px-20 py-10;
 }
