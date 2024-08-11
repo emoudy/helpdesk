@@ -51,26 +51,32 @@ export default function EditForm({ ticket }) {
       <button className="btn-primary" disabled={isLoading}>
         {isLoading ? "Saving..." : "Save"}
       </button>
-      <div>
-        <label>Title</label>
+      <>
+        <label htmlFor="title">Title</label>
         <input
+          id="title"
           required
           type="text"
           onChange={(e) => setTitle(e.target.value)}
           value={title}
         />
-      </div>
-      <div>
-        <label>Priority</label>
-        <select onChange={(e) => setPriority(e.target.value)} value={priority}>
+      </>
+      <>
+        <label htmlFor="priority">Priority</label>
+        <select
+          id="priority"
+          onChange={(e) => setPriority(e.target.value)}
+          value={priority}
+        >
           <option value="low">Low Priority</option>
           <option value="medium">Medium Priority</option>
           <option value="high">High Priority</option>
         </select>
-      </div>
+      </>
       <div className="form-description">
-        <label>Description</label>
+        <label htmlFor="description">Description</label>
         <ReactQuillEditor
+          id="description"
           description={description}
           setDescription={setDescription}
         />
