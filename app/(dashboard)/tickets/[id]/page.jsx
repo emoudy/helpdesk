@@ -43,7 +43,11 @@ const TicketDetails = async ({ params }) => {
                 <DeleteTicketIcon id={ticket.id} />
                 <EditTicketIcon id={ticket.id} />
               </div>
-            ) : null}
+            ) : (
+              <small>
+                <b>Tickets can only be deleted or edited by the ticket owner</b>
+              </small>
+            )}
           </div>
         </div>
         <div className="card_body">
