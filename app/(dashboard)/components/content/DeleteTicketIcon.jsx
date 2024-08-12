@@ -2,9 +2,10 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { handleDeleteTicket } from './helpers/helpers';
+import { handleDeleteTicket } from './helpers';
+import { TbTrashFilled } from 'react-icons/tb';
 
-export default function DeleteTicketButton({ id }) {
+export default function DeleteTicketIcon({ id }) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -22,8 +23,10 @@ export default function DeleteTicketButton({ id }) {
   };
 
   return (
-    <button className="btn-primary" onClick={handleDelete} disabled={isLoading}>
-      {isLoading ? 'Deleting...' : 'Delete Ticket'}
-    </button>
+    <TbTrashFilled
+      className="icon"
+      onClick={handleDelete}
+      disabled={isLoading}
+    />
   );
 }

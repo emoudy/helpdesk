@@ -1,6 +1,6 @@
 import { createClient } from 'utils/supabase/server';
-import DeleteTicketIcon from '../../../components/DeleteTicketIcon';
-import EditTicketIcon from '../../../components/EditTicketIcon';
+import DeleteTicketIcon from '../../components/content/DeleteTicketIcon';
+import EditTicketIcon from '../../components/content/EditTicketIcon';
 import { getTicket } from './helper/helper';
 import { MdOutlineKeyboardBackspace } from 'react-icons/md';
 import Link from 'next/link';
@@ -52,8 +52,8 @@ const TicketDetails = async ({ params }) => {
                 <EditTicketIcon id={ticket.id} />
               </div>
             ) : (
-              <small>
-                <b>Tickets can only be deleted or edited by the ticket owner</b>
+              <small className="px-3 py-2 font-semibold text-red-600">
+                Tickets may be modified only by the ticket owner.
               </small>
             )}
           </div>
