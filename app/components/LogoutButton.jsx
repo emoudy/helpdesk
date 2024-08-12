@@ -18,7 +18,7 @@ export default function LogoutButton() {
   };
 
   return (
-    <button className="btn-secondary navbar-logout" onClick={handleLogout}>
+    <button className="btn-secondary navbar-logout mb-5" onClick={handleLogout}>
       Logout
     </button>
   );

@@ -14,7 +14,7 @@ export const metadata = {
 export default function Tickets() {
   return (
     <main>
-      <nav className="ticket-list-header">
+      <nav className="ticket-list-header flex justify-between mb-10">
         <h1>Ticket List</h1>
         <Link href="/tickets/create">
           <button className="btn-primary">Create New Ticket</button>
