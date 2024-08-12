@@ -1,30 +1,28 @@
 "use client";
 
-import { useState } from "react";
 import NavBarLink from "./NavBarLink";
+import { usePathname } from "next/navigation";
 
 export default function NavBarLinkList() {
-  const dashboardName = "Dashboard";
-  const ticketsName = "Tickets";
-  const [activeLink, setActiveLink] = useState(dashboardName);
+  const dashboardLink = "/";
+  const ticketsLink = "/tickets";
 
-  const handleClick = (linkName) => {
-    setActiveLink(linkName);
-  };
+  const linkRoutes = [ticketsLink];
+  const pathname = usePathname();
+  const activeLink =
+    linkRoutes.find((link) => pathname.includes(link)) || dashboardLink;
 
   return (
     <div className="navbar-middle">
       <NavBarLink
-        linkName={dashboardName}
-        href="/"
-        active={activeLink === dashboardName}
-        handleClick={handleClick}
+        linkName="Dashboard"
+        isActive={activeLink === dashboardLink}
+        href={dashboardLink}
       />
       <NavBarLink
-        linkName={ticketsName}
-        href="/tickets"
-        active={activeLink === ticketsName}
-        handleClick={handleClick}
+        linkName="Tickets"
+        isActive={activeLink === ticketsLink}
+        href={ticketsLink}
       />
     </div>
   );
