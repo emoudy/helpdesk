@@ -1,7 +1,7 @@
-import Image from "next/image";
-import picture from "../../../public/sun.png";
-import LogoutButton from "../LogoutButton";
-import NavBarLinkList from "./NavBarLinkList";
+import Image from 'next/image';
+import picture from '../../../public/sun.png';
+import LogoutButton from '../LogoutButton';
+import NavBarLinkList from './NavBarLinkList';
 
 export default function NavBar({ user }) {
   return (
@@ -15,7 +15,7 @@ export default function NavBar({ user }) {
           placeholder="blur"
         />
         <h1 className="navbar-title">HelpDesk</h1>
-        <small>{user ? user.email : "null"}</small>
+        <small>{user ? user.email : 'null'}</small>
       </div>
       <NavBarLinkList />
       <LogoutButton />
