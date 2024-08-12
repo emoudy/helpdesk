@@ -1,5 +1,5 @@
 import { createClient } from "../../utils/supabase/server";
-import NavBar from "../components/NavBar";
+import NavBar from "../components/NavBar/NavBar";
 
 export default async function DashboardLayout({ children }) {
   const supabase = createClient();
@@ -9,9 +9,11 @@ export default async function DashboardLayout({ children }) {
 
   return (
     <div className="help_desk_app">
-      <NavBar user={user} />
-      <div className="content">{children}</div>
-      <footer className="footer">@moudy2024</footer>
+      <header>
+        <NavBar user={user} />
+      </header>
+      <main>{children}</main>
+      <footer>@moudy2024</footer>
     </div>
   );
 }
