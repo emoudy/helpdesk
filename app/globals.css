@@ -7,36 +7,33 @@
 }
 
 .help_desk_app {
-  @apply 
-    bg-white
+  @apply bg-white
     h-screen
     grid grid-rows-1 grid-cols-5;
 
   > header {
-    @apply
-      p-4
+    @apply p-4
     bg-primary text-white 
       row-span-2 col-span-1
       flex flex-col
       h-full;
 
-      & h1, h2, h3 {
-        @apply text-white;
-      }
-    
+    & h1,
+    h2,
+    h3 {
+      @apply text-white;
+    }
+
     > .navbar {
-      @apply
-        flex flex-col
+      @apply flex flex-col
         h-full;
 
       & .navbar-top {
-        @apply 
-          flex flex-col items-center
+        @apply flex flex-col items-center
           border-white border-b-2;
 
         & .navbar-title {
-          @apply
-            mt-2 mb-4
+          @apply mt-2 mb-4
             text-xl font-semibold;
         }
         & small {
@@ -46,12 +43,11 @@
 
       & .navbar-middle {
         @apply grow mt-10;
-    
+
         & .nav-link {
-          @apply 
-            py-2 px-4   
+          @apply py-2 px-4   
             flex flex-col rounded-lg;
-    
+
           &:hover {
             @apply bg-primaryDark;
           }
@@ -68,27 +64,26 @@
   }
 
   > main {
-    @apply 
-      m-10  
+    @apply m-10  
       col-span-4
       overflow-y-auto;
 
-
-      .ticket-list-header {
-        @apply flex justify-between mb-10;
-      }
+    .ticket-list-header {
+      @apply flex justify-between mb-10;
+    }
   }
 
   > footer {
-    @apply 
-      col-span-4
+    @apply col-span-4
       text-center text-sm py-2 text-primary text-opacity-50
       self-end;
   }
 }
 
 /* headers styles */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   @apply text-primary;
 }
 h1 {
@@ -103,14 +98,13 @@ h3 {
 
 /* button styles */
 button {
-  @apply 
-    px-3 py-2 
+  @apply px-3 py-2 
     rounded-full 
     text-sm font-bold;
 
-    &:hover {
-      @apply bg-opacity-70;
-    }
+  &:hover {
+    @apply bg-opacity-70;
+  }
 }
 button.btn-primary {
   @apply bg-primary text-white;
@@ -120,7 +114,8 @@ button.btn-secondary {
 }
 
 /* List styles */
-ul, ol {
+ul,
+ol {
   @apply list-disc list-inside;
 }
 ul {
@@ -144,11 +139,13 @@ li {
 /* form styles */
 form {
   @apply p-6 bg-primary bg-opacity-5 rounded-lg;
-  
+
   label {
     @apply font-bold text-base text-primary;
   }
-  input, textarea, select {
+  input,
+  textarea,
+  select {
     @apply mt-2 mb-5 p-2 rounded-lg w-full;
   }
   .form-description {
@@ -163,8 +160,7 @@ form {
     @apply bg-white p-5 rounded-t-lg;
   }
   .ql-container {
-    @apply 
-      bg-white 
+    @apply bg-white 
       p-5 min-h-40
       rounded-b-lg 
       resize-y overflow-auto;
@@ -202,7 +198,6 @@ form {
 .card_body {
   @apply px-20 py-10;
 }
-
 
 /* pill styles */
 .pill {
