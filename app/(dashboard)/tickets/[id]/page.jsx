@@ -2,6 +2,8 @@ import { createClient } from "utils/supabase/server";
 import DeleteTicketIcon from "../../../components/DeleteTicketIcon";
 import EditTicketIcon from "../../../components/EditTicketIcon";
 import { getTicket } from "./helper/helper";
+import { MdOutlineKeyboardBackspace } from "react-icons/md";
+import Link from "next/link";
 
 export const dynamicParams = true;
 
@@ -28,7 +30,13 @@ const TicketDetails = async ({ params }) => {
   return (
     <main>
       <nav>
-        <h2>Ticket Details</h2>
+        <h1 className="mb-5">Ticket Details</h1>
+        <Link href="/tickets">
+          <button className="flex items-center btn-primary mb-20">
+            <MdOutlineKeyboardBackspace />
+            &nbsp; Back to Ticket List
+          </button>
+        </Link>
       </nav>
       <div className="card">
         <div href={`/tickets/${ticket.id}`} className="card_header_item">
