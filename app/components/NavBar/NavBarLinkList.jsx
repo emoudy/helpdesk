@@ -1,16 +1,16 @@
-"use client";
+'use client';
 
-import NavBarLink from "./NavBarLink";
-import { usePathname } from "next/navigation";
+import NavBarLink from './NavBarLink';
+import { usePathname } from 'next/navigation';
 
 export default function NavBarLinkList() {
-  const dashboardLink = "/";
-  const ticketsLink = "/tickets";
+  const dashboardLink = '/';
+  const ticketsLink = '/tickets';
 
   const linkRoutes = [ticketsLink];
   const pathname = usePathname();
   const activeLink =
-    linkRoutes.find((link) => pathname.includes(link)) || dashboardLink;
+    linkRoutes.find(link => pathname.includes(link)) || dashboardLink;
 
   return (
     <div className="navbar-middle">

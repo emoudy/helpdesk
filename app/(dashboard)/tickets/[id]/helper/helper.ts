@@ -1,5 +1,5 @@
-import { notFound } from "next/navigation";
-import { createClient } from "utils/supabase/server";
+import { notFound } from 'next/navigation';
+import { createClient } from 'utils/supabase/server';
 
 export interface Ticket {
   id: string;
@@ -12,9 +12,9 @@ export interface Ticket {
 export async function getTicket(id: string): Promise<Ticket> {
   const supabase = createClient();
   const { data: ticket, error } = await supabase
-    .from("Tickets")
+    .from('Tickets')
     .select()
-    .eq("id", id)
+    .eq('id', id)
     .single();
 
   if (!ticket || error) {

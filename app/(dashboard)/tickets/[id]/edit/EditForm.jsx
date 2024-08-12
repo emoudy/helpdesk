@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import ReactQuillEditor from "../../../../components/ReactQuillEditor";
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import ReactQuillEditor from '../../../../components/ReactQuillEditor';
 
 export default function EditForm({ ticket }) {
   const router = useRouter();
@@ -17,7 +17,7 @@ export default function EditForm({ ticket }) {
     return <h3 className="text-center">Ticket was not found</h3>;
   }
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async e => {
     e.preventDefault();
     setIsLoading(true);
 
@@ -29,19 +29,19 @@ export default function EditForm({ ticket }) {
     };
 
     const res = await fetch(`http://localhost:3000/api/tickets/${ticket.id}`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
+      method: 'PUT',
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(updatedTicket),
     });
 
     const response = await res.json();
 
     if (response.error) {
-      console.error("Error updating ticket:", response.error);
+      console.error('Error updating ticket:', response.error);
     }
 
     if (response.data) {
-      router.push("/tickets");
+      router.push('/tickets');
       router.refresh();
     }
   };
@@ -49,7 +49,7 @@ export default function EditForm({ ticket }) {
   return (
     <form onSubmit={handleSubmit}>
       <button className="btn-primary" disabled={isLoading}>
-        {isLoading ? "Saving..." : "Save"}
+        {isLoading ? 'Saving...' : 'Save'}
       </button>
       <>
         <label htmlFor="title">Title</label>
@@ -57,7 +57,7 @@ export default function EditForm({ ticket }) {
           id="title"
           required
           type="text"
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={e => setTitle(e.target.value)}
           value={title}
         />
       </>
@@ -65,7 +65,7 @@ export default function EditForm({ ticket }) {
         <label htmlFor="priority">Priority</label>
         <select
           id="priority"
-          onChange={(e) => setPriority(e.target.value)}
+          onChange={e => setPriority(e.target.value)}
           value={priority}
         >
           <option value="low">Low Priority</option>

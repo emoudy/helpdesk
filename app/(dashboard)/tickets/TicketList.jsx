@@ -1,10 +1,10 @@
-import Link from "next/link";
-import { createClient } from "utils/supabase/server";
-import { NextResponse } from "next/server";
+import Link from 'next/link';
+import { createClient } from 'utils/supabase/server';
+import { NextResponse } from 'next/server';
 
 async function getTickets() {
   const supabase = createClient();
-  const { data, error } = await supabase.from("Tickets").select();
+  const { data, error } = await supabase.from('Tickets').select();
   if (error) {
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
@@ -20,7 +20,7 @@ export default async function TicketList() {
 
   return (
     <>
-      {tickets.map((ticket) => (
+      {tickets.map(ticket => (
         <div key={ticket.id} className="card">
           <div href={`/tickets/${ticket.id}`} className="card_header_list">
             <div className={`pill ${ticket.priority}`}>{ticket.priority}</div>

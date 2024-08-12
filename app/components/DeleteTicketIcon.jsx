@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { handleDeleteTicket } from "./helpers/helpers";
-import { TbTrashFilled } from "react-icons/tb";
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { handleDeleteTicket } from './helpers/helpers';
+import { TbTrashFilled } from 'react-icons/tb';
 
 export default function DeleteTicketIcon({ id }) {
   const router = useRouter();
@@ -14,10 +14,10 @@ export default function DeleteTicketIcon({ id }) {
     const { error } = await handleDeleteTicket({ id });
 
     if (error) {
-      console.error("Error deleting ticket:", error);
+      console.error('Error deleting ticket:', error);
       setIsLoading(false);
     } else {
-      router.push("/tickets");
+      router.push('/tickets');
       router.refresh();
     }
   };

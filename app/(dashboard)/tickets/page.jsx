@@ -1,11 +1,11 @@
-import { Suspense } from "react";
-import TicketList from "./TicketList";
-import Loading from "../loading";
-import Link from "next/link";
+import { Suspense } from 'react';
+import TicketList from './TicketList';
+import Loading from '../loading';
+import Link from 'next/link';
 
 export const metadata = {
-  title: "Helpdesk | Tickets",
-  description: "Page to manage tickets.",
+  title: 'Helpdesk | Tickets',
+  description: 'Page to manage tickets.',
 };
 /**
  * Wrapping the TicketList component in a Suspense component allows for the

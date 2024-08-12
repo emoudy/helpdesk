@@ -1,5 +1,5 @@
-import { createClient } from "../../utils/supabase/server";
-import NavBar from "../components/NavBar/NavBar";
+import { createClient } from '../../utils/supabase/server';
+import NavBar from '../components/NavBar/NavBar';
 
 export default async function DashboardLayout({ children }) {
   const supabase = createClient();

@@ -1,7 +1,7 @@
-"use client";
+'use client';
 
-import { FaRegEdit } from "react-icons/fa";
-import Link from "next/link";
+import { FaRegEdit } from 'react-icons/fa';
+import Link from 'next/link';
 
 export default function EditTicketIcon({ id }) {
   return (
