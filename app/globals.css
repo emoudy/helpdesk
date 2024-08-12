@@ -7,22 +7,20 @@ h1,
 h2,
 h3 {
   @apply text-primary;
-} 
+}
 h1 {
-  @apply font-bold text-lg;
+  @apply text-lg font-bold;
 }
 h2 {
-  @apply font-bold text-base;
+  @apply text-base font-bold;
 }
 h3 {
-  @apply font-bold text-sm;
+  @apply text-sm font-bold;
 }
 
 /* button styles */
 button {
-  @apply px-3 py-2 
-    rounded-full 
-    text-sm font-bold;
+  @apply rounded-full px-3 py-2 text-sm font-bold;
 
   &:hover {
     @apply bg-opacity-70;
@@ -32,19 +30,19 @@ button.btn-primary {
   @apply bg-primary text-white;
 }
 button.btn-secondary {
-  @apply bg-white text-primary border border-primary;
+  @apply border border-primary bg-white text-primary;
 }
 
 /* List styles */
 ul,
 ol {
-  @apply list-disc list-inside;
+  @apply list-inside list-disc;
 }
 ul {
-  @apply list-disc list-inside;
+  @apply list-inside list-disc;
 }
 ol {
-  @apply list-decimal list-inside;
+  @apply list-inside list-decimal;
 }
 li {
   @apply mb-2;
@@ -52,7 +50,7 @@ li {
 
 /* icons styles */
 .icon {
-  @apply cursor-pointer text-xl min-h-10 mr-5;
+  @apply mr-5 min-h-10 cursor-pointer text-xl;
 }
 .icon:hover {
   @apply text-2xl;
@@ -60,43 +58,40 @@ li {
 
 /* form styles */
 form {
-  @apply p-6 bg-primary bg-opacity-5 rounded-lg;
+  @apply rounded-lg bg-primary bg-opacity-5 p-6;
 
   label {
-    @apply font-bold text-base text-primary;
+    @apply text-base font-bold text-primary;
   }
   input,
   textarea,
   select {
-    @apply mt-2 mb-5 p-2 rounded-lg w-full;
+    @apply mb-5 mt-2 w-full rounded-lg p-2;
   }
   .form-description {
-    @apply text-lg flex-grow overflow-hidden;
+    @apply flex-grow overflow-hidden text-lg;
   }
   button {
-    @apply block mx-auto;
+    @apply mx-auto block;
   }
 }
 .text-editor {
   .ql-toolbar {
-    @apply bg-white p-5 rounded-t-lg;
+    @apply rounded-t-lg bg-white p-5;
   }
   .ql-container {
-    @apply bg-white 
-      p-5 min-h-40
-      rounded-b-lg 
-      resize-y overflow-auto;
+    @apply min-h-40 resize-y overflow-auto rounded-b-lg bg-white p-5;
   }
 }
 
 /* feedback styles */
 .error {
-  @apply border-2 border-red-500 bg-red-300 text-red-800 py-1 px-2 rounded-sm block max-w-fit my-4 mx-auto;
+  @apply mx-auto my-4 block max-w-fit rounded-sm border-2 border-red-500 bg-red-300 px-2 py-1 text-red-800;
 }
 
 /* card styles */
 .card {
-  @apply bg-white bg-opacity-5 transition-colors duration-300 ease-in-out rounded-md overflow-hidden my-5;
+  @apply my-5 overflow-hidden rounded-md bg-white bg-opacity-5 transition-colors duration-300 ease-in-out;
 }
 .card_header_list {
   @apply flex;
@@ -108,10 +103,10 @@ form {
   @apply flex;
 }
 .card_title {
-  @apply flex-1 pl-5 py-3 bg-primary bg-opacity-5;
+  @apply flex-1 bg-primary bg-opacity-5 py-3 pl-5;
 }
 .card_menu {
-  @apply bg-primary bg-opacity-5 rounded-r-md;
+  @apply rounded-r-md bg-primary bg-opacity-5;
 
   & div {
     @apply flex min-w-1.5;
@@ -123,7 +118,7 @@ form {
 
 /* pill styles */
 .pill {
-  @apply w-16 text-xs text-center font-semibold rounded-l-md flex items-center justify-center;
+  @apply flex w-16 items-center justify-center rounded-l-md text-center text-xs font-semibold;
 }
 .pill.high {
   @apply bg-red-300 text-red-600;

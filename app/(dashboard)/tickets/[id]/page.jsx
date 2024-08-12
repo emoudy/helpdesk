@@ -32,7 +32,7 @@ const TicketDetails = async ({ params }) => {
       <nav>
         <h1 className="mb-5">Ticket Details</h1>
         <Link href="/tickets">
-          <button className="flex items-center btn-primary mb-20">
+          <button className="btn-primary mb-20 flex items-center">
             <MdOutlineKeyboardBackspace />
             &nbsp; Back to Ticket List
           </button>

@@ -13,7 +13,7 @@ export default function Home() {
         aspernatur consequuntur ex mollitia quaerat?
       </p>
 
-      <div className="flex justify-center my-8">
+      <div className="my-8 flex justify-center">
         <Link href="/tickets">
           <button className="btn-primary">View Tickets</button>
         </Link>
