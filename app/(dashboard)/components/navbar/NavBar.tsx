@@ -17,9 +17,9 @@ export default function NavBar({ user }) {
           quality={100}
           placeholder="blur"
         />
-        <h1 className="navbar-title mb-4 mt-2 text-xl font-semibold text-white">
+        <h3 className="navbar-title mb-4 mt-2 font-semibold text-inherit">
           HelpDesk
-        </h1>
+        </h3>
         <small className="mb-4">{user ? user.email : 'null'}</small>
       </div>
       <NavBarLinkList />
