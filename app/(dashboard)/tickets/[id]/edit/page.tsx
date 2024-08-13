@@ -25,7 +25,7 @@ interface EditTicketProps {
   }
 }
 
-const EditTicket = async ({ params }: EditTicketProps) => {
+export default async function EditTicket({ params }: EditTicketProps) {
   const ticket = await getTicket(params.id);
   const supabase = createClient();
   const { data } = await supabase.auth.getSession();
@@ -37,5 +37,3 @@ const EditTicket = async ({ params }: EditTicketProps) => {
     </main>
   );
 };
-
-export default EditTicket;
