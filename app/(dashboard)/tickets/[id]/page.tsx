@@ -5,7 +5,7 @@ import { getTicket } from './helper/helper';
 import Link from 'next/link';
 import DeleteTicketIcon from '../../components/content/DeleteTicketIcon';
 import EditTicketIcon from '../../components/content/EditTicketIcon';
-import SanatizeDescription from '../../components/content/sanatizeDescription';
+import SanatizeDescription from '../../components/content/SanatizeDescription';
 
 export const dynamicParams = true;
 
