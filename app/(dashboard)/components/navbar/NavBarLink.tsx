@@ -5,9 +5,9 @@ export default function NavBarLink({ linkName, isActive, href }) {
     <Link
       className={`nav-link flex flex-col my-2`}
       href={href}
-    ><h2 className={`text-white px-4 py-2 hover:bg-primaryDark rounded-lg ${isActive ? 'active bg-primaryDark' : ''}`}>
+    ><div className={`px-4 py-2 hover:bg-primaryDark rounded-lg ${isActive ? 'active bg-primaryDark' : ''}`}>
       {linkName}
-    </h2>
+    </div>
     </Link>
   );
 }
