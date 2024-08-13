@@ -27,7 +27,7 @@ export default async function TicketList() {
     return <h3 className="text-center">{errorData.error}</h3>;
   }
 
-  if (!tickets || tickets.length === 0) {
+  if (Array.isArray(tickets) && tickets.length === 0) {
     return <h3 className="text-center">There are no opened tickets</h3>;
   }
 
