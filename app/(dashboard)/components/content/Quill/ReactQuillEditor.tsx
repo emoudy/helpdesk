@@ -50,7 +50,7 @@ export default function ReactQuillEditor({ id, description, setDescription }:Rea
         'image',
         'video',
       ]}
-      placeholder="Write the best requirements possible..."
+      placeholder="Write the best description possible..."
       modules={modules}
       onChange={handleDescription}
       value={description}
