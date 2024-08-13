@@ -6,3 +6,14 @@ export const handleDeleteTicket = async ({ id }: { id: string }) => {
 
   return await res.json();
 };
+
+interface FetchOptionsParams {
+  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS';
+  body?: { id?: string; title: string; description: string; priority: string; };
+}
+
+export const fetchOptions = ({ method, body }: FetchOptionsParams) => ({
+  method,
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(body),
+});
