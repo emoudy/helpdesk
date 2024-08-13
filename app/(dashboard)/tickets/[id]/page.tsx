@@ -1,11 +1,10 @@
 import { createClient } from 'utils/supabase/server';
-import { MdOutlineKeyboardBackspace } from 'react-icons/md';
 import { getTicket } from './helper/helper';
 
-import Link from 'next/link';
 import DeleteTicketIcon from '../../components/content/DeleteTicketIcon';
 import EditTicketIcon from '../../components/content/EditTicketIcon';
 import SanatizeDescription from '../../components/content/SanatizeDescription';
+import ContentHeader from '../../components/content/ContentHeader';
 
 export const dynamicParams = true;
 
@@ -41,15 +40,7 @@ const TicketDetails = async ({ params }: TicketDetailsProps) => {
 
   return (
     <main>
-      <nav>
-        <h1 className="mb-5">Ticket Details</h1>
-        <Link href="/tickets">
-          <button className="btn-primary mb-20 flex items-center">
-            <MdOutlineKeyboardBackspace />
-            &nbsp; Back to Ticket List
-          </button>
-        </Link>
-      </nav>
+      <ContentHeader headerTitle="Ticket Details" href="/tickets" nextPage="Ticket List" />
       <div className="card">
         <div className="card_header_item">
           <div className={`pill ${ticket.priority}`}>{ticket.priority}</div>
@@ -65,7 +56,7 @@ const TicketDetails = async ({ params }: TicketDetailsProps) => {
               </div>
             ) : (
               <small className="px-3 py-2 font-semibold text-red-600">
-                Tickets may be modified only by the ticket owner.
+                Tickets can be modified by the ticket owner.
               </small>
             )}
           </div>
