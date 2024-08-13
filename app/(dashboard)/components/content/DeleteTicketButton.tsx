@@ -26,7 +26,7 @@ export default function DeleteTicketButton({ id }: DeleteTicketButtonProps) {
   };
 
   return (
-    <button className="btn-primary" onClick={handleDelete} disabled={isLoading}>
+    <button className="small-btn btn-primary" onClick={handleDelete} disabled={isLoading}>
       {isLoading ? 'Deleting...' : 'Delete Ticket'}
     </button>
   );

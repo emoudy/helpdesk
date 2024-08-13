@@ -15,9 +15,9 @@ export default function Tickets() {
   return (
     <main>
       <nav className="ticket-list-header mb-10 flex justify-between">
-        <h1>Ticket List</h1>
+        <h1 className="whitespace-nowrap">Ticket List</h1>
         <Link href="/tickets/create">
-          <button className="btn-primary">Create New Ticket</button>
+          <button className="medium-btn btn-primary">Create New Ticket</button>
         </Link>
       </nav>
       <Suspense fallback={<Loading />}>
