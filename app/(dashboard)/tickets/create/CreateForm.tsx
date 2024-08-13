@@ -1,78 +1,13 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useState } from 'react';
-
-import ReactQuillEditor from 'app/(dashboard)/components/content/Quill/ReactQuillEditor';
-
+import ContentHeader from '../../components/content/ContentHeader';
+import TicketForm from '../../components/content/TicketForm';
 
 export default function CreateForm() {
-  const router = useRouter();
-
-  const [title, setTitle] = useState('');
-  const [description, setDescription] = useState('');
-  const [priority, setPriority] = useState('low');
-  const [isLoading, setIsLoading] = useState(false);
-
-  const handleSubmit = async e => {
-    e.preventDefault();
-    setIsLoading(true);
-
-    const newTicket = {
-      title,
-      description,
-      priority,
-    };
-
-    const res = await fetch('http://localhost:3000/api/tickets', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(newTicket),
-    });
-
-    const response = await res.json();
-
-    if (response.error) {
-      console.error('Error adding ticket:', response.error);
-    }
-
-    if (response.data) {
-      router.push('/tickets');
-      router.refresh();
-    }
-  };
-
   return (
-    <form onSubmit={handleSubmit}>
-      <button className="btn-primary" disabled={isLoading}>
-        {isLoading ? 'Adding...' : 'Add Ticket'}
-      </button>
-      <div>
-        <label htmlFor='title'>Title</label>
-        <input
-          id="title"
-          required
-          type="text"
-          onChange={e => setTitle(e.target.value)}
-          value={title}
-        />
-      </div>
-      <div>
-        <label htmlFor="selection">Priority</label>
-        <select id="selection" onChange={e => setPriority(e.target.value)} value={priority}>
-          <option value="low">Low Priority</option>
-          <option value="medium">Medium Priority</option>
-          <option value="high">High Priority</option>
-        </select>
-      </div>
-      <div>
-        <label htmlFor='description'>Description</label>
-        <ReactQuillEditor
-          id="description"
-          description={description}
-          setDescription={setDescription}
-        />
-      </div>
-    </form>
+    <>
+      <ContentHeader headerTitle="Create Ticket" href="/tickets" nextPage="Ticket List" />
+      <TicketForm ticket={null} action="Create" />
+    </>
   );
 }
