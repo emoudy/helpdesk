@@ -22,7 +22,7 @@ export default async function DashboardLayout({ children }: DashboardLayoutProps
       <header className="row-span-2 flex h-full flex-col bg-primary p-4 text-white w-44">
         <NavBar user={user as User} />
       </header>
-      <main className="m-10 overflow-y-auto">{children}</main>
+      <main className="m-10 mb-2 overflow-y-auto">{children}</main>
       <footer className="flex items-center justify-center py-2 text-center text-sm text-primary text-opacity-50">
         @moudy2024
       </footer>
