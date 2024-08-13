@@ -2,7 +2,13 @@ import ReactQuill from 'react-quill';
 import DOMPurify from 'dompurify';
 import 'react-quill/dist/quill.snow.css';
 
-export default function ReactQuillEditor({ description, setDescription }) {
+interface ReactQuillEditorProps {
+  id: string;
+  description: string;
+  setDescription: (value: string) => void;
+}
+
+export default function ReactQuillEditor({ id, description, setDescription }:ReactQuillEditorProps) {
   // Quill modules configuration
   const modules = {
     toolbar: [
@@ -18,13 +24,14 @@ export default function ReactQuillEditor({ description, setDescription }) {
     },
   };
 
-  const handleDescription = value => {
+  const handleDescription = (value: string) => {
     const sanitizedHTML = DOMPurify.sanitize(value);
     setDescription(sanitizedHTML);
   };
 
   return (
     <ReactQuill
+      id={id}
       className="text-editor"
       theme="snow"
       formats={[
@@ -45,7 +52,7 @@ export default function ReactQuillEditor({ description, setDescription }) {
       ]}
       placeholder="Write the best requirements possible..."
       modules={modules}
-      onChange={e => handleDescription(e)}
+      onChange={handleDescription}
       value={description}
     />
   );

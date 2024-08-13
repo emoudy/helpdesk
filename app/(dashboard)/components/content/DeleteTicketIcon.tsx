@@ -5,7 +5,11 @@ import { useState } from 'react';
 import { handleDeleteTicket } from './helpers';
 import { TbTrashFilled } from 'react-icons/tb';
 
-export default function DeleteTicketIcon({ id }) {
+interface DeleteTicketIconProps {
+  id: string;
+}
+
+export default function DeleteTicketIcon({ id }: DeleteTicketIconProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -25,8 +29,7 @@ export default function DeleteTicketIcon({ id }) {
   return (
     <TbTrashFilled
       className="icon"
-      onClick={handleDelete}
-      disabled={isLoading}
+      onClick={handleDelete}   
     />
   );
 }

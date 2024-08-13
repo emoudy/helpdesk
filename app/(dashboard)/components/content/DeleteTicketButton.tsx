@@ -2,9 +2,13 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { handleDeleteTicket } from '../../../components/helpers/helpers';
+import { handleDeleteTicket } from './helpers';
 
-export default function DeleteTicketButton({ id }) {
+interface DeleteTicketButtonProps {
+  id: string;
+}
+
+export default function DeleteTicketButton({ id }: DeleteTicketButtonProps) {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(false);
 

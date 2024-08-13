@@ -1,6 +1,4 @@
-// this file has to be named 'loading.jsx' to be picked up by the router
-import React from 'react';
-
+// this file has to be named 'loading.tsx' to be picked up by the router
 export default function Loading() {
   return (
     <main className="text-center">

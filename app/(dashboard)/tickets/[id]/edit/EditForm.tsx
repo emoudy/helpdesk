@@ -1,8 +1,8 @@
 'use client';
 
+import ReactQuillEditor from 'app/(dashboard)/components/content/Quill/ReactQuillEditor';
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import ReactQuillEditor from '../../../../components/ReactQuillEditor';
 
 export default function EditForm({ ticket }) {
   const router = useRouter();

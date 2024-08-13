@@ -1,5 +1,6 @@
 import { createClient } from 'utils/supabase/server';
 import { getTicket } from '../helper/helper';
+
 import EditForm from './EditForm';
 
 export const dynamicParams = true;
@@ -18,7 +19,13 @@ export async function generateMetadata({ params }) {
   };
 }
 
-const EditTicket = async ({ params }) => {
+interface EditTicketProps {
+  params: {
+    id: string
+  }
+}
+
+const EditTicket = async ({ params }: EditTicketProps) => {
   const ticket = await getTicket(params.id);
   const supabase = createClient();
   const { data } = await supabase.auth.getSession();

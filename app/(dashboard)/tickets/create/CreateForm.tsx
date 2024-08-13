@@ -3,7 +3,8 @@
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
-import ReactQuillEditor from '../../../components/ReactQuillEditor';
+import ReactQuillEditor from 'app/(dashboard)/components/content/Quill/ReactQuillEditor';
+
 
 export default function CreateForm() {
   const router = useRouter();
@@ -47,8 +48,9 @@ export default function CreateForm() {
         {isLoading ? 'Adding...' : 'Add Ticket'}
       </button>
       <div>
-        <h3>Title</h3>
+        <label htmlFor='title'>Title</label>
         <input
+          id="title"
           required
           type="text"
           onChange={e => setTitle(e.target.value)}
@@ -56,16 +58,17 @@ export default function CreateForm() {
         />
       </div>
       <div>
-        <h3>Priority</h3>
-        <select onChange={e => setPriority(e.target.value)} value={priority}>
+        <label htmlFor="selection">Priority</label>
+        <select id="selection" onChange={e => setPriority(e.target.value)} value={priority}>
           <option value="low">Low Priority</option>
           <option value="medium">Medium Priority</option>
           <option value="high">High Priority</option>
         </select>
       </div>
       <div>
-        <h3>Description</h3>
+        <label htmlFor='description'>Description</label>
         <ReactQuillEditor
+          id="description"
           description={description}
           setDescription={setDescription}
         />

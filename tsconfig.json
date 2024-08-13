@@ -17,21 +17,18 @@
         "name": "next"
       }
     ],
+    "typeRoots": ["./node_modules/@types", "./@types"],
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     }
   },
   "include": [
-    "next-env.d.ts",
+    "src/**/*",
+    "@types/**/*",
     ".next/types/**/*.ts",
     "**/*.ts",
-    "**/*.tsx",
-    "utils/supabase/server.ts",
-    "utils/supabase/middleware.ts",
-    "utils/supabase/client.ts",
-    "middleware.ts",
-    "app/(auth)/confirm/route.js"
+    "**/*.tsx"
   ],
   "exclude": ["node_modules"]
 }
