@@ -38,7 +38,7 @@ export default async function TicketList() {
           <div className="card_header_list">
             <div className={`pill ${ticket.priority}`}>{ticket.priority}</div>
             <Link href={`/tickets/${ticket.id}`} className="card_title">
-              <h3>{ticket.title}</h3>
+              <h4>{ticket.title}</h4>
               <small>By: {ticket.user_email}</small>
             </Link>
           </div>
