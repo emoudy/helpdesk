@@ -4,9 +4,9 @@ export default function AuthForm() {
   return (
     <form id="formElem">
       <label htmlFor="email">Email:</label>
-      <input id="email" type="email" name="email" required />
+      <input id="email" type="email" name="email" required aria-label="Form Email" />
       <label htmlFor="password">Password:</label>
-      <input id="password" type="password" name="password" required />
+      <input id="password" type="password" name="password" required aria-label="Form Password" />
       <div className="text-center">
         <button className="btn-primary mb-2" formAction={login}>
           Log in
