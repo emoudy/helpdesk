@@ -1,6 +1,9 @@
+import { Suspense } from 'react';
 import { createClient } from 'utils/supabase/server';
 import { getTicket } from '../helper/helper';
 
+import Loading from '../../../loading';
+import ContentHeader from '../../../components/content/ContentHeader';
 import EditForm from './EditForm';
 
 export const dynamicParams = true;
@@ -31,9 +34,12 @@ export default async function EditTicket({ params }: EditTicketProps) {
   const { data } = await supabase.auth.getSession();
   return (
     <main>
-      {data.session.user.email === ticket.user_email ? (
-        <EditForm ticket={ticket} />
-      ) : null}
+      <ContentHeader headerTitle="Edit Ticket" href={`/tickets/${ticket.id}`} nextPage="Ticket Details" />
+      <Suspense fallback={<Loading />}>
+        {data.session.user.email === ticket.user_email ? (
+          <EditForm ticket={ticket} />
+        ) : null}
+      </Suspense>
     </main>
   );
 };
