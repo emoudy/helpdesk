@@ -3,7 +3,11 @@ import picture from '../../../../public/sun_small.png';
 import LogoutButton from './LogoutButton';
 import NavBarLinkList from './NavBarLinkList';
 
-export default function NavBar({ user }) {
+interface NavBarProps {
+  user: { email: string };
+}
+
+export default function NavBar({ user }: NavBarProps) {
   return (
     <nav
       className="navbar flex h-full flex-col text-white"

@@ -1,7 +1,13 @@
 import Link from 'next/link';
 import { MdOutlineKeyboardBackspace } from 'react-icons/md';
 
-export default function ContentHeader({ headerTitle, href, nextPage}) {
+interface ContentHeaderProps {
+  headerTitle: string,
+  href: string,
+  nextPage: string,
+}
+
+export default function ContentHeader({ headerTitle, href, nextPage}: ContentHeaderProps) {
   return (
     <nav>
       <h1 className="mb-5">{headerTitle}</h1>

@@ -5,7 +5,12 @@ import { useRouter } from 'next/navigation';
 import ReactQuillEditor from './Quill/ReactQuillEditor'
 import { fetchOptions } from './helpers';
 
-export default function TicketForm({ ticket, action }) {
+interface TicketFormProps {
+  ticket?: { id: string, title: string, description: string, priority: string },
+  action: string,
+}
+
+export default function TicketForm({ ticket, action }: TicketFormProps) {
   const router = useRouter();
 
   const [title, setTitle] = useState(ticket?.title || '');
