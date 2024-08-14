@@ -29,7 +29,7 @@ export default function DeleteTicketIcon({ id }: DeleteTicketIconProps) {
   return (
     <TbTrashFilled
       className="icon"
-      onClick={handleDelete}   
+      onClick={handleDelete}
     />
   );
 }
