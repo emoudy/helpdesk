@@ -34,11 +34,11 @@ export default function NavBar({ user }: NavBarProps) {
 
       {/* MOBILE */}
       <nav
-        className="navbar md:hidden text-white"
+        className="navbar md:hidden text-white mt-5"
         aria-label="Main navigation"
       >
-        <div className="navbar-top grid grid-cols-3">
-          <div className='col-start-2'>
+        <div className="navbar-top relative flex items-center justify-center py-4 mb-5">
+          <div className='absolute left-4'>
             <Image
               src={picture}
               alt="HelpDesk logo"
@@ -46,11 +46,11 @@ export default function NavBar({ user }: NavBarProps) {
               quality={100}
               placeholder="blur"
             />
-            <h3 className="navbar-title mb-4 mt-2 font-semibold text-inherit">
+            <h3 className="navbar-title text-center font-semibold text-inherit">
               HelpDesk
             </h3>
           </div>
-          <div className="col-start-3">
+          <div className="absolute right-4">
             <LogoutButton />
           </div>
         </div>
