@@ -9,7 +9,7 @@ export default function AuthForm() {
       <input id="password" type="password" name="password" required aria-label="Form Password" />
       <div className="text-center">
         <button className="btn-primary mb-2" formAction={login}>
-          Log in
+          Login
         </button>
         or
         <button className="btn-secondary mt-2" formAction={signup}>

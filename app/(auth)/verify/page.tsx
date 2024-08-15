@@ -1,8 +1,8 @@
 export default function Verify() {
   return (
-    <main className="text-center">
+    <main className="text-center mt-10">
       <h2>Thanks for registering!</h2>
-      <p>
+      <p className="my-5">
         Before logging in, you need to verify your email address. Check your
         email to confirm the account.
       </p>
