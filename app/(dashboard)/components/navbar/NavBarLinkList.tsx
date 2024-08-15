@@ -13,7 +13,7 @@ export default function NavBarLinkList() {
     linkRoutes.find(link => pathname.includes(link)) || dashboardLink;
 
   return (
-    <div className="navbar-middle mt-10 grow">
+    <div className="navbar-middle md:mt-10 grow">
       <NavBarLink
         linkName="Dashboard"
         isActive={activeLink === dashboardLink}

@@ -13,16 +13,20 @@ export const metadata = {
  */
 export default function Tickets() {
   return (
-    <main>
+    <>
       <nav className="ticket-list-header mb-10 flex justify-between">
         <h1 className="whitespace-nowrap">Ticket List</h1>
         <Link href="/tickets/create">
-          <button className="medium-btn btn-primary">Create New Ticket</button>
+          <button className="medium-btn btn-primary">
+            {/* The span elements are used to style the text differently on different screen sizes */}
+            <span className="block md:inline">Create</span>{' '}
+            <span className="block md:inline">Ticket</span>
+          </button>
         </Link>
       </nav>
       <Suspense fallback={<Loading />}>
         <TicketList />
       </Suspense>
-    </main>
+    </>
   );
 }
