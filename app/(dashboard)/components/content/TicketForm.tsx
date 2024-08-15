@@ -59,7 +59,7 @@ export default function TicketForm({ ticket, action }: TicketFormProps) {
   };
 
   return (
-    <>
+    <section>
       <p id="form-error" className='text-red-600 mb-5' role="alert" aria-live="assertive">{error ? "There was an error saving your ticket, please try again." : ""}</p>
       <form onSubmit={handleSubmit} aria-describedby="form-error">
         <button className="medium-btn btn-primary" disabled={isLoading}>
