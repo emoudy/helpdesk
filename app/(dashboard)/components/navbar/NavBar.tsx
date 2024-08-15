@@ -7,7 +7,6 @@ interface NavBarProps {
   user: { email: string };
 }
 
-
 export default function NavBar({ user }: NavBarProps) {
   const LogoSection = () =>
     <div className="text-center md:text-left">
