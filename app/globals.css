@@ -27,7 +27,7 @@ button {
   @apply rounded-full px-6 py-2 text-sm font-bold;
 
   &:hover {
-    @apply bg-opacity-70 text-6xl;
+    @apply opacity-80;
   }
 }
 button.btn-primary {
@@ -144,4 +144,17 @@ form {
 }
 .pill.low {
   @apply bg-emerald-300 text-emerald-600;
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  .help_desk_app {
+    > header {
+      @apply row-span-1 col-span-1;
+
+      > .navbar {
+        @apply flex flex-col;
+      }
+    }
+  }
 }
