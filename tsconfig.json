@@ -20,11 +20,11 @@
     "typeRoots": ["./node_modules/@types", "./@types"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["app/*"]
     }
   },
   "include": [
-    "src/**/*",
+    "app/**/*",
     "@types/**/*",
     ".next/types/**/*.ts",
     "**/*.ts",
