@@ -1,10 +1,10 @@
 import { createClient } from 'utils/supabase/server';
 import { getTicket } from './helper/helper';
 
-import DeleteTicketIcon from '../../components/content/DeleteTicketIcon';
-import EditTicketIcon from '../../components/content/EditTicketIcon';
-import SanatizeDescription from '../../components/content/SanatizeDescription';
-import ContentHeader from '../../components/content/ContentHeader';
+import DeleteTicketIcon from '@components/content/DeleteTicketIcon';
+import EditTicketIcon from '@components/content/EditTicketIcon';
+import SanatizeDescription from '@components/content/SanatizeDescription';
+import ContentHeader from '@components/content/ContentHeader';
 
 export const dynamicParams = true;
 

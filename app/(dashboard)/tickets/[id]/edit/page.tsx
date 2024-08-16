@@ -3,7 +3,7 @@ import { createClient } from 'utils/supabase/server';
 import { getTicket } from '../helper/helper';
 
 import Loading from '../../../loading';
-import ContentHeader from '../../../components/content/ContentHeader';
+import ContentHeader from '@components/content/ContentHeader';
 import EditForm from './EditForm';
 
 export const dynamicParams = true;

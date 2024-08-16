@@ -23,6 +23,7 @@
       "@/*": ["app/*"],
       "@utils/*": ["utils/*"],
       "@public/*": ["public/*"],
+      "@components/*": ["app/(dashboard)/components/*"],
     }
   },
   "include": [

@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 
 import CreateForm from './CreateForm';
-import ContentHeader from '../../components/content/ContentHeader';
+import ContentHeader from '@components/content/ContentHeader';
 import Loading from '../../loading';
 
 export default function CreateTicket() {
