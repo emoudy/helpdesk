@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { createClient } from '../../utils/supabase/server';
+import { createClient } from '@utils/supabase/server';
 import NavBar from './components/navbar/NavBar';
 
 interface DashboardLayoutProps {
