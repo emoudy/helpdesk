@@ -9,7 +9,7 @@ interface NavBarProps {
 
 export default function NavBar({ user }: NavBarProps) {
   const LogoSection = () =>
-    <div className="text-center md:text-left">
+    <div className="flex flex-col items-center md:text-left">
       <Image
         src={picture}
         alt="HelpDesk logo"
@@ -24,7 +24,7 @@ export default function NavBar({ user }: NavBarProps) {
 
   const DesktopChildren = () =>
     <div className="flex flex-col h-full">
-      <div className="flex flex-col items-center justify-between border-b-2 border-white">
+      <div className="flex flex-col items-center border-b-2 border-white">
         <LogoSection />
         <small className="pb-4">{user ? user.email : 'null'}</small>
       </div>
