@@ -21,7 +21,8 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["app/*"],
-      "@utils/*": ["utils/*"]
+      "@utils/*": ["utils/*"],
+      "@public/*": ["public/*"],
     }
   },
   "include": [

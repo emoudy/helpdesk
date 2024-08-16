@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import picture from '../../../../public/sun_small.png';
+import picture from '@public/sun_small.png';
 import LogoutButton from './LogoutButton';
 import NavBarLinkList from './NavBarLinkList';
 
