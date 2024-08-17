@@ -44,7 +44,7 @@ button.btn-primary {
   @apply bg-primary text-white;
 }
 button.btn-primary_alt {
-  @apply border border-secondary bg-secondary text-white;
+  @apply border border-primary_alt bg-primary_alt text-white;
 }
 button.btn-secondary {
   @apply bg-neutral text-primary;

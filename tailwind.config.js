@@ -6,7 +6,7 @@ module.exports = {
       colors: {
         neutral: '#D0D0D0', // light grey
         primary: '#6744FF', // purple
-        secondary: '#CC9A33', // soft gold
+        primary_alt: '#CC9A33', // soft gold
         primaryDark: '#4D25E5', // 10% darker than primary
       },
       fontSize: {

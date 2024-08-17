@@ -1,13 +1,9 @@
 import Image from 'next/image';
 import React from 'react'
 import picture from '@public/sun_small.png';
-import LogoutButton from '../navbar/LogoutButton';
+import LogoutIcon from '../navbar/LogoutIcon';
 
-interface MainHeaderProps {
-  user?: { email: string };
-}
-
-export default function MainHeader({ user }: MainHeaderProps) {
+export default function MainHeader() {
   return (
     <>
       <section className="flex flex-col justify-center items-center">
@@ -22,10 +18,9 @@ export default function MainHeader({ user }: MainHeaderProps) {
           HelpDesk
         </h3>
       </section>
-      {user ? <section className="flex flex-col justify-end items-center">
-        <LogoutButton />
-        <small className="text-white">{user ? user.email : 'null'}</small>
-      </section> : null}
+      <section>
+        <LogoutIcon />
+      </section>
     </>
   )
 }
