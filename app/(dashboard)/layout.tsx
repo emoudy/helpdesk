@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { createClient } from '@utils/supabase/server';
 import NavBar from './components/navbar/NavBar';
+import MainHeader from './components/header/MainHeader';
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -14,18 +15,17 @@ interface User {
 export default async function DashboardLayout({ children }: DashboardLayoutProps) {
   const supabase = createClient();
   const {
-    data: { user },
+    data: { user }, 
   } = await supabase.auth.getUser();
 
   return (
-    <div className="help_desk_app min-h-screen bg-white md:grid md:grid-cols-[11rem_1fr] md:grid-rows-[1fr_auto]">
-      <header className="row-span-2 flex flex-col bg-primary p-4 text-white md:w-44 h-full">
-        <NavBar user={user as User} />
-      </header>
-      <main className="md:m-10 m-5 mb-2 overflow-y-auto md:row-start-1 md:col-start-2">{children}</main>
-      <footer className="flex items-center justify-center py-2 text-center text-sm text-primary text-opacity-50 md:row-start-2 md:col-start-2 w-full">
+    <>
+      <header className="md:col-span-2 flex justify-between p-6 pl-10"><MainHeader user={user as User} /></header>
+      <nav className="md:row-start-2 md:row-span-2 md:h-full text-white text-center md:text-left px-6 pb-3" aria-label="Main navigation"><NavBar /></nav>
+      <main className="md:row-start-2 md:col-start-2 p-6 bg-white" aria-label="Main Content">{children}</main>
+      <footer className="md:row-start-3 md:col-start-2 flex items-center justify-center py-2 text-sm text-primary bg-white text-opacity-50 w-full">
         @moudy2024
       </footer>
-    </div>
+    </>
   );
 }
