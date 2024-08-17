@@ -53,6 +53,7 @@ export default function ReactQuillEditor({ id, description, setDescription }:Rea
       modules={modules}
       onChange={handleDescription}
       value={description}
+      className='quill-editor'
     />
   );
 }

@@ -4,8 +4,11 @@
 
 /* Resetting styles */
 body, header, nav, main, footer {
-  margin: 0;
-  padding: 0;
+  @apply m-0 p-0;
+}
+
+body {
+  @apply bg-fixed h-0;
 }
 
 * {
@@ -95,12 +98,15 @@ form {
     @apply mb-5 mt-2 w-full rounded-lg p-2;
   }
 }
-.text-editor {
+
+/* Quill editor styles */
+.quill-editor {
+  @apply overflow-hidden;
   .ql-toolbar {
     @apply rounded-t-lg bg-white p-5;
   }
   .ql-container {
-    @apply min-h-40 resize-y overflow-auto rounded-b-lg bg-white p-5;
+    @apply resize-y overflow-auto rounded-b-lg bg-white p-5 grow;
   }
 }
 
