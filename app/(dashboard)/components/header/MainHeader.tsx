@@ -18,7 +18,7 @@ export default function MainHeader() {
           HelpDesk
         </h3>
       </section>
-      <section>
+      <section className='absolute top-1 right-1 '>
         <LogoutIcon />
       </section>
     </>
