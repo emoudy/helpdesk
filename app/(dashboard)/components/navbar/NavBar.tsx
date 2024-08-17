@@ -13,7 +13,7 @@ export default function NavBar() {
     linkRoutes.find(link => pathname.includes(link)) || dashboardLink;
 
   return (
-    <>
+    <div className="text-white text-center md:text-left px-5" aria-label="Main navigation">
       <NavBarLink
         linkName="Dashboard"
         isActive={activeLink === dashboardLink}
@@ -24,6 +24,6 @@ export default function NavBar() {
         isActive={activeLink === ticketsLink}
         href={ticketsLink}
       />
-    </>
+    </div>
   );
 }
