@@ -18,7 +18,7 @@ export default function LogoutButton() {
   };
 
   return (
-    <button className="small-btn btn-primary_alt mb-5 md:mt-auto" onClick={handleLogout}>
+    <button className="small-btn btn-primary_alt mb-2" onClick={handleLogout}>
       Logout
     </button>
   );
