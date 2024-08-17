@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Rubik } from 'next/font/google';
+import Footer from './(dashboard)/components/content/footer/Footer';
 
 import './globals.css';
 
@@ -23,8 +24,11 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
-      <body className={`${rubik.className} md:h-screen md:grid md:grid-cols-[11rem_1fr] md:grid-rows-[auto_1fr_auto_auto] bg-gradient-to-b from-primary to-white bg-no-repeat`}>{children}</body>
+    <html lang="en" className="flex flex-col min-h-screen">
+      <body className={`${rubik.className} bg-gradient-to-b from-primary to-white bg-no-repeat`}>{children}</body>
+      <div className="mt-auto">
+        <Footer />
+      </div>
     </html>
   );
 }
