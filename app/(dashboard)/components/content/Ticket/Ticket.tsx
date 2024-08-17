@@ -1,15 +1,10 @@
 import React from 'react'
 import TicketHeader from './TicketHeader'
 import TicketDescription from './TicketDescription'
+import { Ticket as TicketInterface } from '@interfaces/tickets';
 
 interface TicketProps {
-  ticket: {
-    id: string;
-    priority: string;
-    title: string;
-    user_email: string;
-    description?: string;
-  };
+  ticket: TicketInterface;
   sessionEmail?: string;
   displayDescription?: boolean;
   displayMenu?: boolean;
