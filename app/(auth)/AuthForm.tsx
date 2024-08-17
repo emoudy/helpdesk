@@ -12,11 +12,11 @@ export default function AuthForm() {
         <input id="password" type="password" name="password" required aria-label="Form Password" />
       </div>
       <div className="text-center">
-        <button className="btn-primary mb-2" formAction={login}>
+        <button className="btn-primary" formAction={login}>
           Login
         </button>
-        or
-        <button className="btn-secondary mt-2" formAction={signup}>
+        <div className="my-2">or</div>
+        <button className="btn-secondary" formAction={signup}>
           Sign Up
         </button>
       </div>

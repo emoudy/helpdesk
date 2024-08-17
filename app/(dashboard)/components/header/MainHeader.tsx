@@ -4,7 +4,7 @@ import picture from '@public/sun_small.png';
 import LogoutButton from '../navbar/LogoutButton';
 
 interface MainHeaderProps {
-  user: { email: string };
+  user?: { email: string };
 }
 
 export default function MainHeader({ user }: MainHeaderProps) {
@@ -22,10 +22,10 @@ export default function MainHeader({ user }: MainHeaderProps) {
           HelpDesk
         </h3>
       </section>
-      <section className="flex flex-col justify-end items-center">
+      {user ? <section className="flex flex-col justify-end items-center">
         <LogoutButton />
         <small className="text-white">{user ? user.email : 'null'}</small>
-      </section>
+      </section> : null}
     </>
   )
 }
