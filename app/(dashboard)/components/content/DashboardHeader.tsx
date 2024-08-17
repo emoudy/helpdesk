@@ -6,6 +6,6 @@ interface DashboardHeaderProps {
 
 export default function DashboardHeader({ headerTitle }:DashboardHeaderProps) {
   return (
-    <h1 className="mb-5 p-3 border-b-2 border-primary">{headerTitle}</h1>
+    <h1 className="p-3 border-b-2 border-primary">{headerTitle}</h1>
   )
 }

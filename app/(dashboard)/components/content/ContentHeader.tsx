@@ -1,23 +1,21 @@
-import Link from 'next/link';
-import { MdOutlineKeyboardBackspace } from 'react-icons/md';
 import DashboardHeader from './DashboardHeader';
+import Breadcrumbs from './Breadcrumbs';
 
-interface ContentHeaderProps {
-  headerTitle: string,
-  href: string,
-  nextPage: string,
+interface Breadcrumb {
+  name: string;
+  href: string;
 }
 
-export default function ContentHeader({ headerTitle, href, nextPage}: ContentHeaderProps) {
+interface ContentHeaderProps {
+  crumbs: Breadcrumb[],
+}
+
+export default function ContentHeader({ crumbs }: ContentHeaderProps) {
+  const lastCrumb = crumbs[crumbs.length-1];
   return (
     <>
-      <DashboardHeader headerTitle={headerTitle} />
-      <Link href={href} className='hidden md:block'>
-        <button className="small-btn btn-primary md:mb-20 flex items-center">
-          <MdOutlineKeyboardBackspace />
-          &nbsp; Back to {nextPage}
-        </button>
-      </Link>
+      <DashboardHeader headerTitle={lastCrumb.name} />
+      <Breadcrumbs crumbs={crumbs} />
     </>
   )
 }

@@ -30,7 +30,7 @@ interface TicketDetailsProps {
 
 const TicketDetails = async ({ params }: TicketDetailsProps) => {
   const ticket = await getTicket(params.id);
-
+  const crumbs = [{name:"Ticket List", href:"/tickets"}, {name:"Ticket Details", href:""}];
   const supabase = createClient();
   const { data } = await supabase.auth.getSession();
 
@@ -41,7 +41,7 @@ const TicketDetails = async ({ params }: TicketDetailsProps) => {
   return (
     <>
       <header>
-        <ContentHeader headerTitle="Ticket Details" href="/tickets" nextPage="Ticket List" />
+        <ContentHeader crumbs={crumbs} />
       </header>
       <article>
         <Suspense fallback={<Loading />}>

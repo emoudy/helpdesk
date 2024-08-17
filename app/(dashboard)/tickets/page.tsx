@@ -14,16 +14,16 @@ export const metadata = {
  */
 export default function Tickets() {
   return (
-    <>
+    <article className='flex flex-col'>
       <DashboardHeader headerTitle={"Ticket List"} />
-      <Link href="/tickets/create">
-        <button className="medium-btn btn-primary my-5 md:my-0">
+      <Link href="/tickets/create" className='my-3'>
+        <button className="medium-btn btn-primary float-end">
           Create Ticket
         </button>
       </Link>
       <Suspense fallback={<Loading />}>
         <TicketList />
       </Suspense>
-    </>
+    </article>
   );
 }

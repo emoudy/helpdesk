@@ -30,11 +30,12 @@ interface EditTicketProps {
 
 export default async function EditTicket({ params }: EditTicketProps) {
   const ticket = await getTicket(params.id);
+  const crumbs = [{name:"Ticket List", href:"/tickets"}, {name:"Ticket Details", href:`/tickets/${params.id}`}, {name:"Edit Ticket", href:""}];
   const supabase = createClient();
   const { data } = await supabase.auth.getSession();
   return (
     <main>
-      <ContentHeader headerTitle="Edit Ticket" href={`/tickets/${ticket.id}`} nextPage="Ticket Details" />
+      <ContentHeader crumbs={crumbs} />
       <Suspense fallback={<Loading />}>
         {data.session.user.email === ticket.user_email ? (
           <EditForm ticket={ticket} />
