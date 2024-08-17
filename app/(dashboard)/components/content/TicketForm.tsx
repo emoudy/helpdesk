@@ -52,7 +52,6 @@ export default function TicketForm({ ticket, action }: TicketFormProps) {
     const response = await res.json();
 
     if (response.data) {
-      console.log("response", response);
       router.push('/tickets');
       router.refresh();
     }
