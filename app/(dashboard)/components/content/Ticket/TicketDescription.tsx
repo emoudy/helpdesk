@@ -7,7 +7,7 @@ interface TicketDescriptionProps {
 
 export default function TicketDescription({ ticketDescription }: TicketDescriptionProps) {
   return (
-    <div className="px-20 py-10">
+    <div className="md:px-20 md:py-10 pt-5">
       <SanatizeDescription description={ticketDescription}/>
     </div>
   )
