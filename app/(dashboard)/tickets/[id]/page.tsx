@@ -1,10 +1,10 @@
+import { Suspense } from 'react';
 import { createClient } from 'utils/supabase/server';
 import { getTicket } from './helper/helper';
 
-import DeleteTicketIcon from '@components/content/DeleteTicketIcon';
-import EditTicketIcon from '@components/content/EditTicketIcon';
-import SanatizeDescription from '@components/content/SanatizeDescription';
 import ContentHeader from '@components/content/ContentHeader';
+import Loading from '@/(dashboard)/loading';
+import Ticket from '@/(dashboard)/components/content/Ticket/Ticket';
 
 export const dynamicParams = true;
 
@@ -39,33 +39,16 @@ const TicketDetails = async ({ params }: TicketDetailsProps) => {
   }
 
   return (
-    <main>
-      <ContentHeader headerTitle="Ticket Details" href="/tickets" nextPage="Ticket List" />
-      <div className="card">
-        <div className="card_header_item">
-          <div className={`pill ${ticket.priority}`}>{ticket.priority}</div>
-          <div className="card_title">
-            <h3>{ticket.title}</h3>
-            <small>By: {ticket.user_email}</small>
-          </div>
-          <div className="card_menu">
-            {data.session.user.email === ticket.user_email ? (
-              <div>
-                <DeleteTicketIcon id={ticket.id} />
-                <EditTicketIcon id={ticket.id} />
-              </div>
-            ) : (
-              <small className="px-3 py-2 font-semibold text-red-600">
-                Tickets can be modified by the ticket owner.
-              </small>
-            )}
-          </div>
-        </div>
-        <div className="card_body">
-          <SanatizeDescription description={ticket.description}/>
-        </div>
-      </div>
-    </main>
+    <>
+      <header>
+        <ContentHeader headerTitle="Ticket Details" href="/tickets" nextPage="Ticket List" />
+      </header>
+      <article>
+        <Suspense fallback={<Loading />}>
+          <Ticket ticket={ticket} sessionEmail={data.session.user.email} displayDescription displayMenu />
+        </Suspense>
+      </article>
+    </>
   );
 };
 
