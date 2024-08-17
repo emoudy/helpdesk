@@ -1,9 +1,10 @@
 import Link from 'next/link';
+import DashboardHeader from './components/content/DashboardHeader';
 
 export default function Home() {
   return (
     <main>
-      <h1>Dashboard</h1>
+      <DashboardHeader headerTitle={"Dashboard"} />
       <p>
         Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero
         repellendus tempore, exercitationem odit, quasi doloremque possimus
