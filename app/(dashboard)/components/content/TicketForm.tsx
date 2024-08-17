@@ -62,10 +62,12 @@ export default function TicketForm({ ticket, action }: TicketFormProps) {
     <>
       <p id="form-error" className='text-red-600 mb-5' role="alert" aria-live="assertive">{error ? "There was an error saving your ticket, please try again." : ""}</p>
       <form onSubmit={handleSubmit} aria-describedby="form-error">
-        <button className="medium-btn btn-primary" disabled={isLoading}>
-          {isLoading ? 'Saving...' : 'Save Ticket'}
-        </button>
-        <>
+        <div className="text-center">
+          <button className="medium-btn btn-primary" disabled={isLoading}>
+            {isLoading ? 'Saving...' : 'Save Ticket'}
+          </button>
+        </div>
+        <div>
           <label htmlFor="title">Title</label>
           <input
             id="title"
@@ -75,8 +77,8 @@ export default function TicketForm({ ticket, action }: TicketFormProps) {
             value={title}
             aria-label="Ticket Title"
           />
-        </>
-        <>
+        </div>
+        <div>
           <label htmlFor="priority">Priority</label>
           <select
             id="priority"
@@ -89,8 +91,8 @@ export default function TicketForm({ ticket, action }: TicketFormProps) {
             <option value="medium">Medium Priority</option>
             <option value="high">High Priority</option>
           </select>
-        </>
-        <div className="form-description">
+        </div>
+        <div className="flex-grow overflow-hidden text-lg">
           <label htmlFor="description">Description</label>
           <ReactQuillEditor
             id="description"

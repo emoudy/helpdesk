@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { createClient } from 'utils/supabase/server';
 import { NextResponse } from 'next/server';
+import Ticket from '../components/content/Ticket/Ticket';
 
 interface Ticket {
   id: string;
@@ -30,19 +31,13 @@ export default async function TicketList() {
   if (Array.isArray(tickets) && tickets.length === 0) {
     return <h3 className="text-center">There are no opened tickets</h3>;
   }
-
+ 
   return (
     <>
       {tickets.map(ticket => (
-        <div key={ticket.id} className="card">
-          <div className="card_header_list">
-            <div className={`pill ${ticket.priority}`}>{ticket.priority}</div>
-            <Link href={`/tickets/${ticket.id}`} className="card_title">
-              <h4>{ticket.title}</h4>
-              <small>By: {ticket.user_email}</small>
-            </Link>
-          </div>
-        </div>
+        <Link key={ticket.id} href={`/tickets/${ticket.id}`}>
+          <Ticket ticket={ticket} />
+        </Link>
       ))}
     </>
   );
