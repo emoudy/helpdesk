@@ -15,7 +15,7 @@ export default function AuthForm() {
         <button className="btn-primary" formAction={login}>
           Login
         </button>
-        <div className="my-2 font-bold">or</div>
+        <div className="my-2 font-bold text-white">or</div>
         <button className="btn-secondary border-primary border-2" formAction={signup}>
           Sign Up
         </button>
