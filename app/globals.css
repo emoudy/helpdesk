@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Resetting styles */
+body, header, nav, main, footer {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
 /* headers styles */
 h1,
 h2,
@@ -84,12 +94,6 @@ form {
   select {
     @apply mb-5 mt-2 w-full rounded-lg p-2;
   }
-  .form-description {
-    @apply flex-grow overflow-hidden text-lg;
-  }
-  button {
-    @apply mx-auto block;
-  }
 }
 .text-editor {
   .ql-toolbar {
@@ -105,33 +109,6 @@ form {
   @apply mx-auto my-4 block max-w-fit rounded-sm border-2 border-red-500 bg-red-300 px-2 py-1 text-red-800;
 }
 
-/* card styles */
-.card {
-  @apply my-5 overflow-hidden rounded-md bg-white bg-opacity-5 transition-colors duration-300 ease-in-out;
-}
-.card_header_list {
-  @apply flex;
-}
-.card_header_list:hover {
-  @apply cursor-pointer bg-primary bg-opacity-10;
-}
-.card_header_item {
-  @apply flex;
-}
-.card_title {
-  @apply flex-1 bg-primary bg-opacity-5 py-3 pl-5;
-}
-.card_menu {
-  @apply rounded-r-md bg-primary bg-opacity-5;
-
-  & div {
-    @apply flex min-w-1.5;
-  }
-}
-.card_body {
-  @apply px-20 py-10;
-}
-
 /* pill styles */
 .pill {
   @apply flex w-16 items-center justify-center rounded-l-md text-center text-xs font-semibold;
@@ -144,17 +121,4 @@ form {
 }
 .pill.low {
   @apply bg-emerald-300 text-emerald-600;
-}
-
-/* Mobile View */
-@media (max-width: 768px) {
-  .help_desk_app {
-    > header {
-      @apply row-span-1 col-span-1;
-
-      > .navbar {
-        @apply flex flex-col;
-      }
-    }
-  }
 }
