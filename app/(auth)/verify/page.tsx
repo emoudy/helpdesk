@@ -1,11 +1,11 @@
 export default function Verify() {
   return (
-    <div className="text-center mt-10">
+    <div className="text-center bg-white max-w-md rounded-md mx-auto p-3">
       <h2>Thanks for registering!</h2>
-      <p className="my-5">
-        Before logging in, you need to verify your email address. Check your
-        email to confirm the account.
-      </p>
+      <div className="my-5 text-primary">
+        <p>Please verify your email address.</p>
+        <p>Check your email to confirm the account.</p>
+      </div>
     </div>
   );
 }
