@@ -25,14 +25,15 @@ export default async function DashboardLayout({ children }: DashboardLayoutProps
         <NavBar />
       </nav>
 
-      <main className="row-span-2 col-start-2 p-5 bg-white" aria-label="Main Content">{children}</main>
+      <main className="row-span-3 col-start-2 p-5 bg-white" aria-label="Main Content">{children}</main>
 
-      <section className="hidden row-start-3 md:flex flex-col justify-end items-center m-5">
+      <section className="hidden row-start-3 row-span-2 md:flex flex-col justify-end items-center m-5">
         <LogoutButton aria-label="Logout button"/>
         <small className="text-primary">{user ? user.email : 'null'}</small>
       </section>
 
-      <footer className="row-start-3 col-start-2 flex items-center justify-center py-2 text-sm text-primary bg-white text-opacity-50 w-full">
+      {/*We're using z-0 on Footer because on Edit Ticket, the Quill Editor goes over the footer*/}
+      <footer className="z-0 row-start-4 col-start-2 flex items-center justify-center py-2 text-sm text-primary bg-white text-opacity-50">
         @moudy2024
       </footer>
     </>
