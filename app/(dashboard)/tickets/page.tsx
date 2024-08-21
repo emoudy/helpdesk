@@ -3,6 +3,7 @@ import TicketList from './TicketList';
 import Loading from '../loading';
 import Link from 'next/link';
 import DashboardHeader from '../components/content/DashboardHeader';
+import ContentHeader from '../components/content/ContentHeader';
 
 export const metadata = {
   title: 'Helpdesk | Tickets',
@@ -15,7 +16,7 @@ export const metadata = {
 export default function Tickets() {
   return (
     <article className='flex flex-col'>
-      <DashboardHeader headerTitle={"Ticket List"} />
+      <ContentHeader crumbs={[{name:"Ticket List", href:""}]} />
       <Link href="/tickets/create" className='my-3'>
         <button className="medium-btn btn-primary float-end">
           Create Ticket

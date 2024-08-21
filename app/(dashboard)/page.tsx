@@ -1,10 +1,10 @@
 import Link from 'next/link';
-import DashboardHeader from './components/content/DashboardHeader';
+import ContentHeader from './components/content/ContentHeader';
 
 export default function Home() {
   return (
     <div>
-      <DashboardHeader headerTitle={"Dashboard"} />
+      <ContentHeader crumbs={[{name:"Dashboard", href:""}]} />
       <section>
         <p>
           Lorem ipsum, dolor sit amet consectetur adipisicing elit. Vero
