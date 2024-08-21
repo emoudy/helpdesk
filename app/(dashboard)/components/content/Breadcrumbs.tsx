@@ -10,7 +10,7 @@ interface BreadcrumbsProps {
 }
 
 export default function Breadcrumbs({ crumbs }: BreadcrumbsProps) { 
-  return (crumbs?.length || 0) > 0 ? (
+  return (crumbs?.length || 0) > 1 ? (
     <div className="flex flex-row mb-5 md:mb-10">
       {crumbs.map((crumb, index) => (
         <div key={crumb.name} className="flex flex-row justify-center items-center">
@@ -28,5 +28,5 @@ export default function Breadcrumbs({ crumbs }: BreadcrumbsProps) {
         </div>
       ))}
     </div>
-  ) : null;
+  ) : <div className='h-6'/>;
 }
