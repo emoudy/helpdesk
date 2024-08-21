@@ -58,7 +58,7 @@ export default function TicketForm({ ticket, action }: TicketFormProps) {
   };
 
   return (
-    <>
+    <div className='max-w-4xl'>
       <p id="form-error" className='text-red-600 mb-5' role="alert" aria-live="assertive">{error ? "There was an error saving your ticket, please try again." : ""}</p>
       <form onSubmit={handleSubmit} aria-describedby="form-error">
         <div className="text-center">
@@ -66,10 +66,11 @@ export default function TicketForm({ ticket, action }: TicketFormProps) {
             {isLoading ? 'Saving...' : 'Save Ticket'}
           </button>
         </div>
-        <div>
+        <div className="mb-7">
           <label htmlFor="title">Title</label>
           <input
             id="title"
+            className={"bg-primary bg-opacity-10 px-2"}
             required
             type="text"
             onChange={e => setTitle(e.target.value)}
@@ -77,13 +78,13 @@ export default function TicketForm({ ticket, action }: TicketFormProps) {
             aria-label="Ticket Title"
           />
         </div>
-        <div>
+        <div className="mb-7">
           <label htmlFor="priority">Priority</label>
           <select
             id="priority"
+            className={"bg-primary bg-opacity-10 px-2"}
             onChange={e => setPriority(e.target.value)}
             value={priority}
-            className="bg-white"
             aria-label="Ticket Priority"
           >
             <option value="low">Low Priority</option>
@@ -101,6 +102,6 @@ export default function TicketForm({ ticket, action }: TicketFormProps) {
           />
         </div>
       </form>
-    </>
+    </div>
   )
 }

@@ -22,7 +22,7 @@ export default function TicketHeader({ ticket, displayMenu, sessionEmail }: Tick
   }
 
   return (
-    <div className="flex my-5 overflow-hidden rounded-md bg-white bg-opacity-5 transition-colors duration-300 ease-in-out hover:cursor-pointer hover:bg-primary hover:bg-opacity-10">
+    <div className="flex overflow-hidden rounded-md bg-white bg-opacity-5 duration-300 ease-in-out w-full hover:cursor-pointer hover:bg-primary hover:bg-opacity-10">
       <div className={`flex w-16 items-center justify-center rounded-l-md text-center text-xs font-semibold ${priorityColor[priority]}`}>{priority}</div>
       <TicketTitle title={title} ticketEmail={ticketEmail} />
       {displayMenu? <TicketMenu id={id} ticketEmail={ticketEmail} sessionEmail={sessionEmail}/> : null}
