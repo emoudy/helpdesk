@@ -24,8 +24,8 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en" className="flex flex-col min-h-screen">
-      <body className={rubik.className}>{children}</body>
+    <html lang="en" className='min-h-screen'>
+      <body className={`${rubik.className}`}>{children}</body>
     </html>
   );
 }
