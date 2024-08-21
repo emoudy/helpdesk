@@ -27,7 +27,7 @@ export default async function DashboardLayout({ children }: DashboardLayoutProps
       <section>
         <Logout user={user} />
       </section>
-      <footer className="z-0 row-start-4 col-start-2 text-center py-2 text-sm text-primary bg-white text-opacity-50">
+      <footer className="row-start-4 col-start-2 text-center py-2 text-sm text-primary bg-white opacity-50">
         <Footer />
       </footer>
     </div>
