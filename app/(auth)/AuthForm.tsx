@@ -1,25 +1,28 @@
+'use client';
+
 import { login, signup } from './actions';
+import InputItem from '../../components/InputItem';
 
 export default function AuthForm() {
-  return (
-    <form id="formElem">
-      <div>
-        <label htmlFor="email" className='text-white'>Email</label>
-        <input id="email" type="email" name="email" required aria-label="Form Email" />
-      </div>
-      <div>
-        <label htmlFor="password" className='text-white'>Password</label>
-        <input id="password" type="password" name="password" required aria-label="Form Password" />
-      </div>
-      <div className="text-center">
-        <button className="btn-primary" formAction={login}>
+  return ( 
+    <form id="formElem" className='flex flex-col items-center justify-center'>
+      <section className='flex flex-col justify-center'>
+        <InputItem inputLabel="Email" inputType="email" useIcon />
+        <InputItem inputLabel="Password" inputType={"password"} useIcon usePassword />
+      </section>
+      <section className='flex flex-col justify-center my-5'>
+        <button className="btn-primary_alt" formAction={login}>
           Login
         </button>
-        <div className="my-2 font-bold text-white">or</div>
-        <button className="btn-secondary border-primary border-2" formAction={signup}>
-          Sign Up
-        </button>
-      </div>
+        <div className='flex flex-row items-center text-primary mt-10'>
+          Or, &nbsp;
+          <button className="btn-secondary small-btn" formAction={signup}>
+            Sign Up
+          </button>
+          &nbsp;
+          to make an account!
+        </div>
+      </section>
     </form>
   );
 }
