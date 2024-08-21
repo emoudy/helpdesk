@@ -35,12 +35,16 @@ export default async function EditTicket({ params }: EditTicketProps) {
   const { data } = await supabase.auth.getSession();
   return (
     <main>
-      <ContentHeader crumbs={crumbs} />
-      <Suspense fallback={<Loading />}>
-        {data.session.user.email === ticket.user_email ? (
-          <EditForm ticket={ticket} />
-        ) : null}
-      </Suspense>
+      <header>
+        <ContentHeader crumbs={crumbs} />
+      </header>
+      <article className='flex flex-col items-center'>
+        <Suspense fallback={<Loading />}>
+          {data.session.user.email === ticket.user_email ? (
+            <EditForm ticket={ticket} />
+          ) : null}
+        </Suspense>
+      </article>
     </main>
   );
 };

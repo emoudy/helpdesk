@@ -15,16 +15,22 @@ export const metadata = {
  */
 export default function Tickets() {
   return (
-    <article className='flex flex-col'>
-      <ContentHeader crumbs={[{name:"Ticket List", href:""}]} />
-      <Link href="/tickets/create" className='my-3'>
-        <button className="medium-btn btn-primary float-end">
-          Create Ticket
-        </button>
-      </Link>
-      <Suspense fallback={<Loading />}>
-        <TicketList />
-      </Suspense>
-    </article>
+    <main>
+      <header>
+        <ContentHeader crumbs={[{name:"Ticket List", href:""}]} />
+      </header>
+      <article className='flex flex-col items-center'>
+        <div className='w-full max-w-4xl'>
+          <Link href="/tickets/create" className="float-end mb-10">
+            <button className="medium-btn btn-primary">
+              Create Ticket
+            </button>
+          </Link>
+          <Suspense fallback={<Loading />}>
+            <TicketList />
+          </Suspense>
+        </div>
+      </article>
+    </main>
   );
 }

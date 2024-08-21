@@ -39,16 +39,16 @@ const TicketDetails = async ({ params }: TicketDetailsProps) => {
   }
 
   return (
-    <>
+    <main>
       <header>
         <ContentHeader crumbs={crumbs} />
       </header>
-      <article>
+      <article className='flex flex-col items-center'>
         <Suspense fallback={<Loading />}>
           <Ticket ticket={ticket} sessionEmail={data.session.user.email} displayDescription displayMenu />
         </Suspense>
       </article>
-    </>
+    </main>
   );
 };
 
