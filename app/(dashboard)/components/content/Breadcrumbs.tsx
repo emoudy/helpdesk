@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import { IoIosArrowForward } from "react-icons/io";
 
 interface Breadcrumb {
   name: string;
@@ -20,7 +19,9 @@ export default function Breadcrumbs({ crumbs }: BreadcrumbsProps) {
           </Link>
           &nbsp;
           {index < crumbs.length - 1 && (
-            <IoIosArrowForward />
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
+            </svg>    
           )}
           {index === crumbs.length - 1 && <span className='text-gray-700'>{crumb.name}</span>}
         </div>
