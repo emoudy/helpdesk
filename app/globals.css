@@ -2,19 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Resetting styles */
-body, header, nav, main, footer {
-  @apply m-0 p-0;
-}
-
-body {
-  @apply bg-fixed h-0;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 /* headers styles */
 h1,
 h2,
@@ -35,6 +22,19 @@ h4 {
   @apply text-base font-bold;
 }
 
+/* Input Styles */
+input,
+textarea,
+select {
+  @apply w-full rounded-lg py-2;
+}
+
+input {
+  &.useIcon {
+    @apply px-8
+  }
+}
+
 /* button styles */
 button {
   @apply rounded-full px-6 py-2 text-sm font-bold;
@@ -53,7 +53,7 @@ button.btn-secondary {
   @apply bg-neutral text-primary;
 }
 button.small-btn {
-  @apply text-button-sm;
+  @apply text-button-sm p-1 px-2;
 }
 button.medium-btn {
   @apply text-button-md;
@@ -78,24 +78,17 @@ li {
 }
 
 /* icons styles */
-.icon {
+.actionIcon {
   @apply mr-5 min-h-10 cursor-pointer text-xl;
 }
-.icon:hover {
+.actionIcon:hover {
   @apply text-2xl;
 }
 
 /* form styles */
 form {
-  @apply rounded-lg bg-primary bg-opacity-5 p-6;
-
   label {
     @apply text-base font-bold text-primary;
-  }
-  input,
-  textarea,
-  select {
-    @apply mb-5 mt-2 w-full rounded-lg p-2;
   }
 }
 
@@ -110,21 +103,3 @@ form {
   }
 }
 
-/* feedback styles */
-.error {
-  @apply mx-auto my-4 block max-w-fit rounded-sm border-2 border-red-500 bg-red-300 px-2 py-1 text-red-800;
-}
-
-/* pill styles */
-.pill {
-  @apply flex w-16 items-center justify-center rounded-l-md text-center text-xs font-semibold;
-}
-.pill.high {
-  @apply bg-red-300 text-red-600;
-}
-.pill.medium {
-  @apply bg-yellow-300 text-yellow-600;
-}
-.pill.low {
-  @apply bg-emerald-300 text-emerald-600;
-}
