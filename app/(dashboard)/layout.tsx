@@ -16,9 +16,9 @@ export default async function DashboardLayout({ children }: DashboardLayoutProps
   } = await supabase.auth.getUser();
 
   return (
-    <div className="md:h-screen md:grid md:grid-cols-[11rem_1fr] md:grid-rows-[auto_1fr_auto]">
+    <div className="bg-gradient-to-b from-primary to-white bg-no-repeat md:h-screen md:grid md:grid-cols-[11rem_1fr] md:grid-rows-[auto_1fr_auto_auto]">
       <header>
-        <MainHeader />
+        <MainHeader small />
       </header>
       <nav className='md:row-start-2 md:h-full'>
         <NavBar />
@@ -27,6 +27,9 @@ export default async function DashboardLayout({ children }: DashboardLayoutProps
       <section>
         <Logout user={user} />
       </section>
+      <footer className="z-0 row-start-4 col-start-2 text-center py-2 text-sm text-primary bg-white text-opacity-50">
+        <Footer />
+      </footer>
     </div>
   );
 }

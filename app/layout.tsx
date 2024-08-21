@@ -25,10 +25,7 @@ interface RootLayoutProps {
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
     <html lang="en" className="flex flex-col min-h-screen">
-      <body className={`${rubik.className} bg-gradient-to-b from-primary to-white bg-no-repeat`}>{children}</body>
-      <div className="mt-auto">
-        <Footer />
-      </div>
+      <body className={rubik.className}>{children}</body>
     </html>
   );
 }
