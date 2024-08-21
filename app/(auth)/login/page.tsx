@@ -2,7 +2,7 @@ import AuthForm from '@/(auth)/AuthForm';
 
 export default function Login() {
   return (
-    <div className="max-w-md mx-auto m-10">
+    <div className="flex justify-center items-center">
       <AuthForm />
     </div>
   );
