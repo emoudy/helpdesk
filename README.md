@@ -1,13 +1,13 @@
 ## About
 
-This small project was done as part of a tutorial of "NextJS Materclass" by NetNinja. The tutorial followed the code found in https://github.com/iamshaunjp/nextjs-masterclass. The main purpose of this project was to continue to learn NextJS, Typescript, and Tailwind.
+This small project was done as part of a tutorial of "NextJS Materclass" by NetNinja. The tutorial followed the code found in https://github.com/iamshaunjp/nextjs-masterclass. The main purpose of this project was to continue to learn NextJS with AppRouter structure, Typescript, and Tailwind.
 
 This project deviates from the tutorial due to these changes that I implemented:
 
 - Switched from npm to pnpm
 - Set up Server-Sede Auth using @supabase/supabase-js @supabase/ssr
 - Added the ability to save ticket formatting by adding Quill to the project
-- Changed the UI design
+- Changed the UI design significantly
 - Added the feature to delete and Edit ticket
 - Deployed the application using Vercel
 - Used Typescript
