@@ -12,7 +12,7 @@ interface TicketProps {
 
 export default function Ticket({ ticket, displayDescription = false, displayMenu = false, sessionEmail="" }: TicketProps) {
   return (
-    <div className='w-full mb-5'>
+    <div className='mb-5'>
       <TicketHeader ticket={ticket} sessionEmail={sessionEmail} displayMenu={displayMenu} />
       {displayDescription ? <TicketDescription ticketDescription={ticket.description}/> : null}
     </div>

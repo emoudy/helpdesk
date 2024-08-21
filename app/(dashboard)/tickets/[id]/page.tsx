@@ -45,7 +45,9 @@ const TicketDetails = async ({ params }: TicketDetailsProps) => {
       </header>
       <article className='flex flex-col items-center'>
         <Suspense fallback={<Loading />}>
-          <Ticket ticket={ticket} sessionEmail={data.session.user.email} displayDescription displayMenu />
+          <div className='w-full max-w-4xl'>
+            <Ticket ticket={ticket} sessionEmail={data.session.user.email} displayDescription displayMenu />
+          </div>
         </Suspense>
       </article>
     </main>
