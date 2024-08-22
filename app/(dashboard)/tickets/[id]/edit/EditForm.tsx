@@ -1,6 +1,6 @@
 'use client';
 
-import TicketForm from '@(dashboard)/_components/ticket/TicketForm';
+import TicketForm from '@dashboard/_components/ticket/TicketForm';
 
 export default function EditForm({ ticket }) {
 
