@@ -1,23 +1,13 @@
 import Link from 'next/link';
-import { createClient } from 'utils/supabase/server';
 import { NextResponse } from 'next/server';
 import Ticket from '../components/content/Ticket/Ticket';
+import { getTickets } from './_helperFunctions/getTickets';
 
 interface Ticket {
   id: string;
   title: string;
   user_email: string;
   priority: string;
-}
-
-async function getTickets(): Promise<Ticket[] | NextResponse> {
-  const supabase = createClient();
-  const { data, error } = await supabase.from('Tickets').select();
-
-  if (error) {
-    return NextResponse.json({ error: error.message }, { status: 500 });
-  }
-  return data || [];
 }
 
 export default async function TicketList() {
@@ -33,12 +23,12 @@ export default async function TicketList() {
   }
  
   return (
-    <>
+    <div>
       {tickets.map(ticket => (
         <Link key={ticket.id} href={`/tickets/${ticket.id}`}>
           <Ticket ticket={ticket} />
         </Link>
       ))}
-    </>
+    </div>
   );
 }
