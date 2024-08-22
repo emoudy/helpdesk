@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
 import { createClient } from '@utils/supabase/server';
-import NavBar from './components/navbar/NavBar';
-import MainHeader from './components/header/MainHeader';
-import Footer from './components/content/footer/Footer';
-import Logout from './components/navbar/Logout';
+import NavBar from '@dashboard/_components/navbar/NavBar';
+import MainHeader from '@dashboard/_components/navbar/MainHeader';
+import Footer from '@dashboard/_components/footer/Footer';
+import Logout from '@dashboard/_components/navbar/Logout';
 
 interface DashboardLayoutProps {
   children: ReactNode;

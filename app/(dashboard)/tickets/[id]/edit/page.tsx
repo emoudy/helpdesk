@@ -1,9 +1,9 @@
 import { Suspense } from 'react';
-import { createClient } from 'utils/supabase/server';
-import { getTicket } from '../helper/helper';
+import { createClient } from '@utils/supabase/server';
+import { getTicket } from '@dashboard/tickets/_helperFunctions/getTicket';
 
-import Loading from '../../../loading';
-import ContentHeader from '@components/content/ContentHeader';
+import Loading from '../../loading';
+import ContentHeader from '@dashboard/_components/header/ContentHeader';
 import EditForm from './EditForm';
 
 export const dynamicParams = true;
@@ -34,7 +34,7 @@ export default async function EditTicket({ params }: EditTicketProps) {
   const supabase = createClient();
   const { data } = await supabase.auth.getSession();
   return (
-    <main>
+    <>
       <header>
         <ContentHeader crumbs={crumbs} />
       </header>
@@ -45,6 +45,6 @@ export default async function EditTicket({ params }: EditTicketProps) {
           ) : null}
         </Suspense>
       </article>
-    </main>
+    </>
   );
 };

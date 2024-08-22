@@ -2,7 +2,7 @@ import Image from 'next/image';
 import React from 'react'
 import smPicture from '@public/sun_small.png';
 import lgPicture from '@public/sun.png';
-import LogoutIcon from '../navbar/LogoutIcon';
+import LogoutIcon from './LogoutIcon';
 
 interface MainHeaderProps {
   small?: boolean;

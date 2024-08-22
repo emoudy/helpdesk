@@ -1,14 +1,24 @@
 'use client';
 
-import { useState, FormEvent } from 'react'
+import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
-import ReactQuillEditor from './Quill/ReactQuillEditor'
-import { fetchOptions } from './helpers';
+import ReactQuillEditor from '@dashboard/_components/editor/ReactQuillEditor';
 
 interface TicketFormProps {
   ticket?: { id: string, title: string, description: string, priority: string },
   action: string,
 }
+
+interface FetchOptionsParams {
+  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS';
+  body?: { id?: string; title: string; description: string; priority: string; };
+}
+
+const fetchOptions = ({ method, body }: FetchOptionsParams) => ({
+  method,
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify(body),
+});
 
 export default function TicketForm({ ticket, action }: TicketFormProps) {
   const router = useRouter();

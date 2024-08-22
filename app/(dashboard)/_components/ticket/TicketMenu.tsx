@@ -1,6 +1,6 @@
 import React from 'react'
-import DeleteTicketIcon from '../DeleteTicketIcon'
-import EditTicketIcon from '../EditTicketIcon'
+import DeleteTicketIcon from '@dashboard/_components/DeleteTicketIcon'
+import EditTicketIcon from '@dashboard/_components/EditTicketIcon'
 
 interface TicketMenuProps {
   id: string;

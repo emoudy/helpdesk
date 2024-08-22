@@ -1,5 +1,5 @@
 import React from 'react'
-import SanatizeDescription from '../SanatizeDescription'
+import SanatizeDescription from '@dashboard/_components/SanatizeDescription'
 
 interface TicketDescriptionProps {
   ticketDescription: string;

@@ -1,4 +1,4 @@
-import { createClient } from 'utils/supabase/server';
+import { createClient } from '@utils/supabase/server';
 import { Ticket } from '@interfaces/tickets';
 
 export async function getTickets(): Promise<Ticket[]> {

@@ -2,11 +2,19 @@
 
 import { useRouter } from 'next/navigation';
 import { useState } from 'react';
-import { handleDeleteTicket } from './helpers';
 
 interface DeleteTicketIconProps {
   id: string;
 }
+
+const handleDeleteTicket = async ({ id }: { id: string }) => {
+  const res = await fetch(`http://localhost:3000/api/tickets/${id}`, {
+    method: 'DELETE',
+    headers: { 'Content-Type': 'application/json' },
+  });
+
+  return await res.json();
+};
 
 export default function DeleteTicketIcon({ id }: DeleteTicketIconProps) {
   const router = useRouter();

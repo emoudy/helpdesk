@@ -1,7 +1,6 @@
 import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Rubik } from 'next/font/google';
-import Footer from './(dashboard)/components/content/footer/Footer';
 
 import './globals.css';
 

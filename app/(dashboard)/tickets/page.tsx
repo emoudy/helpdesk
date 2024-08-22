@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
 import TicketList from './TicketList';
-import Loading from '../loading';
+import Loading from './loading';
 import Link from 'next/link';
-import ContentHeader from '../components/content/ContentHeader';
-import { getTickets } from './_helperFunctions/getTickets';
-import { createClient } from 'utils/supabase/server';
+import ContentHeader from '@dashboard/_components/header/ContentHeader';
+import { getTickets } from '@dashboard/tickets/_helperFunctions/getTickets';
+import { createClient } from '@utils/supabase/server';
 
 export const metadata = {
   title: 'Helpdesk | Tickets',
@@ -52,7 +52,7 @@ export default async function Tickets() {
       </header>
       <article className='flex flex-col items-center'>
         <div className='flex flex-col w-full max-w-4xl'>
-          {disableTicketCreation && <p className='text-sm m-auto text-red-700'>You have reached the maximum number of tickets allowed to be created by a single user.</p>}
+          {disableTicketCreation && <p className='text-sm m-auto font-semibold text-red-600'>You have reached the maximum number of tickets allowed to be created by a single user.</p>}
           <Link href="/tickets/create" className="mb-10 ml-auto">
             <button className="medium-btn btn-primary float-right" disabled={disableTicketCreation}>
               Create Ticket

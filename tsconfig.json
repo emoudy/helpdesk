@@ -23,7 +23,8 @@
       "@/*": ["app/*"],
       "@utils/*": ["utils/*"],
       "@public/*": ["public/*"],
-      "@components/*": ["app/(dashboard)/components/*"],
+      "@dashboard/*": ["app/(dashboard)/*"],
+      "@auth/*": ["app/(auth)/*"],
       "@interfaces/*": ["interfaces/*"],
     }
   },

@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createClient } from 'utils/supabase/server';
+import { createClient } from '@utils/supabase/server';
 
 /**
  * This forces all the route handlers to be dynamic.  They are static by default.

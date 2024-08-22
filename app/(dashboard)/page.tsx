@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import ContentHeader from './components/content/ContentHeader';
+import ContentHeader from '@dashboard/_components/header/ContentHeader';
 
 export default function Home() {
   return (

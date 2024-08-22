@@ -1,10 +1,10 @@
 import { Suspense } from 'react';
-import { createClient } from 'utils/supabase/server';
-import { getTicket } from './helper/helper';
+import { createClient } from '@utils/supabase/server';
+import { getTicket } from '@dashboard/tickets/_helperFunctions/getTicket';
 
-import ContentHeader from '@components/content/ContentHeader';
-import Loading from '@/(dashboard)/loading';
-import Ticket from '@/(dashboard)/components/content/Ticket/Ticket';
+import ContentHeader from '@dashboard/_components/header/ContentHeader';
+import Loading from '@dashboard/loading';
+import Ticket from '@dashboard/_components/ticket/Ticket';
 
 export const dynamicParams = true;
 
@@ -39,7 +39,7 @@ const TicketDetails = async ({ params }: TicketDetailsProps) => {
   }
 
   return (
-    <main>
+    <>
       <header>
         <ContentHeader crumbs={crumbs} />
       </header>
@@ -50,7 +50,7 @@ const TicketDetails = async ({ params }: TicketDetailsProps) => {
           </div>
         </Suspense>
       </article>
-    </main>
+    </>
   );
 };
 

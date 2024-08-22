@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { NextResponse } from 'next/server';
-import Ticket from '../components/content/Ticket/Ticket';
-import { getTickets } from './_helperFunctions/getTickets';
+import Ticket from '@dashboard/_components/ticket/Ticket';
+import { getTickets } from '@dashboard/tickets/_helperFunctions/getTickets';
 
 interface Ticket {
   id: string;

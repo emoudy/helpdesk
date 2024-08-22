@@ -1,7 +1,7 @@
 'use client';
 
-import { login, signup } from './actions';
-import InputItem from '../../components/InputItem';
+import { login, signup } from '@auth/actions';
+import InputItem from '@auth/_components/InputItem';
 
 export default function AuthForm() {
   return ( 

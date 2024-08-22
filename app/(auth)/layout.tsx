@@ -1,6 +1,5 @@
 import { ReactNode } from 'react';
-import MainHeader from '@/(dashboard)/components/header/MainHeader';
-import Footer from '@/(dashboard)/components/content/footer/Footer';
+import MainHeader from '@dashboard/_components/navbar/MainHeader';
 
 interface AuthLayoutsProps {
   children: ReactNode;

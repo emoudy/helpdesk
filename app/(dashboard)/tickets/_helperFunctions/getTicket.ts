@@ -1,13 +1,6 @@
 import { notFound } from 'next/navigation';
-import { createClient } from 'utils/supabase/server';
-
-export interface Ticket {
-  id: string;
-  title: string;
-  description: string;
-  user_email: string;
-  priority: string;
-}
+import { createClient } from '@utils/supabase/server';
+import { Ticket } from '@interfaces/tickets';
 
 export async function getTicket(id: string): Promise<Ticket> {
   const supabase = createClient();

@@ -1,5 +1,5 @@
-import DashboardHeader from './DashboardHeader';
 import Breadcrumbs from './Breadcrumbs';
+import DashboardHeader from './DashboardHeader';
 
 interface Breadcrumb {
   name: string;
