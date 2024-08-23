@@ -11,15 +11,14 @@ interface DashboardLayoutProps {
 }
 
 export default async function DashboardLayout({ children }: DashboardLayoutProps) {
+  const { small } = sizes;
   const supabase = createClient();
-  const {
-    data: { user }, 
-  } = await supabase.auth.getUser();
+  const { data: { user } } = await supabase.auth.getUser();
 
   return (
     <div className="bg-gradient-to-b from-primary to-white bg-no-repeat md:h-screen md:grid md:grid-cols-[11rem_1fr] md:grid-rows-[auto_1fr_auto_auto]">
       <header>
-        <MainHeader size={sizes.small} />
+        <MainHeader size={small} />
       </header>
       <nav className='md:row-start-2 md:h-full'>
         <NavBar />

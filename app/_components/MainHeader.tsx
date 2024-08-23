@@ -10,14 +10,16 @@ interface MainHeaderProps {
 };
 
 export default function MainHeader({ size }: MainHeaderProps) {
+  const { small, large } = sizes;
+  
   const logoSize = {
-    [sizes.small]: {
+    [small]: {
       width: 70,
       pic: smPicture,
       textSize: 'text-lg',
       textColor: 'text-white',
     },
-    [sizes.large]: {
+    [large]: {
       width: 170,
       pic: lgPicture,
       textSize: 'text-4xl',
