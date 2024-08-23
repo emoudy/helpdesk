@@ -14,5 +14,6 @@ export default function AuthLayouts({ children }: AuthLayoutsProps) {
         <MainHeader size={large} />
       </header>
       <main aria-label="Main Content">{children}</main>
-    </>);
+    </>
+  );
 }
