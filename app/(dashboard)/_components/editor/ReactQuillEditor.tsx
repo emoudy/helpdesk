@@ -4,11 +4,11 @@ import 'react-quill/dist/quill.snow.css';
 
 interface ReactQuillEditorProps {
   id: string;
-  description: string;
-  setDescription: (value: string) => void;
+  newTicket: { title: string, description: string, priority: string };
+  setNewTicket: (newTicket: { title: string; description: string; priority: string }) => void;
 }
 
-export default function ReactQuillEditor({ id, description, setDescription }:ReactQuillEditorProps) {
+export default function ReactQuillEditor({ id, newTicket, setNewTicket }:ReactQuillEditorProps) {
   // Quill modules configuration
   const modules = {
     toolbar: [
@@ -26,7 +26,7 @@ export default function ReactQuillEditor({ id, description, setDescription }:Rea
 
   const handleDescription = (value: string) => {
     const sanitizedHTML = DOMPurify.sanitize(value);
-    setDescription(sanitizedHTML);
+    setNewTicket({ ...newTicket, description: sanitizedHTML});
   };
 
   return (
@@ -52,7 +52,7 @@ export default function ReactQuillEditor({ id, description, setDescription }:Rea
       placeholder="Write the best description possible..."
       modules={modules}
       onChange={handleDescription}
-      value={description}
+      value={newTicket.description}
       className='quill-editor'
     />
   );
