@@ -27,3 +27,8 @@ export function createClient() {
     }
   );
 }
+
+export async function getSession() {
+  const supabase = createClient();
+  return await supabase.auth.getSession();
+}

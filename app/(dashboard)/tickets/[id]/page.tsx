@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { createClient } from '@utils/supabase/server';
+import { createClient, getSession } from '@utils/supabase/server';
 import { getTicket } from '@dashboard/tickets/_helperFunctions/getTicket';
 
 import ContentHeader from '@dashboard/_components/header/ContentHeader';
@@ -31,8 +31,7 @@ interface TicketDetailsProps {
 const TicketDetails = async ({ params }: TicketDetailsProps) => {
   const ticket = await getTicket(params.id);
   const crumbs = [{name:"Ticket List", href:"/tickets"}, {name:"Ticket Details", href:""}];
-  const supabase = createClient();
-  const { data } = await supabase.auth.getSession();
+  const { data } = await getSession();
 
   if (!ticket) {
     return <h2 className="text-center">Ticket was not found</h2>;

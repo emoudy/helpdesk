@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { createClient } from '@utils/supabase/server';
+import { createClient, getSession } from '@utils/supabase/server';
 import { getTicket } from '@dashboard/tickets/_helperFunctions/getTicket';
 
 import Loading from '../../loading';
@@ -31,8 +31,7 @@ interface EditTicketProps {
 export default async function EditTicket({ params }: EditTicketProps) {
   const ticket = await getTicket(params.id);
   const crumbs = [{name:"Ticket List", href:"/tickets"}, {name:"Ticket Details", href:`/tickets/${params.id}`}, {name:"Edit Ticket", href:""}];
-  const supabase = createClient();
-  const { data } = await supabase.auth.getSession();
+  const { data } = await getSession();
   return (
     <>
       <header>
