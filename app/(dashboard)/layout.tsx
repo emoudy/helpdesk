@@ -1,9 +1,10 @@
 import { ReactNode } from 'react';
 import { createClient } from '@utils/supabase/server';
 import NavBar from '@dashboard/_components/navbar/NavBar';
-import MainHeader from '@dashboard/_components/navbar/MainHeader';
+import MainHeader from '@/_components/MainHeader';
 import Footer from '@dashboard/_components/footer/Footer';
 import Logout from '@dashboard/_components/navbar/Logout';
+import { sizes } from '@/constants';
 
 interface DashboardLayoutProps {
   children: ReactNode;
@@ -18,7 +19,7 @@ export default async function DashboardLayout({ children }: DashboardLayoutProps
   return (
     <div className="bg-gradient-to-b from-primary to-white bg-no-repeat md:h-screen md:grid md:grid-cols-[11rem_1fr] md:grid-rows-[auto_1fr_auto_auto]">
       <header>
-        <MainHeader small />
+        <MainHeader size={sizes.small} />
       </header>
       <nav className='md:row-start-2 md:h-full'>
         <NavBar />
