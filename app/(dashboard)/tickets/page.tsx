@@ -41,9 +41,10 @@ export default async function Tickets() {
   const { data } = await getSession();
   const user = data.session.user.email;
   const userTickets = tickets.filter(ticket => ticket.user_email === user);
+  
+  // To avoid potential abuse by a bad actor, we disable the "Create" button if the user has more than 3 tickets
   const disableTicketCreation = userTickets.length > 2;
 
-  // To avoid potential abuse by a bad actor, we disable the "Create" button if the user has more than 3 tickets
   return (
     <>
       <header>
