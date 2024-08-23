@@ -56,7 +56,7 @@ export default function TicketForm({ ticket, action }: TicketFormProps) {
     return (
       <div 
         id="form-error" 
-        className='text-red-600 mb-5 w-full max-w-4xl' 
+        className='errorMessage mb-5 w-full max-w-4xl' 
         role="alert" 
         aria-live="assertive">
       There was an error saving your ticket, please try again.

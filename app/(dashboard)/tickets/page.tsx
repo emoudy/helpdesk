@@ -4,7 +4,7 @@ import Loading from './loading';
 import Link from 'next/link';
 import ContentHeader from '@dashboard/_components/header/ContentHeader';
 import { getTickets } from '@dashboard/tickets/_helperFunctions/getTickets';
-import { createClient } from '@utils/supabase/server';
+import { getSession } from '@utils/supabase/server';
 
 export const metadata = {
   title: 'Helpdesk | Tickets',
@@ -30,17 +30,16 @@ export default async function Tickets() {
         <header>
           <ContentHeader crumbs={[{ name: "Ticket List", href: "" }]} />
         </header>
-        <div>
-          <div>There was an error retrieving the tickets</div>
+        <div className='errorMessage'>
+          <p>There was an error retrieving the tickets</p>
         </div>
       </>
     );
   }
 
-  const supabase = createClient();
-  const { data } = await supabase.auth.getSession();
-  const user = data.session.user.email;
 
+  const { data } = await getSession();
+  const user = data.session.user.email;
   const userTickets = tickets.filter(ticket => ticket.user_email === user);
   const disableTicketCreation = userTickets.length > 2;
 
@@ -54,8 +53,8 @@ export default async function Tickets() {
         <div className='flex flex-col w-full max-w-4xl'>
           {disableTicketCreation && (
             <div className="text-center mb-3">
-              <p className='text-sm m-auto font-semibold text-red-600'>You have reached the maximum number of tickets allowed to be created by a single user.</p>
-              <p className='text-sm m-auto font-semibold text-red-600'>To create a new ticket, please delete one of your tickets.</p>
+              <p className='text-sm m-auto errorMessage'>You have reached the maximum number of tickets allowed to be created by a single user.</p>
+              <p className='text-sm m-auto errorMessage'>To create a new ticket, please delete one of your tickets.</p>
             </div>
           )}
           <Link href="/tickets/create" className="mb-10 ml-auto">

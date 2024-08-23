@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom classes */
+.errorMessage {
+  @apply text-red-600 font-semibold;
+}
 /* headers styles */
 h1,
 h2,

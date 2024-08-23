@@ -17,7 +17,7 @@ export default function TicketMenu({ id, ticketEmail, sessionEmail }: TicketMenu
           <EditTicketIcon id={id} />
         </div>
       ) : (
-        <small className="px-3 py-2 font-semibold text-red-600">
+        <small className="px-3 py-2 errorMessage">
           Tickets can be modified by the ticket owner.
         </small>
       )}
