@@ -3,27 +3,15 @@
 import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import ReactQuillEditor from '@dashboard/_components/editor/ReactQuillEditor';
+import { fetchOptions } from '@dashboard/_components/ticket/_helperFunctions/fetchOptions';
 
 interface TicketFormProps {
   ticket?: { id: string, title: string, description: string, priority: string },
   action: string,
 }
 
-interface FetchOptionsParams {
-  method: 'GET' | 'POST' | 'PUT' | 'DELETE' | 'PATCH' | 'HEAD' | 'OPTIONS';
-  body?: { id?: string; title: string; description: string; priority: string; };
-}
-
-const fetchOptions = ({ method, body }: FetchOptionsParams) => ({
-  method,
-  headers: { 'Content-Type': 'application/json' },
-  body: JSON.stringify(body),
-});
-
 export default function TicketForm({ ticket, action }: TicketFormProps) {
   const router = useRouter();
-
-  console.log('Ticket:', ticket);
 
   const [ticketState, setTicketState] = useState({ isLoading: false, error: false });
   const [newTicket, setNewTicket] = useState({
@@ -31,17 +19,14 @@ export default function TicketForm({ ticket, action }: TicketFormProps) {
     description: ticket?.description || '',
     priority: ticket?.priority || 'low',
   });
-  console.log('State newTicket:', newTicket.priority, newTicket.title, newTicket.description);
   
   const editTicket = async () => {
     const editedTicket = { ...newTicket, id: ticket.id };
-    console.log('Editing ticket', editedTicket);
     const res = await fetch(`http://localhost:3000/api/tickets/${ticket.id}`, fetchOptions({method: "PUT", body: editedTicket}));
     return res;
   };
 
   const createTicket = async () => {
-    console.log('Creating ticket', newTicket);
     const res = await fetch('http://localhost:3000/api/tickets', fetchOptions({method: "POST", body: newTicket}));
     return res;
   };
