@@ -52,7 +52,12 @@ export default async function Tickets() {
       </header>
       <article className='flex flex-col items-center'>
         <div className='flex flex-col w-full max-w-4xl'>
-          {disableTicketCreation && <p className='text-sm m-auto font-semibold text-red-600'>You have reached the maximum number of tickets allowed to be created by a single user.</p>}
+          {disableTicketCreation && (
+            <div className="flex flex-col items-center">
+              <p className='text-sm m-auto font-semibold text-red-600'>You have reached the maximum number of tickets allowed to be created by a single user.</p>
+              <p className='text-sm m-auto font-semibold text-red-600'>To create a new ticket, please delete one of your tickets.</p>
+            </div>
+          )}
           <Link href="/tickets/create" className="mb-10 ml-auto">
             <button className="medium-btn btn-primary float-right" disabled={disableTicketCreation}>
               Create Ticket
