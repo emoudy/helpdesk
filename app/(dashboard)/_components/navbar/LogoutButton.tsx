@@ -18,7 +18,7 @@ export default function LogoutButton() {
   return (
     <div className='text-center'>
       { hasLogoutError ? <p className='errorMessage text-sm mb-2'>There was an error logging out.</p> : null}
-      <button className="small-btn btn-primary_alt mb-2" onClick={handleLogout}>
+      <button type="button" className="small-btn btn-primary_alt mb-2" onClick={handleLogout}>
         Logout
       </button>
     </div>

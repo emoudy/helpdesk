@@ -10,6 +10,7 @@ export default function HamburgerButton() {
   };
   return (
     <button
+      type="button"
       className="small-btn hamburger-button"
       onClick={toggleMenu}
       aria-label="Toggle Menu"

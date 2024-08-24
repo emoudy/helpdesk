@@ -67,7 +67,7 @@ export default function TicketForm({ ticket, action }: TicketFormProps) {
     <div className='w-full max-w-4xl'>
       <form onSubmit={handleSubmit} aria-describedby="form-error">
         <div className="text-right">
-          <button className="medium-btn btn-primary mb-5" disabled={ticketState.isLoading}>
+          <button type="button" className="medium-btn btn-primary mb-5" disabled={ticketState.isLoading}>
             {ticketState.isLoading ? 'Saving...' : 'Save Ticket'}
           </button>
         </div>

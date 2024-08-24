@@ -11,12 +11,12 @@ export default function AuthForm() {
         <InputItem inputLabel="Password" inputType={"password"} useIcon usePassword />
       </section>
       <section className='flex flex-col justify-center my-5'>
-        <button className="btn-primary_alt" formAction={login}>
+        <button type="button" className="btn-primary_alt" formAction={login}>
           Login
         </button>
         <div className='flex flex-row items-center text-primary mt-10'>
           Or, &nbsp;
-          <button className="btn-secondary small-btn" formAction={signup}>
+          <button type="button" className="btn-secondary small-btn" formAction={signup}>
             Sign Up
           </button>
           &nbsp;
