@@ -36,12 +36,12 @@ export default function FilterMenu({ children}) {
             onChange={(e) => setFilter({ ...filter, user_email: e.target.value})}
             placeholder="Email Search"
             aria-label="Email Search"
-            className='px-3 w-96 bg-primary bg-opacity-10 rounded-r-none'
+            className='px-3 w-96 bg-primary bg-opacity-10 mr-10'
           />
           <select
             id="ticketPriority"
             required
-            className="bg-primary_alt px-3 w-44 text-white font-semibold rounded-l-none"
+            className="bg-primary px-3 w-44 text-black bg-opacity-10"
             onChange={e => setFilter({...filter, priority: e.target.value})}
             value={filter.priority}
             aria-label="Ticket Priority"
