@@ -5,39 +5,27 @@ import Link from 'next/link';
 import ContentHeader from '@dashboard/_components/header/ContentHeader';
 import { getTickets } from '@dashboard/tickets/_helperFunctions/getTickets';
 import { getSession } from '@utils/supabase/server';
+import FilterMenu from './create/_components/FilterMenu';
 
 export const metadata = {
   title: 'Helpdesk | Tickets',
   description: 'Page to manage tickets.',
 };
-/**
- * Wrapping the TicketList component in a Suspense component allows for the
- * page to be shown while the TicketList component is loading
- */
-export default async function Tickets() {
-  let tickets = [];
-  let errorOccured = false;
-  
-  try {
-    tickets = await getTickets();
-  } catch (error) {
-    errorOccured = true;
-  }
 
-  if (errorOccured) {
-    return (
-      <>
-        <header>
-          <ContentHeader crumbs={[{ name: "Ticket List", href: "" }]} />
-        </header>
-        <div className='errorMessage'>
-          <p>There was an error retrieving the tickets</p>
-        </div>
-      </>
-    );
-  }
+interface TicketsProps {
+  searchParams?: {
+    priority?: string;
+    user_email?: string;
+  };
+}
 
+export default async function Tickets({ searchParams }:TicketsProps) {
+  const ticketsFilter = {
+    priority: searchParams.priority || "all",
+    user_email: searchParams.user_email || "",
+  };
 
+  const tickets = await getTickets(ticketsFilter); 
   const { data } = await getSession();
   const user = data.session.user.email;
   const userTickets = tickets.filter(ticket => ticket.user_email === user);
@@ -58,13 +46,17 @@ export default async function Tickets() {
               <p className='text-sm m-auto errorMessage'>To create a new ticket, please delete one of your tickets.</p>
             </div>
           )}
-          <Link href="/tickets/create" className="mb-10 ml-auto">
-            <button className="medium-btn btn-primary float-right" disabled={disableTicketCreation}>
-              Create Ticket
-            </button>
-          </Link>
+          <div className='md:mb-16 mb-5'>
+            <FilterMenu>
+              <Link href="/tickets/create">
+                <button type="button" className="medium-btn btn-primary float-right" disabled={disableTicketCreation}>
+                  Create Ticket
+                </button>
+              </Link>
+            </FilterMenu>
+          </div>
           <Suspense fallback={<Loading />}>
-            <TicketList />
+            <TicketList tickets={tickets}/>
           </Suspense>
         </div>
       </article>

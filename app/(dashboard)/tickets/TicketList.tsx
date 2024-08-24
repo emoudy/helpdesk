@@ -10,16 +10,14 @@ interface Ticket {
   priority: string;
 }
 
-export default async function TicketList() {
-  const tickets = await getTickets();
-
+export default async function TicketList({tickets}: {tickets: Ticket[]}) {
   if (tickets instanceof NextResponse) {
     const errorData = await tickets.json();
-    return <h3 className="text-center">{errorData.error}</h3>;
+    return <h3 className='errorMessage'>There awas an error with the request</h3>;
   }
 
   if (Array.isArray(tickets) && tickets.length === 0) {
-    return <h3 className="text-center">There are no opened tickets</h3>;
+    return <h3>There are no tickets to display</h3>;
   }
  
   return (
