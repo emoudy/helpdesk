@@ -67,7 +67,7 @@ export default function TicketForm({ ticket, action }: TicketFormProps) {
     <div className='w-full max-w-4xl'>
       <form onSubmit={handleSubmit} aria-describedby="form-error">
         <div className="text-right">
-          <button type="button" className="medium-btn btn-primary mb-5" disabled={ticketState.isLoading}>
+          <button type="submit" className="medium-btn btn-primary mb-5" disabled={ticketState.isLoading}>
             {ticketState.isLoading ? 'Saving...' : 'Save Ticket'}
           </button>
         </div>
@@ -93,9 +93,9 @@ export default function TicketForm({ ticket, action }: TicketFormProps) {
             value={newTicket.priority}
             aria-label="Ticket Priority"
           >
-            <option value="low">Low Priority</option>
-            <option value="medium">Medium Priority</option>
-            <option value="high">High Priority</option>
+            <option className="lowPriority" value="low">Low Priority</option>
+            <option className="mediumPriority" value="medium">Medium Priority</option>
+            <option className="highPriority" value="high">High Priority</option>
           </select>
         </div>
         <div className="flex-grow overflow-hidden text-lg">
