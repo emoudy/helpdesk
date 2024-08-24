@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Rubik } from 'next/font/google';
 
-import './globals.css';
+import './globals.scss';
 
 /**
  * We need to add this line so NextJs doesn't try to build static pages.
