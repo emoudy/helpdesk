@@ -6,6 +6,24 @@
 .errorMessage {
   @apply text-red-600 font-semibold;
 }
+
+/* Priority Colors */
+.allPriority {
+  @apply bg-primary_alt text-white;
+  &:hover {
+    @apply bg-red-900;
+  }
+}
+.lowPriority {
+  @apply bg-emerald-300 text-emerald-600;
+}
+.mediumPriority {
+  @apply bg-yellow-300 text-yellow-600;
+}
+.highPriority {
+  @apply bg-red-300 text-red-600;
+}
+
 /* headers styles */
 h1,
 h2,
@@ -36,6 +54,13 @@ select {
 input {
   &.useIcon {
     @apply px-8
+  }
+}
+
+option {
+  @apply font-rubik;
+  &:hover {
+    @apply bg-primary;
   }
 }
 
