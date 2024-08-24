@@ -9,19 +9,16 @@
 
 /* Priority Colors */
 .allPriority {
-  @apply bg-primary_alt text-white;
-  &:hover {
-    @apply bg-red-900;
-  }
+  @apply bg-primary bg-opacity-5 text-primary;
 }
 .lowPriority {
-  @apply bg-emerald-300 text-emerald-600;
+  @apply bg-emerald-100 text-emerald-700;
 }
 .mediumPriority {
-  @apply bg-yellow-300 text-yellow-600;
+  @apply bg-yellow-100 text-yellow-700;
 }
 .highPriority {
-  @apply bg-red-300 text-red-600;
+  @apply bg-red-100 text-red-700;
 }
 
 /* headers styles */
@@ -58,9 +55,9 @@ input {
 }
 
 option {
-  @apply font-rubik;
+  @apply font-rubik font-semibold;
   &:hover {
-    @apply bg-primary;
+    @apply bg-red-900;
   }
 }
 

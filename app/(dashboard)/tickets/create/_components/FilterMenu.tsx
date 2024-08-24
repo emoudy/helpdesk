@@ -46,10 +46,10 @@ export default function FilterMenu({ children}) {
             value={filter.priority}
             aria-label="Ticket Priority"
           >
-            <option className="allPriority" value="all">any priority</option>
-            <option className="lowPriority" value="low">low priority</option>
-            <option className="mediumPriority" value="medium">medium priority</option>
-            <option className="highPriority" value="high">high priority</option>
+            <option className="rounded-none" value="all">any priority</option>
+            <option className="rounded-none" value="low">low priority</option>
+            <option className="rounded-none" value="medium">medium priority</option>
+            <option className="rounded-none" value="high">high priority</option>
           </select>
         </div>
       </div>
