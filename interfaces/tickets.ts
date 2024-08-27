@@ -1,7 +1,11 @@
 export interface Ticket {
-  id: string;
+  id?: string;
   priority: string;
   title: string;
-  user_email: string;
+  user_email?: string;
   description?: string;
 };
+
+export interface Tickets {
+  tickets: Ticket[];
+}
