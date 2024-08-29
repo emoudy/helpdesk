@@ -1,18 +1,11 @@
-import Link from 'next/link';
 import { NextResponse } from 'next/server';
-import Ticket from '@dashboard/_components/ticket/Ticket';
-import { getTickets } from '@dashboard/tickets/_helperFunctions/getTickets';
+import { Tickets } from '@interfaces/tickets';
 
-interface Ticket {
-  id: string;
-  title: string;
-  user_email: string;
-  priority: string;
-}
+import Link from 'next/link';
+import TicketListItem from './TicketListItem';
 
-export default async function TicketList({tickets}: {tickets: Ticket[]}) {
+export default async function TicketList({tickets}: Tickets) {
   if (tickets instanceof NextResponse) {
-    const errorData = await tickets.json();
     return <h3 className='errorMessage'>There awas an error with the request</h3>;
   }
 
@@ -24,7 +17,7 @@ export default async function TicketList({tickets}: {tickets: Ticket[]}) {
     <div>
       {tickets.map(ticket => (
         <Link key={ticket.id} href={`/tickets/${ticket.id}`}>
-          <Ticket ticket={ticket} />
+          <TicketListItem ticket={ticket} />
         </Link>
       ))}
     </div>

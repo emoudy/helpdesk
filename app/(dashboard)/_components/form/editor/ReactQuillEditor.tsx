@@ -2,13 +2,21 @@ import ReactQuill from 'react-quill';
 import DOMPurify from 'dompurify';
 import 'react-quill/dist/quill.snow.css';
 
+
+const themeOptions = {
+  read: "bubble",
+  edit: "snow",
+  create: "snow",
+};
+
+
 interface ReactQuillEditorProps {
+  actionType: string
   id: string;
   newTicket: { title: string, description: string, priority: string };
   setNewTicket: (newTicket: { title: string; description: string; priority: string }) => void;
 }
-
-export default function ReactQuillEditor({ id, newTicket, setNewTicket }:ReactQuillEditorProps) {
+export default function ReactQuillEditor({ actionType = "read", id, newTicket, setNewTicket }:ReactQuillEditorProps) {
   // Quill modules configuration
   const modules = {
     toolbar: [
@@ -32,7 +40,7 @@ export default function ReactQuillEditor({ id, newTicket, setNewTicket }:ReactQu
   return (
     <ReactQuill
       id={id}
-      theme="snow"
+      theme={themeOptions[actionType]}
       formats={[
         'header',
         'font',

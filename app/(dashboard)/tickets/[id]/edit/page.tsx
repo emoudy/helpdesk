@@ -1,10 +1,11 @@
 import { Suspense } from 'react';
-import { createClient, getSession } from '@utils/supabase/server';
+import { createClient } from '@utils/supabase/server';
 import { getTicket } from '@dashboard/tickets/_helperFunctions/getTicket';
+import { formActions } from '@/constants';
 
 import Loading from '../../loading';
 import ContentHeader from '@dashboard/_components/header/ContentHeader';
-import EditForm from './EditForm';
+import TicketForm from '@/(dashboard)/_components/form/TicketForm';
 
 export const dynamicParams = true;
 
@@ -29,9 +30,14 @@ interface EditTicketProps {
 }
 
 export default async function EditTicket({ params }: EditTicketProps) {
+  const { edit } = formActions;
   const ticket = await getTicket(params.id);
   const crumbs = [{name:"Ticket List", href:"/tickets"}, {name:"Ticket Details", href:`/tickets/${params.id}`}, {name:"Edit Ticket", href:""}];
-  const { data } = await getSession();
+
+  if (!ticket) {
+    return <h3 className="text-center">Ticket was not found</h3>;
+  }
+
   return (
     <>
       <header>
@@ -39,9 +45,7 @@ export default async function EditTicket({ params }: EditTicketProps) {
       </header>
       <article className='flex flex-col items-center'>
         <Suspense fallback={<Loading />}>
-          {data.session.user.email === ticket.user_email ? (
-            <EditForm ticket={ticket} />
-          ) : null}
+          <TicketForm ticket={ticket} actionType={edit} />
         </Suspense>
       </article>
     </>

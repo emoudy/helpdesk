@@ -1,10 +1,11 @@
 import { Suspense } from 'react';
-import { createClient, getSession } from '@utils/supabase/server';
+import { createClient } from '@utils/supabase/server';
 import { getTicket } from '@dashboard/tickets/_helperFunctions/getTicket';
+import { formActions } from '@/constants';
 
 import ContentHeader from '@dashboard/_components/header/ContentHeader';
 import Loading from '@dashboard/loading';
-import Ticket from '@dashboard/_components/ticket/Ticket';
+import TicketForm from '@/(dashboard)/_components/form/TicketForm';
 
 export const dynamicParams = true;
 
@@ -29,9 +30,9 @@ interface TicketDetailsProps {
 }
 
 const TicketDetails = async ({ params }: TicketDetailsProps) => {
+  const { read } = formActions;
   const ticket = await getTicket(params.id);
   const crumbs = [{name:"Ticket List", href:"/tickets"}, {name:"Ticket Details", href:""}];
-  const { data } = await getSession();
 
   if (!ticket) {
     return <h2 className="text-center">Ticket was not found</h2>;
@@ -45,7 +46,7 @@ const TicketDetails = async ({ params }: TicketDetailsProps) => {
       <article className='flex flex-col items-center'>
         <Suspense fallback={<Loading />}>
           <div className='w-full max-w-4xl'>
-            <Ticket ticket={ticket} sessionEmail={data.session.user.email} displayDescription displayMenu />
+            <TicketForm ticket={ticket} actionType={read} />
           </div>
         </Suspense>
       </article>
