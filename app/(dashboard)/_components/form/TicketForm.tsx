@@ -29,41 +29,33 @@ const TicketForm = ({ ticket, actionType }: TicketFormProps) => {
     [edit]: () => ({...newTicket, id: ticket.id, user_email: ticket.user_email}),
     [create]: () => newTicket,
   };
+
+  const takeAction = {
+    [read]: () => deleteTicket(ticket.id),
+    [edit]: () => editTicket({...newTicket, id: ticket.id, user_email: ticket.user_email}),
+    [create]: () => createTicket(newTicket),
+  };
   
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
-    console.log("handleSubmit");
     e.preventDefault();
     setActionState({ ...actionState, error: false});
     setActionState({ ...actionState, isLoading: true});
 
-    const takeAction = {
-      [read]: () => deleteTicket(ticket.id),
-      [edit]: () => editTicket({...newTicket, id: ticket.id, user_email: ticket.user_email}),
-      [create]: () => createTicket(newTicket),
-    };
-    console.log("handleSubmit takeAction[actionType]", actionType);
     const res: Response = await takeAction[actionType]();
     
-    
     if (!res.ok) {
-      console.log("handleSubmit error", res.ok);
       setActionState({ ...actionState, error: true});
       setActionState({ ...actionState, isLoading: false});
-      // throw new Error("Somethign went wrong.  Try again later.");
     }
-
     const response = await res.json();
-    console.log("handleSubmit response", response);
 
     if (response.data || actionType === read) {
-      console.log("handleSubmit /ticket");
       router.push('/tickets');
       router.refresh();
     }
   };
 
   if (actionState.error) {
-    console.log("handleSubmit actionState error", actionState.error);
     return (
       <div 
         id="form-error" 
