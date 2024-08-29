@@ -1,11 +1,12 @@
 import { Suspense } from 'react';
-import TicketList from './TicketList';
-import Loading from './loading';
+import { getSession } from '@utils/supabase/server';
+import { getTickets } from '@dashboard/tickets/_helperFunctions/getTickets';
+
 import Link from 'next/link';
 import ContentHeader from '@dashboard/_components/header/ContentHeader';
-import { getTickets } from '@dashboard/tickets/_helperFunctions/getTickets';
-import { getSession } from '@utils/supabase/server';
+import Loading from './loading';
 import FilterMenu from './create/_components/FilterMenu';
+import TicketList from './TicketList';
 
 export const metadata = {
   title: 'Helpdesk | Tickets',

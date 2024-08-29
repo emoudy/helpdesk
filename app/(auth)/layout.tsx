@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
-import MainHeader from '@/_components/MainHeader';
 import { sizes } from '@/constants';
+
+import MainHeader from '@/_components/MainHeader';
 
 interface AuthLayoutsProps {
   children: ReactNode;

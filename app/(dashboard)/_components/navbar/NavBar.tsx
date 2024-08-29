@@ -1,7 +1,7 @@
 'use client';
 
-import NavBarLink from './NavBarLink';
 import { usePathname } from 'next/navigation';
+import NavBarLink from './NavBarLink';
 
 export default function NavBar() {
   const dashboardLink = '/';
