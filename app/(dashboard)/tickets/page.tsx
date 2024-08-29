@@ -47,7 +47,7 @@ export default async function Tickets({ searchParams }:TicketsProps) {
               <p className='text-sm m-auto errorMessage'>To create a new ticket, please delete one of your tickets.</p>
             </div>
           )}
-          <div className='md:mb-16 mb-5'>
+          <div className='md:mb-10 mb-5'>
             <FilterMenu>
               <Link href="/tickets/create">
                 <button type="button" className="medium-btn btn-primary" disabled={disableTicketCreation}>
