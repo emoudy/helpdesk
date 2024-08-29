@@ -24,11 +24,11 @@ export default async function DashboardLayout({ children }: DashboardLayoutProps
       <nav className='md:row-start-2 md:h-full'>
         <NavBar />
       </nav>
-      <main className="row-span-3 col-start-2 p-5 bg-white" aria-label="Main Content">{children}</main>
-      <section>
+      <main className="row-span-3 col-start-2 p-5 bg-white overflow-y-auto" aria-label="Main Content">{children}</main>
+      <section className='hidden row-start-3 md:flex flex-col justify-end items-center'>
         <Logout user={user} />
       </section>
-      <footer className="row-start-4 col-start-2 text-center py-2 text-sm text-primary bg-white opacity-50">
+      <footer className="row-start-4 col-start-2 text-center py-2 text-sm text-primary bg-white">
         <Footer />
       </footer>
     </div>
