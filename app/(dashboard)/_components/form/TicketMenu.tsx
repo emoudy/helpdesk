@@ -17,11 +17,10 @@ interface TicketMenuProps {
 export default function TicketMenu({ ticket, actionState, actionType }: TicketMenuProps) {
   const { read, edit, create } = formActions;
   const hasPermission = useHasPermission(ticket);
-  const message = "Additional permissions are needed to modify content."
   
   const saveBtn = 
     <div className="text-right">
-      <SaveTicketButton actionState={actionState} hasPermission={hasPermission} />
+      <SaveTicketButton actionState={actionState} />
     </div>;
 
   const readOptions = (
