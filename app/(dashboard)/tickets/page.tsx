@@ -50,7 +50,7 @@ export default async function Tickets({ searchParams }:TicketsProps) {
           <div className='md:mb-16 mb-5'>
             <FilterMenu>
               <Link href="/tickets/create">
-                <button type="button" className="medium-btn btn-primary float-right" disabled={disableTicketCreation}>
+                <button type="button" className="medium-btn btn-primary" disabled={disableTicketCreation}>
                   Create Ticket
                 </button>
               </Link>
