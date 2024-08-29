@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, FormEvent, useEffect } from 'react';
+import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import { formActions } from '@/constants';
 import { Ticket } from '@interfaces/tickets';
@@ -14,49 +14,56 @@ interface TicketFormProps {
   ticket?: Ticket,
   actionType: string,
 }
-export default function TicketForm({ ticket, actionType }: TicketFormProps) {
+const TicketForm = ({ ticket, actionType }: TicketFormProps) => {
   const router = useRouter();
   const { read, edit, create } = formActions;
-  
   const [actionState, setActionState] = useState({ isLoading: false, error: false });
   const [newTicket, setNewTicket] = useState({
     title: ticket?.title || '',
     description: ticket?.description || '',
     priority: ticket?.priority || 'low',
   });
+
   const sendTicket = {
-    [read]: ticket,
-    [edit]: {...newTicket, id: ticket.id, user_email: ticket.user_email},
-    [create]: newTicket,
+    [read]: () => ticket,
+    [edit]: () => ({...newTicket, id: ticket.id, user_email: ticket.user_email}),
+    [create]: () => newTicket,
   };
   
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    console.log("handleSubmit");
     e.preventDefault();
     setActionState({ ...actionState, error: false});
     setActionState({ ...actionState, isLoading: true});
 
     const takeAction = {
-      [create]: createTicket({newTicket}),
-      [edit]: editTicket({newTicket, id: ticket.id}),
-      [read]: deleteTicket({id: ticket.id}),
+      [read]: () => deleteTicket({id: ticket.id}),
+      [edit]: () => editTicket({...newTicket, id: ticket.id, user_email: ticket.user_email}),
+      [create]: () => createTicket({newTicket}),
     };
-    const res: Response = await takeAction[actionType];
-
+    console.log("handleSubmit takeAction[actionType]", actionType);
+    const res: Response = await takeAction[actionType]();
+    
+    
     if (!res.ok) {
+      console.log("handleSubmit error", res.ok);
       setActionState({ ...actionState, error: true});
       setActionState({ ...actionState, isLoading: false});
-      throw new Error(`HTTP error! Status: ${res.status}`);
+      // throw new Error("Somethign went wrong.  Try again later.");
     }
 
     const response = await res.json();
+    console.log("handleSubmit response", response);
 
-    if (response.data) {
+    if (response.data || actionType === read) {
+      console.log("handleSubmit /ticket");
       router.push('/tickets');
       router.refresh();
     }
   };
 
   if (actionState.error) {
+    console.log("handleSubmit actionState error", actionState.error);
     return (
       <div 
         id="form-error" 
@@ -64,7 +71,7 @@ export default function TicketForm({ ticket, actionType }: TicketFormProps) {
         role="alert" 
         aria-live="assertive"
       >
-        There was an error saving your ticket, please try again.
+        There was an error processsing your request, please try again.
       </div>
     )
   }
@@ -73,7 +80,7 @@ export default function TicketForm({ ticket, actionType }: TicketFormProps) {
     <form onSubmit={handleSubmit} aria-describedby="form-error" className='w-full max-w-4xl'>
       <TicketFormHeader
         actionType={actionType}
-        ticket={sendTicket[actionType]}
+        ticket={sendTicket[actionType]()}
         setNewTicket={setNewTicket}
         actionState={actionState}
       />
@@ -90,3 +97,5 @@ export default function TicketForm({ ticket, actionType }: TicketFormProps) {
     </form>
   )
 }
+
+export default TicketForm;
