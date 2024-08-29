@@ -3,7 +3,7 @@ export interface Ticket {
   priority: string;
   title: string;
   user_email?: string;
-  description?: string;
+  description: string;
 };
 
 export interface Tickets {
