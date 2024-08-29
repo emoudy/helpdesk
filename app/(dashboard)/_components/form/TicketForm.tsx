@@ -37,9 +37,9 @@ const TicketForm = ({ ticket, actionType }: TicketFormProps) => {
     setActionState({ ...actionState, isLoading: true});
 
     const takeAction = {
-      [read]: () => deleteTicket({id: ticket.id}),
+      [read]: () => deleteTicket(ticket.id),
       [edit]: () => editTicket({...newTicket, id: ticket.id, user_email: ticket.user_email}),
-      [create]: () => createTicket({newTicket}),
+      [create]: () => createTicket(newTicket),
     };
     console.log("handleSubmit takeAction[actionType]", actionType);
     const res: Response = await takeAction[actionType]();
