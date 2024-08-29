@@ -1,7 +1,7 @@
 'use client';
 
-import LoadingIcon from "../../icons/loadingIcon";
-import Tooltip from "../Tooltip";
+import LoadingIcon from "@dashboard/_components/icons/LoadingIcon";
+import Tooltip from "./Tooltip";
 
 interface SaveTicketButtonProps {
   actionState: { isLoading: boolean, error: boolean };

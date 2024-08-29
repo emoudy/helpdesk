@@ -2,7 +2,7 @@
 
 import { useRouter } from 'next/navigation';
 import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import Tooltip from '../Tooltip';
+import Tooltip from './Tooltip';
 
 interface EditTicketIconProps {
   ticketId: string;
