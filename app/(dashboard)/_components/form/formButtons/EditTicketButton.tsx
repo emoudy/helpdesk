@@ -15,7 +15,7 @@ export const EditTicketButton= ({ ticketId, hasPermission }: EditTicketIconProps
 
   return (
     <Tooltip message={message} hasPermission={hasPermission}>
-      <button onClick={() => router.push(path)} className="medium-btn btn-primary mb-5" disabled={hasPermission}>
+      <button onClick={() => router.push(path)} className="medium-btn btn-primary mb-5" disabled={!hasPermission}>
         Edit Ticket
       </button>
     </Tooltip>
