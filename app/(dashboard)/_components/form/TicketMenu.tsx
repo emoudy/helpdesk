@@ -7,7 +7,6 @@ import { useHasPermission } from './hooks/useHasPermission';
 import EditTicketButton from './formButtons/EditTicketButton';
 import DeleteTicketButton from './formButtons/DeleteTicketButton';
 import SaveTicketButton from './formButtons/SaveTicketButton';
-import Tooltip from './Tooltip';
 
 interface TicketMenuProps {
   ticket: Ticket;
