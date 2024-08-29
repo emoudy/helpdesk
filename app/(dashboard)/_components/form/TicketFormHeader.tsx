@@ -4,11 +4,12 @@ import { formActions } from '@/constants';
 
 import React from 'react'
 import TicketMenu from './TicketMenu';
+import { Ticket } from '@interfaces/tickets';
 
 interface TicketFormHeaderProps {
   actionType: string;
-  ticket: any;
-  setNewTicket: any;
+  ticket: Ticket;
+  setNewTicket: (ticket: Ticket) => void;
   actionState: { isLoading: boolean, error: boolean };
 }
 

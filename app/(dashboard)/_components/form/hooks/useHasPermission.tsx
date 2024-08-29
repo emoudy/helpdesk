@@ -9,7 +9,6 @@ export function useHasPermission(ticket:Ticket) {
     const fetchSession = async () => {
       const { data } = await getSession();
       const sessionEmail = data.session.user.email;
-      console.log('useHasPermission', sessionEmail, ticket?.user_email);
       setHasPermission(sessionEmail === ticket?.user_email);
     }
     if (ticket) fetchSession();

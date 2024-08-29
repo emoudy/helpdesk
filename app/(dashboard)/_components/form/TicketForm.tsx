@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 import { formActions } from '@/constants';
 import { Ticket } from '@interfaces/tickets';
 import { createTicket, editTicket, deleteTicket } from '@/(dashboard)/_components/form/_helperFunctions/fetchOptions';
-import { getSession } from '@utils/supabase/client';
 
 import ReactQuillEditor from '@dashboard/_components/form/editor/ReactQuillEditor';
 import TicketFormHeader from './TicketFormHeader';
@@ -25,7 +24,11 @@ export default function TicketForm({ ticket, actionType }: TicketFormProps) {
     description: ticket?.description || '',
     priority: ticket?.priority || 'low',
   });
-
+  const sendTicket = {
+    [read]: ticket,
+    [edit]: {...newTicket, id: ticket.id, user_email: ticket.user_email},
+    [create]: newTicket,
+  };
   
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -70,7 +73,7 @@ export default function TicketForm({ ticket, actionType }: TicketFormProps) {
     <form onSubmit={handleSubmit} aria-describedby="form-error" className='w-full max-w-4xl'>
       <TicketFormHeader
         actionType={actionType}
-        ticket={newTicket}
+        ticket={sendTicket[actionType]}
         setNewTicket={setNewTicket}
         actionState={actionState}
       />
