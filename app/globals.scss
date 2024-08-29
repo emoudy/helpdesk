@@ -92,26 +92,11 @@ button.large-btn {
 }
 
 /* List styles */
-ul,
-ol {
-  @apply list-inside list-disc;
-}
 ul {
   @apply list-inside list-disc;
-}
-ol {
-  @apply list-inside list-decimal;
-}
-li {
-  @apply mb-2;
-}
-
-/* icons styles */
-.actionIcon {
-  @apply mr-5 min-h-10 cursor-pointer text-xl;
-}
-.actionIcon:hover {
-  @apply text-2xl;
+  li {
+    @apply mb-2 ml-7;
+  }
 }
 
 /* form styles */
@@ -121,14 +106,8 @@ form {
   }
 }
 
-/* Quill editor styles */
-.quill-editor {
-  @apply overflow-hidden;
-  .ql-toolbar {
-    @apply rounded-t-lg bg-white p-5;
-  }
-  .ql-container {
-    @apply resize-y overflow-auto rounded-b-lg bg-white p-5 grow;
-  }
+/* This is needed for Quill */
+.ql-hidden {
+  @apply hidden;
 }
 
