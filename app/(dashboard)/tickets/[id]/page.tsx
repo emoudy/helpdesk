@@ -9,7 +9,7 @@ import TicketForm from '@/(dashboard)/_components/form/TicketForm';
 
 export const dynamicParams = true;
 
-export async function generateMetadata({ params }) {
+export const generateMetadata = async({ params }) => {
   const supabase = createClient();
   const { data: ticket, error } = await supabase
     .from('Tickets')

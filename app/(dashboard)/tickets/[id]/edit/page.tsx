@@ -9,7 +9,7 @@ import TicketForm from '@/(dashboard)/_components/form/TicketForm';
 
 export const dynamicParams = true;
 
-export async function generateMetadata({ params }) {
+export const generateMetadata = async ({ params }) => {
   const supabase = createClient();
   const { data: ticket, error } = await supabase
     .from('Tickets')
@@ -29,7 +29,7 @@ interface EditTicketProps {
   }
 }
 
-export default async function EditTicket({ params }: EditTicketProps) {
+const EditTicket = async({ params }: EditTicketProps) => {
   const { edit } = formActions;
   const ticket = await getTicket(params.id);
   const crumbs = [{name:"Ticket List", href:"/tickets"}, {name:"Ticket Details", href:`/tickets/${params.id}`}, {name:"Edit Ticket", href:""}];
@@ -51,3 +51,5 @@ export default async function EditTicket({ params }: EditTicketProps) {
     </>
   );
 };
+
+export default EditTicket;

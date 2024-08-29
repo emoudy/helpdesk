@@ -5,7 +5,7 @@ import ContentHeader from '@dashboard/_components/header/ContentHeader';
 import Loading from '../loading';
 import TicketForm from '@/(dashboard)/_components/form/TicketForm';
 
-export default function CreateTicket() {
+const CreateTicket = () => {
   const { create } = formActions;
   const crumbs = [{name:"Ticket List", href:"/tickets"}, {name:"Create Ticket", href:""}];
   return (
@@ -21,3 +21,5 @@ export default function CreateTicket() {
     </>
   );
 }
+
+export default CreateTicket;
