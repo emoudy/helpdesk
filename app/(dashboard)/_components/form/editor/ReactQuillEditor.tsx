@@ -61,7 +61,7 @@ export default function ReactQuillEditor({ actionType = "read", id, newTicket, s
       modules={modules}
       onChange={handleDescription}
       value={newTicket.description}
-      className='quill-editor'
+      className='quill-editor bg-white rounded-lg'
     />
   );
 }
