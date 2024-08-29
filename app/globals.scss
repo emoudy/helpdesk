@@ -110,4 +110,12 @@ form {
 .ql-hidden {
   @apply hidden;
 }
+.quill-editor {
+  div.ql-toolbar.ql-snow {
+    @apply border-t-0 border-r-0 border-l-0;
+  }
+  div.ql-container.ql-snow {
+    @apply border-none;
+  }
+}
 
