@@ -10,7 +10,7 @@ export default function Home() {
           The primary motivator for doing the tutorial was to learn NextJS with AppRouter structure.  After completing the tutorial, I have continued to add features and redesigned the application.</p> */}
 
         <p className='my-5'>The application has changed notably from the tutorial. Here are some additional features I implemented:</p>
-        {/* <ul>
+        <ul>
           <li>Switched from npm to pnpm</li>
           <li>Implemented Server-Side Auth using @supabase/supabase-js @supabase/ssr</li>
           <li>Added the ability to save ticket formatting by adding Quill to the project</li>
@@ -20,7 +20,7 @@ export default function Home() {
           <li>Added the feature to delete and edit ticket</li>
           <li>Deployed the application using Vercel</li>
           <li>Restructured the flow of the application</li>
-        </ul> */}
+        </ul>
       </article>
 
       <section>
