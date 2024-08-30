@@ -6,7 +6,7 @@ export default function Home() {
     <div>
       <ContentHeader crumbs={[{name:"Welcome to the HelpDesk!", href:""}]} />
       <article className="mb-14">
-        <p className='mb-3'>This project that was started as a tutorial, <em>NextJS Materclass</em>, by NetNinja. The code for the tutorial can be found in NetNinja's <Link className="text-primary" target="_blank" href="https://github.com/iamshaunjp/nextjs-masterclass">GitHub</Link>.  
+        <p className='mb-3'>This project that was started as a tutorial, <em>NextJS Materclass</em>, by NetNinja. The code for the tutorial can be found in NetNinja&apos;s <Link className="text-primary" target="_blank" href="https://github.com/iamshaunjp/nextjs-masterclass">GitHub</Link>.  
           The primary motivator for doing the tutorial was to learn NextJS with AppRouter structure.  After completing the tutorial, I have continued to add features and redesigned the application.</p>
 
         <p className='my-5'>The application has changed notably from the tutorial. Here are some additional features I implemented:</p>
