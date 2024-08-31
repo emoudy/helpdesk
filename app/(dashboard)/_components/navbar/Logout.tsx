@@ -10,7 +10,7 @@ export default function Logout({ user }: LogoutProps) {
   return (
     <>
       <LogoutButton aria-label="Logout button"/>
-      <small className="text-primary">{user ? user.email : 'null'}</small>
+      <small className="text-primary">{user ? user.email : null}</small>
     </>
   )
 }
