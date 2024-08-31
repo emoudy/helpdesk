@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useTicketFormState = () =>{
+export default function useTicketFormState() {
   const [actionState, setActionState] = useState({ isLoading: false, error: false });
 
   const startLoading = () => setActionState({ isLoading: true, error: false });
@@ -9,5 +9,3 @@ const useTicketFormState = () =>{
 
   return { actionState, startLoading, stopLoading, setError };
 };
-
-export default useTicketFormState;

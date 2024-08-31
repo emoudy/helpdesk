@@ -8,7 +8,7 @@ interface EditTicketIconProps {
   ticketId: string;
   hasPermission: boolean;
 }
-export const EditTicketButton= ({ ticketId, hasPermission }: EditTicketIconProps) => {
+export default function EditTicketButton({ ticketId, hasPermission }: EditTicketIconProps) {
   const router: AppRouterInstance  = useRouter();
   const path: string = `/tickets/${ticketId}/edit`;
   const message: string = "Only ticket owners can edit their tickets.";
@@ -21,5 +21,3 @@ export const EditTicketButton= ({ ticketId, hasPermission }: EditTicketIconProps
     </Tooltip>
   );
 }
-
-export default EditTicketButton;

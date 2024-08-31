@@ -29,7 +29,7 @@ interface TicketDetailsProps {
   }
 }
 
-const TicketDetails = async ({ params }: TicketDetailsProps) => {
+export default async function TicketDetails({ params }: TicketDetailsProps) {
   const { read } = formActions;
   const ticket = await getTicket(params.id);
   const crumbs = [{name:"Ticket List", href:"/tickets"}, {name:"Ticket Details", href:""}];
@@ -53,5 +53,3 @@ const TicketDetails = async ({ params }: TicketDetailsProps) => {
     </>
   );
 };
-
-export default TicketDetails;

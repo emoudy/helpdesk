@@ -6,7 +6,7 @@ interface TooltipProps {
   hasPermission: boolean;
 }
 
-export const Tooltip = ({ message, children, hasPermission }: TooltipProps) => {
+export default function Tooltip({ message, children, hasPermission }: TooltipProps) {
   // If the user has permission, render the children without the tooltip.
   if (hasPermission) {
     return <>{children}</>;
@@ -21,5 +21,3 @@ export const Tooltip = ({ message, children, hasPermission }: TooltipProps) => {
     </div>
   );
 }
-
-export default Tooltip;

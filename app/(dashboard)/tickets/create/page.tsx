@@ -3,9 +3,9 @@ import { formActions } from '@/constants';
 
 import ContentHeader from '@dashboard/_components/header/ContentHeader';
 import Loading from '../loading';
-import TicketForm from '@/(dashboard)/_components/form/TicketForm';
+import TicketForm from '@dashboard/_components/form/TicketForm';
 
-const CreateTicket = () => {
+export default function CreateTicket() {
   const { create } = formActions;
   const crumbs = [{name:"Ticket List", href:"/tickets"}, {name:"Create Ticket", href:""}];
   return (
@@ -21,5 +21,3 @@ const CreateTicket = () => {
     </>
   );
 }
-
-export default CreateTicket;

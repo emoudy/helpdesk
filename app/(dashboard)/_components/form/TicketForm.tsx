@@ -16,7 +16,7 @@ interface TicketFormProps {
   ticket?: Ticket,
   actionType: string,
 }
-const TicketForm = ({ ticket, actionType }: TicketFormProps) => {
+export default function TicketForm({ ticket, actionType }: TicketFormProps) {
   const router = useRouter();
   const { read, edit, create } = formActions;
   const {newTicket, setNewTicket} = useTicket(ticket);
@@ -112,5 +112,3 @@ const TicketForm = ({ ticket, actionType }: TicketFormProps) => {
     </form>
   )
 }
-
-export default TicketForm;

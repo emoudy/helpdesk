@@ -1,13 +1,13 @@
 'use client';
 
-import LoadingIcon from "@dashboard/_components/icons/LoadingIcon";
+import { LoadingIcon } from "@dashboard/_components/icons/LoadingIcon";
 import Tooltip from "./Tooltip";
 
 interface DeleteTicketIconProps {
   actionState: { isLoading: boolean; error: boolean };
   hasPermission?: boolean;
 }
-export const DeleteTicketButton = ({ actionState, hasPermission }: DeleteTicketIconProps) => {
+export default function DeleteTicketButton({ actionState, hasPermission }: DeleteTicketIconProps) {
   const message: string = "Only ticket owners can delete their tickets.";
 
   return (
@@ -25,5 +25,3 @@ export const DeleteTicketButton = ({ actionState, hasPermission }: DeleteTicketI
     </Tooltip>
   );
 }
-
-export default DeleteTicketButton;

@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { getSession } from '@utils/supabase/client';
 import { Ticket } from '@interfaces/tickets';
 
-export function useHasPermission(ticket:Ticket) {
+export default function useHasPermission(ticket:Ticket) {
   const [hasPermission, setHasPermission] = useState(false);
 
   useEffect(() => {

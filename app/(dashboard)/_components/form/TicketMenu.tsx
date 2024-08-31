@@ -2,11 +2,11 @@
  
 import { Ticket } from '@interfaces/tickets';
 import { formActions } from '@/constants';
-import { useHasPermission } from './hooks/useHasPermission';
 
-import EditTicketButton from './formButtons/EditTicketButton';
-import DeleteTicketButton from './formButtons/DeleteTicketButton';
-import SaveTicketButton from './formButtons/SaveTicketButton';
+import useHasPermission from './hooks/useHasPermission';
+import EditTicketButton from '@dashboard/_components/form/formButtons/EditTicketButton';
+import DeleteTicketButton from '@dashboard/_components/form/formButtons/DeleteTicketButton';
+import SaveTicketButton from '@dashboard/_components/form/formButtons/SaveTicketButton';
 
 interface TicketMenuProps {
   ticket: Ticket;

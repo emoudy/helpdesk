@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Ticket } from '@interfaces/tickets';
 
-const useTicket = (initialTicket: Ticket) => {
+export default function useTicket(initialTicket: Ticket) {
   const [newTicket, setNewTicket] = useState<Ticket>({
     id: initialTicket?.id || null,
     title: initialTicket?.title || "",
@@ -12,5 +12,3 @@ const useTicket = (initialTicket: Ticket) => {
 
   return {newTicket, setNewTicket};
 }
-
-export default useTicket;
