@@ -1,9 +1,7 @@
-import { Suspense } from 'react';
 import { getSession } from '@utils/supabase/server';
 import { getTickets } from '@dashboard/tickets/_helperFunctions/getTickets';
 
 import ContentHeader from '@dashboard/_components/header/ContentHeader';
-import Loading from './loading';
 import FilterMenu from './create/_components/FilterMenu';
 import TicketList from './TicketList';
 import CreateTicketButton from '../_components/form/formButtons/CreateTicketButton';
@@ -29,9 +27,9 @@ export default async function Tickets({ searchParams }:TicketsProps) {
   const tickets = await getTickets(ticketsFilter); 
   const { data } = await getSession();
   const user = data?.session?.user ? data.session.user.email : "";
+  // To avoid potential abuse by a bad actor, we disable the "Create" button if the user has more than 3 tickets
   const userTickets = user ? tickets.filter(ticket => ticket.user_email === user) : tickets;
   
-  // To avoid potential abuse by a bad actor, we disable the "Create" button if the user has more than 3 tickets
   const hasMaxTickets = userTickets.length > 2;
   const hasPermission = !!user;
 
@@ -53,9 +51,7 @@ export default async function Tickets({ searchParams }:TicketsProps) {
               <CreateTicketButton hasPermission={hasPermission} />
             </FilterMenu>
           </div>
-          <Suspense fallback={<Loading />}>
-            <TicketList tickets={tickets}/>
-          </Suspense>
+          <TicketList tickets={tickets}/>
         </div>
       </article>
     </>
