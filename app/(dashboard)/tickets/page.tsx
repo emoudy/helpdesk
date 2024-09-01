@@ -2,11 +2,11 @@ import { Suspense } from 'react';
 import { getSession } from '@utils/supabase/server';
 import { getTickets } from '@dashboard/tickets/_helperFunctions/getTickets';
 
-import Link from 'next/link';
 import ContentHeader from '@dashboard/_components/header/ContentHeader';
 import Loading from './loading';
 import FilterMenu from './create/_components/FilterMenu';
 import TicketList from './TicketList';
+import CreateTicketButton from '../_components/form/formButtons/CreateTicketButton';
 
 export const metadata = {
   title: 'Helpdesk | Tickets',
@@ -28,11 +28,12 @@ export default async function Tickets({ searchParams }:TicketsProps) {
 
   const tickets = await getTickets(ticketsFilter); 
   const { data } = await getSession();
-  const user = data.session.user.email;
-  const userTickets = tickets.filter(ticket => ticket.user_email === user);
+  const user = data?.session?.user ? data.session.user.email : "";
+  const userTickets = user ? tickets.filter(ticket => ticket.user_email === user) : tickets;
   
   // To avoid potential abuse by a bad actor, we disable the "Create" button if the user has more than 3 tickets
-  const disableTicketCreation = userTickets.length > 2;
+  const hasMaxTickets = userTickets.length > 2;
+  const hasPermission = !!user;
 
   return (
     <>
@@ -41,19 +42,15 @@ export default async function Tickets({ searchParams }:TicketsProps) {
       </header>
       <article className='flex flex-col items-center'>
         <div className='flex flex-col w-full max-w-4xl'>
-          {disableTicketCreation && (
+          {hasMaxTickets ? (
             <div className="text-center mb-3">
-              <p className='text-sm m-auto errorMessage'>You have reached the maximum number of tickets allowed to be created by a single user.</p>
+              <p className='text-sm m-auto errorMessage'>You have created the maximum number of tickets allowed by a single user.</p>
               <p className='text-sm m-auto errorMessage'>To create a new ticket, please delete one of your tickets.</p>
             </div>
-          )}
+          ): null}
           <div className='md:mb-10 mb-5'>
             <FilterMenu>
-              <Link href="/tickets/create">
-                <button type="button" className="medium-btn btn-primary" disabled={disableTicketCreation}>
-                  Create Ticket
-                </button>
-              </Link>
+              <CreateTicketButton hasPermission={hasPermission} />
             </FilterMenu>
           </div>
           <Suspense fallback={<Loading />}>
