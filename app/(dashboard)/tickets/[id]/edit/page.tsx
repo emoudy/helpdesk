@@ -3,7 +3,7 @@ import { createClient } from '@utils/supabase/server';
 import { getTicket } from '@dashboard/tickets/_helperFunctions/getTicket';
 import { formActions } from '@/constants';
 
-import Loading from '../../loading';
+import Loading from '@dashboard/loading';
 import ContentHeader from '@dashboard/_components/header/ContentHeader';
 import TicketForm from '@/(dashboard)/_components/form/TicketForm';
 

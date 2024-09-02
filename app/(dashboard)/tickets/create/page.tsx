@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { formActions } from '@/constants';
 
 import ContentHeader from '@dashboard/_components/header/ContentHeader';
-import Loading from '../loading';
+import Loading from '@dashboard/loading';
 import TicketForm from '@dashboard/_components/form/TicketForm';
 
 export default function CreateTicket() {
