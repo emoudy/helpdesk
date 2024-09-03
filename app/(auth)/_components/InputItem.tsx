@@ -64,8 +64,8 @@ export default function InputItem({ inputLabel, inputType, useIcon, usePassword 
           name={inputType}
           required
         />
-
       </div>
+      {inputType === "password" ? <small>Password must be at least six characters long</small> : null}
     </div>
   )
 }
