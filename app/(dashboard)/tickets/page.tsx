@@ -1,4 +1,4 @@
-import { getSession } from '@utils/supabase/server';
+import { createClient } from '@utils/supabase/server';
 import { getTickets } from '@dashboard/tickets/_helperFunctions/getTickets';
 
 import ContentHeader from '@dashboard/_components/header/ContentHeader';
@@ -24,9 +24,10 @@ export default async function Tickets({ searchParams }:TicketsProps) {
     user_email: searchParams.user_email || "",
   };
 
-  const tickets = await getTickets(ticketsFilter); 
-  const { data } = await getSession();
-  const user = data?.session?.user ? data.session.user.email : "";
+  const tickets = await getTickets(ticketsFilter);
+  const supabase = createClient();
+  const { data } = await supabase.auth.getUser();
+  const user = data?.user ? data.user.email : "";
   // To avoid potential abuse by a bad actor, we disable the "Create" button if the user has more than 3 tickets
   const userTickets = user ? tickets.filter(ticket => ticket.user_email === user) : tickets;
   
