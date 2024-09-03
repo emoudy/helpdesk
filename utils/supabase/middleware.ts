@@ -36,10 +36,9 @@ export async function updateSession(request: NextRequest) {
   // TODO: findout why this is not getting the user
   // check https://github.com/supabase/supabase-js/issues/1025
   const {
-    data: { user },
-    error: userError,
+    data: { user }
   } = await supabase.auth.getUser();
-
+  // supabase.auth.admin.getUserById()
   // const { { session, user }, error } = await supabase.auth.refreshSession()
 
   if (
