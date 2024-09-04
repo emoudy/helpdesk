@@ -35,7 +35,6 @@ export default function TicketForm({ ticket, actionType }: TicketFormProps) {
     try {
       const res: Response = await actions[actionType]();
       const response = await res.json();
-      console.log("response", response);
 
       if (response.data || actionType === read) {
         router.push('/tickets');
