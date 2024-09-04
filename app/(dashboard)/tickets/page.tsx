@@ -5,6 +5,8 @@ import ContentHeader from '@dashboard/_components/header/ContentHeader';
 import FilterMenu from './create/_components/FilterMenu';
 import TicketList from './TicketList';
 import CreateTicketButton from '../_components/form/formButtons/CreateTicketButton';
+import { Suspense } from 'react';
+import Loading from './loading';
 
 export const metadata = {
   title: 'Helpdesk | Tickets',
@@ -40,20 +42,22 @@ export default async function Tickets({ searchParams }:TicketsProps) {
         <ContentHeader crumbs={[{name:"Ticket List", href:""}]} />
       </header>
       <article className='flex flex-col items-center'>
-        <div className='flex flex-col w-full max-w-4xl'>
-          {hasMaxTickets ? (
-            <div className="text-center mb-3">
-              <p className='text-sm m-auto errorMessage'>You have created the maximum number of tickets allowed by a single user.</p>
-              <p className='text-sm m-auto errorMessage'>To create a new ticket, please delete one of your tickets.</p>
-            </div>
-          ): null}
-          <div className='md:mb-10 mb-5'>
-            <FilterMenu>
-              <CreateTicketButton hasPermission={hasPermission} />
-            </FilterMenu>
+        <Suspense fallback={<Loading />}>
+          <div className='flex flex-col w-full max-w-4xl'>
+            {hasMaxTickets ? (
+              <div className="text-center mb-3">
+                <p className='text-sm m-auto errorMessage'>You have created the maximum number of tickets allowed by a single user.</p>
+                <p className='text-sm m-auto errorMessage'>To create a new ticket, please delete one of your tickets.</p>
+              </div>
+            ): null}
+              <div className='md:mb-10 mb-5'>
+                <FilterMenu>
+                  <CreateTicketButton hasPermission={hasPermission} />
+                </FilterMenu>
+              </div>
+              <TicketList tickets={tickets}/>
           </div>
-          <TicketList tickets={tickets}/>
-        </div>
+        </Suspense>
       </article>
     </>
   );
