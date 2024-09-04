@@ -11,7 +11,7 @@ export default function CreateTicketButton({ hasPermission }: EditTicketIconProp
   const router: AppRouterInstance  = useRouter();
   const path: string = `/tickets/create`;
   const message: string = "You must be logged in to create a ticket.";
-4 
+
   return (
     <Tooltip message={message} hasPermission={hasPermission}>
       <button type="button" onClick={() => router.push(path)} className="medium-btn btn-primary mb-5" disabled={!hasPermission}>
