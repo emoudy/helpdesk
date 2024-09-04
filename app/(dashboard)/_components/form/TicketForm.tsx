@@ -35,14 +35,19 @@ export default function TicketForm({ ticket, actionType }: TicketFormProps) {
     try {
       const res: Response = await actions[actionType]();
       const response = await res.json();
+      console.log("response", response);
+      console.log("actionType", actionType);
 
       if (response.data || actionType === read) {
+        console.log("response inside");
         router.push('/tickets');
         router.refresh();
       }
     } catch (error) {
+      console.log("response error");
       setError();
     } finally {
+      console.log("response stopLoading");
       stopLoading();
     }
   };
