@@ -10,7 +10,7 @@ const fetchOptions = ({ method, body }: FetchOptionsParams) => ({
   body: JSON.stringify(body),
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+const baseUrl = process.env.NEXT_PUBLIC_API_URL;
 
 export const editTicket = async (newTicket: Ticket) => {
   const res = await fetch(`${baseUrl}/api/tickets/${newTicket.id}`, fetchOptions({method: "PUT", body: newTicket}));
