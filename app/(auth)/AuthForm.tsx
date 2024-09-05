@@ -2,6 +2,7 @@
 
 import { login, signup } from '@auth/actions';
 import InputItem from '@auth/_components/InputItem';
+import FakeLogin from './_components/FakeLogin';
 
 export default function AuthForm() {
   return ( 
@@ -22,6 +23,9 @@ export default function AuthForm() {
           &nbsp;
           to make an account!
         </div>
+      </section>
+      <section className='flex flex-col items-center text-primary my-5'>
+        <FakeLogin />
       </section>
     </form>
   );
