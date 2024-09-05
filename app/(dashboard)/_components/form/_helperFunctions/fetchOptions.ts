@@ -10,17 +10,19 @@ const fetchOptions = ({ method, body }: FetchOptionsParams) => ({
   body: JSON.stringify(body),
 });
 
+const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
+
 export const editTicket = async (newTicket: Ticket) => {
-  const res = await fetch(`http://localhost:3000/api/tickets/${newTicket.id}`, fetchOptions({method: "PUT", body: newTicket}));
+  const res = await fetch(`${baseUrl}/api/tickets/${newTicket.id}`, fetchOptions({method: "PUT", body: newTicket}));
   return res;
 };
 
 export const createTicket = async (newTicket: Ticket) => {
-  const res = await fetch('http://localhost:3000/api/tickets', fetchOptions({method: "POST", body: newTicket}));
+  const res = await fetch(`${baseUrl}/api/tickets`, fetchOptions({method: "POST", body: newTicket}));
   return res;
 };
 
 export const deleteTicket = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/tickets/${id}`, fetchOptions({ method: 'DELETE' }));
+  const res = await fetch(`${baseUrl}/api/tickets/${id}`, fetchOptions({ method: 'DELETE' }));
   return res;
 };
