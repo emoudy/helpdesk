@@ -3,6 +3,7 @@
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { createClient } from '@utils/supabase/server';
+import { headers } from 'next/headers'
 
 export async function login(formData: FormData) {
   const supabase = createClient();
@@ -45,3 +46,13 @@ export async function signup(formData: FormData) {
   revalidatePath('/', 'layout');
   redirect('/verify');
 }
+
+export const getIPAddress = async() => {
+  const FALLBACK_IP_ADDRESS = '0.0.0.0'
+  const forwardedFor = headers().get('x-forwarded-for')
+
+  if (forwardedFor) {
+    return forwardedFor.split(',')[0] ?? FALLBACK_IP_ADDRESS
+  }
+  return headers().get('x-real-ip') ?? FALLBACK_IP_ADDRESS
+};
