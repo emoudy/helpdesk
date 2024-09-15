@@ -3,19 +3,11 @@
 import { useState } from 'react'
 import { createClient } from '@utils/supabase/client';
 import { getIPAddress } from '@auth/actions';
+import { fetchFakeLogin } from '@auth/_helperFunctions/fetchOptions';
 
 export default function FakeLogin() {
-
   const [ showFakeLogin, setShowFakeLogin ] = useState(false);
   const [ fakeLoginInfo, setFakeLoginInfo ] = useState({ email: null, password: null });
-  
-  const getFakeLogin = async(clientIP: string) => {
-    const supabase = createClient();
-    const { data, error } = await supabase.from('fake_login').select('*').eq('ip_address', clientIP);
-  
-    if (error) throw new Error("Error fetching tickets");
-    return data || [];
-  }
 
   const getEmptyIpRow = async() => {
     const supabase = createClient();
@@ -38,39 +30,37 @@ export default function FakeLogin() {
     return emptyIpEntry[0];
   };
 
-  const addIPAddress = async(clientIP: string) => {
+  const addIPAddress = async(ip: string) => {
     const supabase = createClient();
     const emptyIpEntry = await getEmptyIpRow();
     const { error } = await supabase
     .from('fake_login')
-    .update({ ip_address: clientIP })
+    .update({ ip_address: ip })
     .eq('email', emptyIpEntry.email);
 
     if (error) {  
       console.error("Error adding entry:", error);
     }
     return null;
-  }
-
+  };
+  
   const handleFakeLogin = async() => {
-    const clientIP = await getIPAddress();
-    console.log('handleFakeLogin clientIP:', clientIP);
-    let fakeLogin = await getFakeLogin(clientIP);
-
-    if (fakeLogin.length === 0) {
-      console.log('fakeLogin is null');
-      await addIPAddress(clientIP);
-      fakeLogin = await getFakeLogin(clientIP);
+    const ip = await getIPAddress();
+    let fakeLogin = await fetchFakeLogin(ip);
+    if (fakeLogin === null) {
+      // If the response is empty, add the IP address to the fake_login table
+      await addIPAddress(ip);
+      fakeLogin = await fetchFakeLogin(ip);
     }
     setShowFakeLogin(true);
-    setFakeLoginInfo({email: fakeLogin[0].email, password: fakeLogin[0].password});
+    setFakeLoginInfo({email: fakeLogin.email, password: fakeLogin.password});
   };
 
   return (
     <>
       <div className='flex flex-row items-center text-primary'>
         Or, generate a &nbsp;
-        <button type="submit" className="btn-secondary small-btn" onClick={handleFakeLogin}>
+        <button type="button" className="btn-secondary small-btn" onClick={handleFakeLogin}>
           fake login
         </button>
         &nbsp;
