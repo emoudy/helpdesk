@@ -48,11 +48,16 @@ export async function signup(formData: FormData) {
 }
 
 export const getIPAddress = async() => {
-  const FALLBACK_IP_ADDRESS = '0.0.0.0'
-  const forwardedFor = headers().get('x-forwarded-for')
+  const FALLBACK_IP_ADDRESS = '0.0.0.0';
+  const forwardedFor = headers().get('x-forwarded-for');
+  let ipAddress = "";
+  console.log("Forwarded for: ", forwardedFor);
 
   if (forwardedFor) {
-    return forwardedFor.split(',')[0] ?? FALLBACK_IP_ADDRESS
+    ipAddress = forwardedFor.split(',')[0] ?? FALLBACK_IP_ADDRESS
+  } else {
+    ipAddress =  headers().get('x-real-ip') ?? FALLBACK_IP_ADDRESS
   }
-  return headers().get('x-real-ip') ?? FALLBACK_IP_ADDRESS
+
+  return ipAddress.replace(/^::ffff:/, '');
 };
