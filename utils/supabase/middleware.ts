@@ -46,7 +46,8 @@ export async function updateSession(request: NextRequest) {
     !request.nextUrl.pathname.startsWith('/login') &&
     !request.nextUrl.pathname.startsWith('/error') &&
     !request.nextUrl.pathname.startsWith('/verify') &&
-    !request.nextUrl.pathname.startsWith('/confirm')
+    !request.nextUrl.pathname.startsWith('/confirm') &&
+    !request.nextUrl.pathname.startsWith('/api/fake_login')
   ) {
     // if no user, potentially respond by redirecting the user to the login page
     const url = request.nextUrl.clone();
