@@ -15,8 +15,7 @@ export default function DeleteTicketButton({ actionState, hasPermission }: Delet
       <button type="submit" className="medium-btn btn-primary mb-5" disabled={actionState.isLoading || !hasPermission}>
         {actionState.isLoading ? (
             <div className="flex flex-row justify-center items-center">
-              <LoadingIcon />
-              Deleting...
+              <LoadingIcon />&nbsp; Deleting...
             </div>
           ) : (
             'Delete Ticket'

@@ -4,10 +4,12 @@ import { useState } from 'react'
 import { createClient } from '@utils/supabase/client';
 import { getIPAddress } from '@auth/actions';
 import { fetchFakeLogin } from '@auth/_helperFunctions/fetchOptions';
+import { LoadingIcon } from "@dashboard/_components/icons/LoadingIcon";
 
 export default function FakeLogin() {
   const [ showFakeLogin, setShowFakeLogin ] = useState(false);
   const [ fakeLoginInfo, setFakeLoginInfo ] = useState({ email: null, password: null });
+  const [ loadingFakeLogin, setLoadingFakeLogin ] = useState(false);
 
   const getEmptyIpRow = async() => {
     const supabase = createClient();
@@ -45,6 +47,7 @@ export default function FakeLogin() {
   };
   
   const handleFakeLogin = async() => {
+    setLoadingFakeLogin(true);
     const ip = await getIPAddress();
     let fakeLogin = await fetchFakeLogin(ip);
     if (fakeLogin === null) {
@@ -53,6 +56,7 @@ export default function FakeLogin() {
       fakeLogin = await fetchFakeLogin(ip);
     }
     setShowFakeLogin(true);
+    setLoadingFakeLogin(false);
     setFakeLoginInfo({email: fakeLogin.email, password: fakeLogin.password});
   };
 
@@ -60,9 +64,9 @@ export default function FakeLogin() {
     <>
       <div className='flex flex-row items-center text-primary'>
         Or, generate a &nbsp;
-        <button type="button" className="btn-secondary small-btn" onClick={handleFakeLogin}>
-          fake login
-        </button>
+        <button type="submit" className="btn-secondary small-btn" onClick={handleFakeLogin} disabled={loadingFakeLogin}>
+        {loadingFakeLogin ? <LoadingIcon /> : 'fake login'}
+      </button>
         &nbsp;
         to browse the application!
       </div>

@@ -10,8 +10,7 @@ export default function SaveTicketButton({ actionState }: SaveTicketButtonProps)
       <button type="submit" className="medium-btn btn-primary mb-5" disabled={actionState.isLoading}>
         {actionState.isLoading ? (
             <div className="flex flex-row justify-center items-center">
-              <LoadingIcon />
-              Saving...
+              <LoadingIcon />&nbsp; Saving...
             </div>
           ) : (
             'Save Ticket'
